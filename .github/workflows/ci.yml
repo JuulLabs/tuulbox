@@ -18,8 +18,8 @@ jobs:
         --no-daemon
         --max-workers 2
         -Pkotlin.incremental=false
-        -Pgithub.packages.username=${{ secrets.GITHUB_PACKAGES_USERNAME }}
-        -Pgithub.packages.password=${{ secrets.GITHUB_PACKAGES_PASSWORD }}
+        -Pgithub.packages.username=${{ secrets.GH_PACKAGES_USERNAME }}
+        -Pgithub.packages.password=${{ secrets.GH_PACKAGES_PASSWORD }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2-beta
