@@ -2,10 +2,9 @@ package com.juul.tuulbox.collections
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
-import kotlinx.coroutines.channels.BroadcastChannel
-import kotlinx.coroutines.channels.Channel.Factory.CONFLATED
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 
 fun <K, V> ConcurrentMap<K, V>.withFlow() = FlowConcurrentMap(this)
 
@@ -19,8 +18,8 @@ class FlowConcurrentMap<K, V>(
 
     constructor() : this(ConcurrentHashMap())
 
-    private val _onChanged = BroadcastChannel<Map<K, V>>(CONFLATED)
-    val onChanged = _onChanged.asFlow()
+    private val _onChanged = MutableStateFlow<Map<K, V>?>(null)
+    val onChanged: Flow<Map<K, V>> = _onChanged.filterNotNull()
 
     /** @see ConcurrentMap.put */
     override fun put(
@@ -42,7 +41,7 @@ class FlowConcurrentMap<K, V>(
         key: K,
         value: V
     ): Boolean = map.remove(key, value).also { didRemove ->
-        if (didRemove) _onChanged.offer(map.toMap())
+        if (didRemove) _onChanged.value = map.toMap()
     }
 
     /** @see ConcurrentMap.clear */
@@ -62,7 +61,7 @@ class FlowConcurrentMap<K, V>(
         key: K,
         value: V
     ): V? = map.putIfAbsent(key, value).also { previousValue ->
-        if (previousValue == null) _onChanged.offer(map.toMap())
+        if (previousValue == null) _onChanged.value = map.toMap()
     }
 
     /**
@@ -75,7 +74,7 @@ class FlowConcurrentMap<K, V>(
         oldValue: V,
         newValue: V
     ): Boolean = map.replace(key, oldValue, newValue).also { didReplace ->
-        if (didReplace) _onChanged.offer(map.toMap())
+        if (didReplace) _onChanged.value = map.toMap()
     }
 
     /**
@@ -87,7 +86,7 @@ class FlowConcurrentMap<K, V>(
         key: K,
         value: V
     ): V? = map.replace(key, value).also { previousValue ->
-        if (previousValue != null) _onChanged.offer(map.toMap())
+        if (previousValue != null) _onChanged.value = map.toMap()
     }
 
     /** @throws UnsupportedOperationException */
@@ -106,7 +105,7 @@ class FlowConcurrentMap<K, V>(
         action: ConcurrentMap<K, V>.() -> T
     ): T {
         val result = action.invoke(this)
-        _onChanged.offer(toMap())
+        _onChanged.value = toMap()
         return result
     }
 }
