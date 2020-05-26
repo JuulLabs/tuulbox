@@ -13,10 +13,8 @@ fun <K, V> ConcurrentMap<K, V>.withFlow() = FlowConcurrentMap(this)
  * a copy of the [ConcurrentMap] at the time of the change event.
  */
 class FlowConcurrentMap<K, V>(
-    private val map: ConcurrentMap<K, V>
+    private val map: ConcurrentMap<K, V> = ConcurrentHashMap()
 ) : ConcurrentMap<K, V> by map {
-
-    constructor() : this(ConcurrentHashMap())
 
     private val _onChanged = MutableStateFlow<Map<K, V>?>(null)
     val onChanged: Flow<Map<K, V>> = _onChanged.filterNotNull()
