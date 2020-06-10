@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/JuulLabs/tuulbox/branch/master/graph/badge.svg?token=24ilSLPwN2)](https://codecov.io/gh/JuulLabs/tuulbox)
+
 ## Modules
 
 Library is organized into the following modules:
