@@ -3,3 +3,4 @@ coverage:
     patch: off
 fixes:
   - "com/juul/tuulbox/collections::"
+  - "com/juul/tuulbox/coroutines/flow::"
