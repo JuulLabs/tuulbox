@@ -1,4 +1,5 @@
-import com.juul.tuulbox.coroutines.flow.combine
+package com.juul.tuulbox.coroutines.flow
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlinx.coroutines.flow.flowOf
