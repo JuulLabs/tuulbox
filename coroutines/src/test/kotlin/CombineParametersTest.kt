@@ -1,9 +1,9 @@
 import com.juul.tuulbox.coroutines.flow.combine
+import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.runBlocking
-import org.junit.Test
-import kotlin.test.assertEquals
 
 class CombineParametersTest {
 
