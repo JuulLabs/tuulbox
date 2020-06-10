@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package com.juul.tuulbox.coroutines
+package com.juul.tuulbox.coroutines.flow
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
