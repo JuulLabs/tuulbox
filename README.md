@@ -5,6 +5,8 @@ Library is organized into the following modules:
 | Type                            | Module                       | Artifact ID     | Description                        |
 |:-------------------------------:|:----------------------------:|:---------------:|------------------------------------|
 | ![Kotlin](artwork/kotlin.png)   | [`collections`](collections) | [`collections`] | Tools/utilities for [Collections]. |
+| ![Kotlin](artwork/kotlin.png)   | [`coroutines`](coroutines)   | [`coroutines`]  | Tools/utilities for [Coroutines].  |
+
 
 All artifacts have the Maven group ID: `com.juul.tuulbox`
 
@@ -41,3 +43,6 @@ table above) and_ `$version` _with the desired version (can be found by followin
 
 [`collections`]: https://github.com/JuulLabs/android-github-packages/packages/215143
 [Collections]: https://kotlinlang.org/docs/reference/collections-overview.html
+[`coroutines`]: https://github.com/JuulLabs/android-github-packages/packages/261605
+[Coroutines]: https://kotlinlang.org/docs/reference/coroutines-overview.html
+
