@@ -7,7 +7,10 @@
 # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/virtual-environments-for-github-hosted-runners
 
 name: CI
-on: push
+on:
+  release:
+    types: [published]
+  push:
 
 jobs:
   build:
