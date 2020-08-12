@@ -1,31 +1,29 @@
 package com.juul.tuulbox.collections
 
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.ConcurrentMap
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 
-fun <K, V> ConcurrentMap<K, V>.withFlow() = FlowConcurrentMap(this)
+fun <K, V> MutableMap<K, V>.withFlow() = FlowMutableMap(this)
 
 /**
- * Wraps a [ConcurrentMap] to provide a [Flow] of [onChanged] events. The [onChanged] events emit
- * a copy of the [ConcurrentMap] at the time of the change event.
+ * Wraps a [MutableMap] to provide a [Flow] of [onChanged] events. The [onChanged] events emit a
+ * copy of the [MutableMap] at the time of the change event.
  */
-class FlowConcurrentMap<K, V>(
-    private val map: ConcurrentMap<K, V> = ConcurrentHashMap()
-) : ConcurrentMap<K, V> by map {
+class FlowMutableMap<K, V> internal constructor(
+    private val map: MutableMap<K, V>
+) : MutableMap<K, V> by map {
 
     private val _onChanged = MutableStateFlow<Map<K, V>?>(null)
     val onChanged: Flow<Map<K, V>> = _onChanged.filterNotNull()
 
-    /** @see ConcurrentMap.put */
+    /** @see MutableMap.put */
     override fun put(
         key: K,
         value: V
     ): V? = map.emitChangedAfter { put(key, value) }
 
-    /** @see ConcurrentMap.remove */
+    /** @see MutableMap.remove */
     override fun remove(
         key: K
     ): V? = map.emitChangedAfter { remove(key) }
@@ -33,7 +31,7 @@ class FlowConcurrentMap<K, V>(
     /**
      * Emits `onChanged` event when [remove] returns `true`.
      *
-     * @see ConcurrentMap.remove
+     * @see MutableMap.remove
      */
     override fun remove(
         key: K,
@@ -42,10 +40,10 @@ class FlowConcurrentMap<K, V>(
         if (didRemove) _onChanged.value = map.toMap()
     }
 
-    /** @see ConcurrentMap.clear */
+    /** @see MutableMap.clear */
     override fun clear() = map.emitChangedAfter { clear() }
 
-    /** @see ConcurrentMap.putAll */
+    /** @see MutableMap.putAll */
     override fun putAll(
         from: Map<out K, V>
     ) = map.emitChangedAfter { putAll(from) }
@@ -53,7 +51,7 @@ class FlowConcurrentMap<K, V>(
     /**
      * Emits `onChanged` event when [putIfAbsent] returns `null`.
      *
-     * @see ConcurrentMap.putIfAbsent
+     * @see MutableMap.putIfAbsent
      */
     override fun putIfAbsent(
         key: K,
@@ -65,7 +63,7 @@ class FlowConcurrentMap<K, V>(
     /**
      * Emits `onChanged` event when [replace] returns `true`.
      *
-     * @see ConcurrentMap.replace
+     * @see MutableMap.replace
      */
     override fun replace(
         key: K,
@@ -78,7 +76,7 @@ class FlowConcurrentMap<K, V>(
     /**
      * Emits `onChanged` event when [replace] returns non-`null`.
      *
-     * @see ConcurrentMap.replace
+     * @see MutableMap.replace
      */
     override fun replace(
         key: K,
@@ -99,8 +97,8 @@ class FlowConcurrentMap<K, V>(
     override val values: MutableCollection<V>
         get() = throw UnsupportedOperationException()
 
-    private inline fun <T> ConcurrentMap<K, V>.emitChangedAfter(
-        action: ConcurrentMap<K, V>.() -> T
+    private inline fun <T> MutableMap<K, V>.emitChangedAfter(
+        action: MutableMap<K, V>.() -> T
     ): T {
         val result = action.invoke(this)
         _onChanged.value = toMap()
