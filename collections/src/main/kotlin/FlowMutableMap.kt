@@ -3,6 +3,7 @@ package com.juul.tuulbox.collections
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
+import java.util.Collections
 
 fun <K, V> MutableMap<K, V>.withFlow() = FlowMutableMap(this)
 
@@ -37,7 +38,7 @@ class FlowMutableMap<K, V> internal constructor(
         key: K,
         value: V
     ): Boolean = map.remove(key, value).also { didRemove ->
-        if (didRemove) _onChanged.value = map.toMap()
+        if (didRemove) _onChanged.value = map.unmodifiableCopy()
     }
 
     /** @see MutableMap.clear */
@@ -57,7 +58,7 @@ class FlowMutableMap<K, V> internal constructor(
         key: K,
         value: V
     ): V? = map.putIfAbsent(key, value).also { previousValue ->
-        if (previousValue == null) _onChanged.value = map.toMap()
+        if (previousValue == null) _onChanged.value = map.unmodifiableCopy()
     }
 
     /**
@@ -70,7 +71,7 @@ class FlowMutableMap<K, V> internal constructor(
         oldValue: V,
         newValue: V
     ): Boolean = map.replace(key, oldValue, newValue).also { didReplace ->
-        if (didReplace) _onChanged.value = map.toMap()
+        if (didReplace) _onChanged.value = map.unmodifiableCopy()
     }
 
     /**
@@ -82,7 +83,7 @@ class FlowMutableMap<K, V> internal constructor(
         key: K,
         value: V
     ): V? = map.replace(key, value).also { previousValue ->
-        if (previousValue != null) _onChanged.value = map.toMap()
+        if (previousValue != null) _onChanged.value = map.unmodifiableCopy()
     }
 
     /** @throws UnsupportedOperationException */
@@ -101,7 +102,10 @@ class FlowMutableMap<K, V> internal constructor(
         action: MutableMap<K, V>.() -> T
     ): T {
         val result = action.invoke(this)
-        _onChanged.value = toMap()
+        _onChanged.value = unmodifiableCopy()
         return result
     }
 }
+
+private fun <K, V> MutableMap<K, V>.unmodifiableCopy() =
+    Collections.unmodifiableMap(toMap())
