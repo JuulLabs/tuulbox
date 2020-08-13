@@ -1,9 +1,9 @@
 package com.juul.tuulbox.collections
 
+import java.util.Collections
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
-import java.util.Collections
 
 fun <K, V> MutableMap<K, V>.withFlow() = FlowMutableMap(this)
 
