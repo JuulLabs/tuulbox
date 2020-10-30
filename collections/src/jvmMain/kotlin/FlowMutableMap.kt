@@ -1,22 +1,23 @@
 package com.juul.tuulbox.collections
 
-import java.util.Collections
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
+import java.util.Collections
 
-fun <K, V> MutableMap<K, V>.withFlow() = FlowMutableMap(this)
+public fun <K, V> MutableMap<K, V>.withFlow(): FlowMutableMap<K, V> = FlowMutableMap(this)
 
 /**
  * Wraps a [MutableMap] to provide a [Flow] of [onChanged] events. The [onChanged] events emit a
  * copy of the [MutableMap] at the time of the change event.
  */
-class FlowMutableMap<K, V> internal constructor(
+@Deprecated("Does not provide thread-safety guarantees when wrapping ConcurrentMap")
+public class FlowMutableMap<K, V> internal constructor(
     private val map: MutableMap<K, V>
 ) : MutableMap<K, V> by map {
 
     private val _onChanged = MutableStateFlow<Map<K, V>?>(null)
-    val onChanged: Flow<Map<K, V>> = _onChanged.filterNotNull()
+    public val onChanged: Flow<Map<K, V>> = _onChanged.filterNotNull()
 
     /** @see MutableMap.put */
     override fun put(
@@ -42,12 +43,12 @@ class FlowMutableMap<K, V> internal constructor(
     }
 
     /** @see MutableMap.clear */
-    override fun clear() = map.emitChangedAfter { clear() }
+    override fun clear(): Unit = map.emitChangedAfter { clear() }
 
     /** @see MutableMap.putAll */
     override fun putAll(
         from: Map<out K, V>
-    ) = map.emitChangedAfter { putAll(from) }
+    ): Unit = map.emitChangedAfter { putAll(from) }
 
     /**
      * Emits `onChanged` event when [putIfAbsent] returns `null`.

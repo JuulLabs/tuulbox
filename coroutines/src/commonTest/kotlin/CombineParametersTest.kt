@@ -1,20 +1,15 @@
 package com.juul.tuulbox.coroutines.flow
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlinx.coroutines.debug.junit4.CoroutinesTimeout
+import com.juul.tuulbox.test.runTest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.single
-import kotlinx.coroutines.runBlocking
-import org.junit.Rule
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class CombineParametersTest {
 
-    @get:Rule
-    val timeoutRule = CoroutinesTimeout.seconds(1)
-
     @Test
-    fun testSixParameters() = runBlocking {
+    fun testSixParameters() = runTest {
         val flow = combine(
             flowOf("1"),
             flowOf(2),
@@ -29,7 +24,7 @@ class CombineParametersTest {
     }
 
     @Test
-    fun testSevenParameters() = runBlocking {
+    fun testSevenParameters() = runTest {
         val flow = combine(
             flowOf("1"),
             flowOf(2),
@@ -45,7 +40,7 @@ class CombineParametersTest {
     }
 
     @Test
-    fun testEightParameters() = runBlocking {
+    fun testEightParameters() = runTest {
         val flow = combine(
             flowOf("1"),
             flowOf(2),
@@ -62,7 +57,7 @@ class CombineParametersTest {
     }
 
     @Test
-    fun testNineParameters() = runBlocking {
+    fun testNineParameters() = runTest {
         val flow = combine(
             flowOf("1"),
             flowOf(2),
@@ -80,7 +75,7 @@ class CombineParametersTest {
     }
 
     @Test
-    fun testTenParameters() = runBlocking {
+    fun testTenParameters() = runTest {
         val flow = combine(
             flowOf("1"),
             flowOf(2),
