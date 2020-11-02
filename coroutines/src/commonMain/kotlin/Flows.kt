@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.combine
  * Returns a [Flow] whose values are generated with [transform] function by combining
  * the most recently emitted values by each flow.
  */
-inline fun <T1, T2, T3, T4, T5, T6, R> combine(
+public inline fun <T1, T2, T3, T4, T5, T6, R> combine(
     flow: Flow<T1>,
     flow2: Flow<T2>,
     flow3: Flow<T3>,
@@ -32,7 +32,7 @@ inline fun <T1, T2, T3, T4, T5, T6, R> combine(
  * Returns a [Flow] whose values are generated with [transform] function by combining
  * the most recently emitted values by each flow.
  */
-inline fun <T1, T2, T3, T4, T5, T6, T7, R> combine(
+public inline fun <T1, T2, T3, T4, T5, T6, T7, R> combine(
     flow: Flow<T1>,
     flow2: Flow<T2>,
     flow3: Flow<T3>,
@@ -57,7 +57,7 @@ inline fun <T1, T2, T3, T4, T5, T6, T7, R> combine(
  * Returns a [Flow] whose values are generated with [transform] function by combining
  * the most recently emitted values by each flow.
  */
-inline fun <T1, T2, T3, T4, T5, T6, T7, T8, R> combine(
+public inline fun <T1, T2, T3, T4, T5, T6, T7, T8, R> combine(
     flow: Flow<T1>,
     flow2: Flow<T2>,
     flow3: Flow<T3>,
@@ -84,7 +84,7 @@ inline fun <T1, T2, T3, T4, T5, T6, T7, T8, R> combine(
  * Returns a [Flow] whose values are generated with [transform] function by combining
  * the most recently emitted values by each flow.
  */
-inline fun <T1, T2, T3, T4, T5, T6, T7, T8, T9, R> combine(
+public inline fun <T1, T2, T3, T4, T5, T6, T7, T8, T9, R> combine(
     flow: Flow<T1>,
     flow2: Flow<T2>,
     flow3: Flow<T3>,
@@ -113,7 +113,7 @@ inline fun <T1, T2, T3, T4, T5, T6, T7, T8, T9, R> combine(
  * Returns a [Flow] whose values are generated with [transform] function by combining
  * the most recently emitted values by each flow.
  */
-inline fun <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> combine(
+public inline fun <T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, R> combine(
     flow: Flow<T1>,
     flow2: Flow<T2>,
     flow3: Flow<T3>,

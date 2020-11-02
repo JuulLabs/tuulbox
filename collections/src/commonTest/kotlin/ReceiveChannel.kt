@@ -1,7 +1,7 @@
-package com.juul.tuulbox.collections.test
+package com.juul.tuulbox.collections
 
-import kotlin.test.assertEquals
 import kotlinx.coroutines.channels.ReceiveChannel
+import kotlin.test.assertEquals
 
 suspend fun <E> ReceiveChannel<E>.receiveAndAssert(
     expected: E,

@@ -5,8 +5,6 @@ pluginManagement {
 
     resolutionStrategy {
         eachPlugin {
-            // Support using `binary-compatibility-validator` via Gradle's plugin lambda.
-            // https://medium.com/@StefMa/its-time-to-ditch-the-buildscript-block-a1ab12e0d9ce
             if (requested.id.id == "binary-compatibility-validator") {
                 useModule("org.jetbrains.kotlinx:binary-compatibility-validator:${requested.version}")
             }
@@ -14,5 +12,8 @@ pluginManagement {
     }
 }
 
-include ':collections'
-include ':coroutines'
+include(
+    "collections",
+    "coroutines",
+    "test"
+)

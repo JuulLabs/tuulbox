@@ -1,0 +1,4 @@
+public final class com/juul/tuulbox/test/RunTestKt {
+	public static final fun runTest (Lkotlin/jvm/functions/Function2;)V
+}
+

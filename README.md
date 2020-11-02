@@ -1,50 +1,31 @@
-[![codecov](https://codecov.io/gh/JuulLabs/tuulbox/branch/master/graph/badge.svg?token=24ilSLPwN2)](https://codecov.io/gh/JuulLabs/tuulbox)
+[![codecov](https://codecov.io/gh/JuulLabs/tuulbox/branch/main/graph/badge.svg?token=24ilSLPwN2)](https://codecov.io/gh/JuulLabs/tuulbox)
 
-## Modules
+Toolbox of utilities/helpers for Kotlin development.
 
-Library is organized into the following modules:
+# Tuulbox
 
-| Type                            | Module                       | Artifact ID     | Description                        |
-|:-------------------------------:|:----------------------------:|:---------------:|------------------------------------|
-| ![Kotlin](artwork/kotlin.png)   | [`collections`](collections) | [`collections`] | Tools/utilities for [Collections]. |
-| ![Kotlin](artwork/kotlin.png)   | [`coroutines`](coroutines)   | [`coroutines`]  | Tools/utilities for [Coroutines].  |
+- [`collections`](collections) - Tools/utilities for [Collections]  
+![badge][badge-jvm]
 
+- [`coroutines`](coroutines) - Tools/utilities for [Coroutines]  
+![badge][badge-js]
+![badge][badge-jvm]
 
-All artifacts have the Maven group ID: `com.juul.tuulbox`
-
-## Installation
-
-### Gradle
-
-Artifacts are hosted on GitHub packages, which can be configured as follows:
-
-```groovy
-repositories {
-    maven {
-        url = "https://maven.pkg.github.com/juullabs/android-github-packages"
-        credentials {
-            username = findProperty('github.packages.username')
-            password = findProperty('github.packages.password')
-        }
-    }
-}
-```
-
-Then the needed artifact(s) can be defined as dependencies:
-
-```groovy
-dependencies {
-    implementation 'com.juul.tuulbox:$artifactId:$version'
-}
-```
-
-_Replace_ `$artifactId` _with the desired **Artifact ID** (as listed in the [Modules](#modules)
-table above) and_ `$version` _with the desired version (can be found by following the corresponding
-**Artifact ID** link in the [Modules](#modules) table above)._
+- [`test`](test) - Utilities for test suites  
+![badge][badge-js]
+![badge][badge-jvm]
 
 
-[`collections`]: https://github.com/JuulLabs/android-github-packages/packages/215143
 [Collections]: https://kotlinlang.org/docs/reference/collections-overview.html
-[`coroutines`]: https://github.com/JuulLabs/android-github-packages/packages/261605
 [Coroutines]: https://kotlinlang.org/docs/reference/coroutines-overview.html
 
+[badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat
+[badge-ios]: http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat
+[badge-js]: http://img.shields.io/badge/platform-js-F8DB5D.svg?style=flat
+[badge-jvm]: http://img.shields.io/badge/platform-jvm-DB413D.svg?style=flat
+[badge-linux]: http://img.shields.io/badge/platform-linux-2D3F6C.svg?style=flat
+[badge-windows]: http://img.shields.io/badge/platform-windows-4D76CD.svg?style=flat
+[badge-mac]: http://img.shields.io/badge/platform-macos-111111.svg?style=flat
+[badge-watchos]: http://img.shields.io/badge/platform-watchos-C0C0C0.svg?style=flat
+[badge-tvos]: http://img.shields.io/badge/platform-tvos-808080.svg?style=flat
+[badge-wasm]: https://img.shields.io/badge/platform-wasm-624FE8.svg?style=flat
