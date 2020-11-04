@@ -5,5 +5,5 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.promise
 
 public actual fun runTest(
-    action: suspend (scope: CoroutineScope) -> Unit
-): dynamic = GlobalScope.promise { action(this) }
+    action: suspend CoroutineScope.() -> Unit
+): dynamic = GlobalScope.promise { action.invoke(this) }
