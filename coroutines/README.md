@@ -32,7 +32,7 @@ Then the needed artifact(s) can be defined as dependencies.
 ```kotlin
 kotlin {
     sourceSets {
-        val commonTest by getting {
+        val commonMain by getting {
             implementation("com.juul.tuulbox:coroutines:$version")
         }
     }
@@ -43,7 +43,7 @@ kotlin {
 
 ```kotlin
 dependencies {
-    testImplementation("com.juul.tuulbox:coroutines-$platform:$version")
+    implementation("com.juul.tuulbox:coroutines-$platform:$version")
 }
 ```
 
