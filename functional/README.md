@@ -1,7 +1,7 @@
 ![badge-js]
 ![badge-jvm]
 
-# Test
+# Functional
 
 Tool box with utilities for manipulating functions.
 For a full functional ecosystem, complete with `Monad` and the like, prefer [Arrow](https://arrow-kt.io/).

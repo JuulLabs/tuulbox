@@ -15,10 +15,6 @@ kotlin {
     js().browser()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies { }
-        }
-
         val commonTest by getting {
             dependencies {
                 implementation(project(":test"))
