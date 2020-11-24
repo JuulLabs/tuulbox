@@ -1,0 +1,59 @@
+public final class com/juul/tuulbox/functional/ComposeKt {
+	public static final fun of (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function1;
+	public static final fun then (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function1;
+}
+
+public final class com/juul/tuulbox/functional/CurryKt {
+	public static final fun curry (Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function1;
+	public static final fun curry (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function1;
+	public static final fun curry (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function1;
+	public static final fun curry (Lkotlin/jvm/functions/Function5;)Lkotlin/jvm/functions/Function1;
+	public static final fun curry (Lkotlin/jvm/functions/Function6;)Lkotlin/jvm/functions/Function1;
+	public static final fun curryFirst (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function1;
+	public static final fun curryFirst (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function1;
+	public static final fun curryFirst (Lkotlin/jvm/functions/Function5;)Lkotlin/jvm/functions/Function1;
+	public static final fun curryFirst (Lkotlin/jvm/functions/Function6;)Lkotlin/jvm/functions/Function1;
+}
+
+public final class com/juul/tuulbox/functional/MemoizeKt {
+	public static final fun memoize (Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
+	public static final fun memoize (Lkotlin/jvm/functions/Function1;)Lkotlin/jvm/functions/Function1;
+	public static final fun memoize (Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
+	public static final fun memoize (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
+	public static final fun memoize (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function4;
+	public static final fun memoize (Lkotlin/jvm/functions/Function5;)Lkotlin/jvm/functions/Function5;
+	public static final fun memoize (Lkotlin/jvm/functions/Function6;)Lkotlin/jvm/functions/Function6;
+}
+
+public final class com/juul/tuulbox/functional/PartialApplyKt {
+	public static final fun partialApply (Lkotlin/jvm/functions/Function1;Ljava/lang/Object;)Lkotlin/jvm/functions/Function0;
+	public static final fun partialApply (Lkotlin/jvm/functions/Function2;Ljava/lang/Object;)Lkotlin/jvm/functions/Function1;
+	public static final fun partialApply (Lkotlin/jvm/functions/Function3;Ljava/lang/Object;)Lkotlin/jvm/functions/Function2;
+	public static final fun partialApply (Lkotlin/jvm/functions/Function4;Ljava/lang/Object;)Lkotlin/jvm/functions/Function3;
+	public static final fun partialApply (Lkotlin/jvm/functions/Function5;Ljava/lang/Object;)Lkotlin/jvm/functions/Function4;
+	public static final fun partialApply (Lkotlin/jvm/functions/Function6;Ljava/lang/Object;)Lkotlin/jvm/functions/Function5;
+}
+
+public final class com/juul/tuulbox/functional/RepeatKt {
+	public static final fun repeat (Lkotlin/jvm/functions/Function1;I)Lkotlin/jvm/functions/Function1;
+}
+
+public final class com/juul/tuulbox/functional/ReverseKt {
+	public static final fun reverse (Lkotlin/jvm/functions/Function2;)Lkotlin/jvm/functions/Function2;
+	public static final fun reverse (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
+	public static final fun reverse (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function4;
+	public static final fun reverse (Lkotlin/jvm/functions/Function5;)Lkotlin/jvm/functions/Function5;
+	public static final fun reverse (Lkotlin/jvm/functions/Function6;)Lkotlin/jvm/functions/Function6;
+}
+
+public final class com/juul/tuulbox/functional/RotateKt {
+	public static final fun rotate (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
+	public static final fun rotate (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function4;
+	public static final fun rotate (Lkotlin/jvm/functions/Function5;)Lkotlin/jvm/functions/Function5;
+	public static final fun rotate (Lkotlin/jvm/functions/Function6;)Lkotlin/jvm/functions/Function6;
+	public static final fun rotateBack (Lkotlin/jvm/functions/Function3;)Lkotlin/jvm/functions/Function3;
+	public static final fun rotateBack (Lkotlin/jvm/functions/Function4;)Lkotlin/jvm/functions/Function4;
+	public static final fun rotateBack (Lkotlin/jvm/functions/Function5;)Lkotlin/jvm/functions/Function5;
+	public static final fun rotateBack (Lkotlin/jvm/functions/Function6;)Lkotlin/jvm/functions/Function6;
+}
+
