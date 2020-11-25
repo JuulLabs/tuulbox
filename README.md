@@ -10,12 +10,16 @@ Toolbox of utilities/helpers for Kotlin development.
 - [`coroutines`](coroutines) - Tools/utilities for [Coroutines]  
 ![badge][badge-js]
 ![badge][badge-jvm]
-![badge][badge-macos]
+![badge][badge-mac]
+
+- [`functional`](functional) - Tools/utilities for manipulating functions  
+![badge][badge-js]
+![badge][badge-jvm]
 
 - [`test`](test) - Utilities for test suites  
 ![badge][badge-js]
 ![badge][badge-jvm]
-![badge][badge-macos]
+![badge][badge-mac]
 
 
 [Collections]: https://kotlinlang.org/docs/reference/collections-overview.html
