@@ -5,17 +5,17 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class TagGeneratorTests {
+class StackTraceTagGeneratorTests {
 
     @Test
     fun tagMatchesClassName() {
-        val actual = TagGenerator.getTag()
-        assertEquals(TagGeneratorTests::class.java.simpleName, actual)
+        val actual = StackTraceTagGenerator.getTag()
+        assertEquals(StackTraceTagGeneratorTests::class.java.simpleName, actual)
     }
 
     @Test
     fun tagStripsAnonymousClassNumber() {
-        val supplier = Supplier<String> { TagGenerator.getTag() }
+        val supplier = Supplier<String> { StackTraceTagGenerator.getTag() }
 
         // Double check that the way we've written this actually generates
         // an anonymous class, instead of being optimized by the compiler.

@@ -1,14 +1,16 @@
 package com.juul.tuulbox.logging
 
-internal actual object TagGenerator {
+internal actual val defaultTagGenerator: TagGenerator = StackTraceTagGenerator
+
+internal object StackTraceTagGenerator : TagGenerator {
     private val anonymousClassPattern = Regex("""(\$\d+)$""").toPattern()
 
     private val ignoreClasses = setOf(
         Log::class.java.name,
-        TagGenerator::class.java.name
+        StackTraceTagGenerator::class.java.name
     )
 
-    actual fun getTag(): String {
+    override fun getTag(): String {
         val tagCandidate = Throwable().stackTrace
             .first { it.className !in ignoreClasses }
             .className

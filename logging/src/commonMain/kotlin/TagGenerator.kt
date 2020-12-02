@@ -1,11 +1,10 @@
 package com.juul.tuulbox.logging
 
-/** Creates tags to associate with calls to [Log] functions. */
-internal expect object TagGenerator {
+internal expect val defaultTagGenerator: TagGenerator
 
-    /**
-     * Return a useful tag. For example, on the JVM this analyzes the
-     * stack trace and uses the name of the class making the log call.
-     */
-    fun getTag(): String
+/** Creates tag strings for implicitly-tagged [Log] calls. */
+public interface TagGenerator {
+
+    /** Return a tag to use when the [Log] call has no explicit tag. */
+    public fun getTag(): String
 }

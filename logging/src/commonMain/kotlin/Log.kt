@@ -6,45 +6,48 @@ public object Log {
     /** Global log dispatcher. */
     public val dispatcher: DispatchLogger = DispatchLogger()
 
+    /** Global tag generator for log calls without explicit tag. */
+    public var tagGenerator: TagGenerator = defaultTagGenerator
+
     /** Send a verbose-level log message to the global dispatcher. */
-    public fun verbose(throwable: Throwable? = null, message: () -> String) {
+    public fun verbose(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.verbose(TagGenerator.getTag(), message.invoke(), throwable)
+            dispatcher.verbose(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
         }
     }
 
     /** Send a debug-level log message to the global dispatcher. */
-    public fun debug(throwable: Throwable? = null, message: () -> String) {
+    public fun debug(throwable: Throwable? = null, tag: String? = null,  message: () -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.debug(TagGenerator.getTag(), message.invoke(), throwable)
+            dispatcher.debug(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
         }
     }
 
     /** Send an info-level log message to the global dispatcher. */
-    public fun info(throwable: Throwable? = null, message: () -> String) {
+    public fun info(throwable: Throwable? = null, tag: String? = null,  message: () -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.info(TagGenerator.getTag(), message.invoke(), throwable)
+            dispatcher.info(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
         }
     }
 
     /** Send an warn-level log message to the global dispatcher. */
-    public fun warn(throwable: Throwable? = null, message: () -> String) {
+    public fun warn(throwable: Throwable? = null, tag: String? = null,  message: () -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.warn(TagGenerator.getTag(), message.invoke(), throwable)
+            dispatcher.warn(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
         }
     }
 
     /** Send an error-level log message to the global dispatcher. */
-    public fun error(throwable: Throwable? = null, message: () -> String) {
+    public fun error(throwable: Throwable? = null, tag: String? = null,  message: () -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.error(TagGenerator.getTag(), message.invoke(), throwable)
+            dispatcher.error(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
         }
     }
 
     /** Send an assert-level log message to the global dispatcher. */
-    public fun assert(throwable: Throwable? = null, message: () -> String) {
+    public fun assert(throwable: Throwable? = null, tag: String? = null,  message: () -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.assert(TagGenerator.getTag(), message.invoke(), throwable)
+            dispatcher.assert(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
         }
     }
 }
