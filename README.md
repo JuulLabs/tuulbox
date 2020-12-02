@@ -12,6 +12,10 @@ Toolbox of utilities/helpers for Kotlin development.
 ![badge][badge-jvm]
 ![badge][badge-mac]
 
+- [`logging`](logging) - Multiplatform logging library.  
+  ![badge][badge-js]
+  ![badge][badge-jvm]
+
 - [`functional`](functional) - Tools/utilities for manipulating functions  
 ![badge][badge-js]
 ![badge][badge-jvm]

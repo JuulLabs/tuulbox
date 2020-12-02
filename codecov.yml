@@ -4,4 +4,5 @@ coverage:
 fixes:
   - "com/juul/tuulbox/collections::"
   - "com/juul/tuulbox/coroutines/flow::"
+  - "com/juul/tuulbox/logging::"
   - "com/juul/tuulbox/functional::"
