@@ -9,8 +9,8 @@ class StackTraceTagGeneratorTests {
 
     @Test
     fun tagMatchesClassName() {
-        val actual = StackTraceTagGenerator.getTag()
-        assertEquals(StackTraceTagGeneratorTests::class.java.simpleName, actual)
+        val generatedTag = StackTraceTagGenerator.getTag()
+        assertEquals(StackTraceTagGeneratorTests::class.java.simpleName, generatedTag)
     }
 
     @Test

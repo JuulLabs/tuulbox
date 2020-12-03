@@ -1,5 +1,7 @@
 package com.juul.tuulbox.logging
 
+import kotlin.jvm.Volatile
+
 /** Global logging object. To receive logs, call [dispatcher].[install][DispatchLogger.install]. */
 public object Log {
 
@@ -7,6 +9,7 @@ public object Log {
     public val dispatcher: DispatchLogger = DispatchLogger()
 
     /** Global tag generator for log calls without explicit tag. */
+    @Volatile
     public var tagGenerator: TagGenerator = defaultTagGenerator
 
     /** Send a verbose-level log message to the global dispatcher. */
