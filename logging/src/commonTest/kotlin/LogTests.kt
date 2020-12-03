@@ -2,8 +2,6 @@ package com.juul.tuulbox.logging
 
 import kotlin.test.AfterTest
 import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertNotEquals
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 import kotlin.test.fail
