@@ -1,0 +1,59 @@
+public final class com/juul/tuulbox/logging/ConsoleLogger : com/juul/tuulbox/logging/Logger {
+	public static final field INSTANCE Lcom/juul/tuulbox/logging/ConsoleLogger;
+	public fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun verbose (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun warn (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+}
+
+public final class com/juul/tuulbox/logging/ConstantTagGenerator : com/juul/tuulbox/logging/TagGenerator {
+	public fun <init> (Ljava/lang/String;)V
+	public fun getTag ()Ljava/lang/String;
+}
+
+public final class com/juul/tuulbox/logging/DispatchLogger : com/juul/tuulbox/logging/Logger {
+	public fun <init> ()V
+	public fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun clear ()V
+	public fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun install (Lcom/juul/tuulbox/logging/Logger;)V
+	public fun verbose (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public fun warn (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+}
+
+public final class com/juul/tuulbox/logging/Log {
+	public static final field INSTANCE Lcom/juul/tuulbox/logging/Log;
+	public final fun assert (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun assert$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun debug (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun debug$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun error (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun error$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun getDispatcher ()Lcom/juul/tuulbox/logging/DispatchLogger;
+	public final fun getTagGenerator ()Lcom/juul/tuulbox/logging/TagGenerator;
+	public final fun info (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun info$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun setTagGenerator (Lcom/juul/tuulbox/logging/TagGenerator;)V
+	public final fun verbose (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun verbose$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun warn (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun warn$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public abstract interface class com/juul/tuulbox/logging/Logger {
+	public abstract fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public abstract fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public abstract fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public abstract fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public abstract fun verbose (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public abstract fun warn (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+}
+
+public abstract interface class com/juul/tuulbox/logging/TagGenerator {
+	public abstract fun getTag ()Ljava/lang/String;
+}
+
