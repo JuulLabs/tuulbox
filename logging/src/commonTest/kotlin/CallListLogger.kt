@@ -1,46 +1,48 @@
 package com.juul.tuulbox.logging
 
+import co.touchlab.stately.isolate.IsolateState
+
 class CallListLogger : Logger {
 
-    private val mutableVerboseCalls = mutableListOf<Call>()
-    val verboseCalls: List<Call> = mutableVerboseCalls
+    private val mutableVerboseCalls = IsolateState { mutableListOf<Call>() }
+    val verboseCalls: List<Call> get() = mutableVerboseCalls.access { ArrayList(it) }
 
-    private val mutableDebugCalls = mutableListOf<Call>()
-    val debugCalls: List<Call> = mutableDebugCalls
+    private val mutableDebugCalls = IsolateState { mutableListOf<Call>() }
+    val debugCalls: List<Call> get() = mutableDebugCalls.access { ArrayList(it) }
 
-    private val mutableInfoCalls = mutableListOf<Call>()
-    val infoCalls: List<Call> = mutableInfoCalls
+    private val mutableInfoCalls = IsolateState { mutableListOf<Call>() }
+    val infoCalls: List<Call> get() = mutableInfoCalls.access { ArrayList(it) }
 
-    private val mutableWarnCalls = mutableListOf<Call>()
-    val warnCalls: List<Call> = mutableWarnCalls
+    private val mutableWarnCalls = IsolateState { mutableListOf<Call>() }
+    val warnCalls: List<Call> get() = mutableWarnCalls.access { ArrayList(it) }
 
-    private val mutableErrorCalls = mutableListOf<Call>()
-    val errorCalls: List<Call> = mutableErrorCalls
+    private val mutableErrorCalls = IsolateState { mutableListOf<Call>() }
+    val errorCalls: List<Call> get() = mutableErrorCalls.access { ArrayList(it) }
 
-    private val mutableAssertCalls = mutableListOf<Call>()
-    val assertCalls: List<Call> = mutableAssertCalls
+    private val mutableAssertCalls = IsolateState { mutableListOf<Call>() }
+    val assertCalls: List<Call> get() = mutableAssertCalls.access { ArrayList(it) }
 
     override fun verbose(tag: String, message: String, throwable: Throwable?) {
-        mutableVerboseCalls += Call(tag = tag, message = message, throwable = throwable)
+        mutableVerboseCalls.access { it += Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun debug(tag: String, message: String, throwable: Throwable?) {
-        mutableDebugCalls += Call(tag = tag, message = message, throwable = throwable)
+        mutableDebugCalls.access { it += Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun info(tag: String, message: String, throwable: Throwable?) {
-        mutableInfoCalls += Call(tag = tag, message = message, throwable = throwable)
+        mutableInfoCalls.access { it += Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun warn(tag: String, message: String, throwable: Throwable?) {
-        mutableWarnCalls += Call(tag = tag, message = message, throwable = throwable)
+        mutableWarnCalls.access { it += Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun error(tag: String, message: String, throwable: Throwable?) {
-        mutableErrorCalls += Call(tag = tag, message = message, throwable = throwable)
+        mutableErrorCalls.access { it += Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun assert(tag: String, message: String, throwable: Throwable?) {
-        mutableAssertCalls += Call(tag = tag, message = message, throwable = throwable)
+        mutableAssertCalls.access { it += Call(tag = tag, message = message, throwable = throwable) }
     }
 }

@@ -13,8 +13,15 @@ kotlin {
 
     jvm()
     js().browser()
+    macosX64()
 
     sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(stately("isolate"))
+            }
+        }
+
         val commonTest by getting {
             dependencies {
                 implementation(project(":test"))
