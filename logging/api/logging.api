@@ -18,6 +18,7 @@ public final class com/juul/tuulbox/logging/DispatchLogger : com/juul/tuulbox/lo
 	public fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public final fun clear ()V
 	public fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public final fun dispose ()V
 	public fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public final fun install (Lcom/juul/tuulbox/logging/Logger;)V
