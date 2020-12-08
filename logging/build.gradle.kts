@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    id("kotlinx-atomicfu")
     id("org.jmailen.kotlinter")
     jacoco
     `maven-publish`
@@ -16,17 +17,12 @@ kotlin {
     macosX64()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(stately("isolate"))
-            }
-        }
-
         val commonTest by getting {
             dependencies {
                 implementation(project(":test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation(stately("isolate"))
             }
         }
 

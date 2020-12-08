@@ -18,7 +18,6 @@ public final class com/juul/tuulbox/logging/DispatchLogger : com/juul/tuulbox/lo
 	public fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public final fun clear ()V
 	public fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-	public final fun dispose ()V
 	public fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public final fun install (Lcom/juul/tuulbox/logging/Logger;)V
@@ -43,6 +42,10 @@ public final class com/juul/tuulbox/logging/Log {
 	public static synthetic fun verbose$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
 	public final fun warn (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
 	public static synthetic fun warn$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public synthetic class com/juul/tuulbox/logging/LogAtomicTagGeneratorRefVolatile {
+	public fun <init> (Ljava/lang/Object;)V
 }
 
 public abstract interface class com/juul/tuulbox/logging/Logger {

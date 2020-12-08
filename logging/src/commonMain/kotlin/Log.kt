@@ -1,8 +1,6 @@
 package com.juul.tuulbox.logging
 
-import co.touchlab.stately.isolate.IsolateState
-
-private class Reference<T : Any>(var value: T)
+import kotlinx.atomicfu.atomic
 
 /** Global logging object. To receive logs, call [dispatcher].[install][DispatchLogger.install]. */
 public object Log {
@@ -10,13 +8,13 @@ public object Log {
     /** Global log dispatcher. */
     public val dispatcher: DispatchLogger = DispatchLogger()
 
-    private val isolatedTagGenerator = IsolateState { Reference(defaultTagGenerator) }
+    private val atomicTagGenerator = atomic(defaultTagGenerator)
 
     /** Global tag generator for log calls without explicit tag. */
     public var tagGenerator: TagGenerator
-        get() = isolatedTagGenerator.access { it.value }
+        get() = atomicTagGenerator.value
         set(value) {
-            isolatedTagGenerator.access { it.value = value }
+            atomicTagGenerator.value = value
         }
 
     /** Send a verbose-level log message to the global dispatcher. */

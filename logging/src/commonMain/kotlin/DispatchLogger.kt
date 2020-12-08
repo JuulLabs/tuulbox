@@ -1,51 +1,47 @@
 package com.juul.tuulbox.logging
 
-import co.touchlab.stately.isolate.IsolateState
+import kotlinx.atomicfu.atomic
+import kotlinx.atomicfu.getAndUpdate
 
 /** Implementation of [Logger] which dispatches calls to consumer [Logger]s. */
 public class DispatchLogger : Logger {
-    private val consumers = IsolateState { mutableSetOf<Logger>() }
+    private val consumers = atomic(emptySet<Logger>())
 
     /** `false` if no consumers have been installed, `true` if at least one consumer has been installed. */
     internal val hasConsumers: Boolean
-        get() = consumers.access { it.isNotEmpty() }
+        get() = consumers.value.isNotEmpty()
 
     /** Add a consumer to receive future dispatch calls. */
     public fun install(consumer: Logger) {
-        consumers.access { it.add(consumer) }
+        consumers.getAndUpdate { it + consumer }
     }
 
     /** Uninstall all installed consumers. */
     public fun clear() {
-        consumers.access { it.clear() }
-    }
-
-    /** Dispose of this dispatch logger when it is no longer needed. */
-    public fun dispose() {
-        consumers.dispose()
+        consumers.value = emptySet()
     }
 
     override fun verbose(tag: String, message: String, throwable: Throwable?) {
-        consumers.access { it.forEach { it.verbose(tag, message, throwable) } }
+        consumers.value.forEach { it.verbose(tag, message, throwable) }
     }
 
     override fun debug(tag: String, message: String, throwable: Throwable?) {
-        consumers.access { it.forEach { it.debug(tag, message, throwable) } }
+        consumers.value.forEach { it.debug(tag, message, throwable) }
     }
 
     override fun info(tag: String, message: String, throwable: Throwable?) {
-        consumers.access { it.forEach { it.info(tag, message, throwable) } }
+        consumers.value.forEach { it.info(tag, message, throwable) }
     }
 
     override fun warn(tag: String, message: String, throwable: Throwable?) {
-        consumers.access { it.forEach { it.warn(tag, message, throwable) } }
+        consumers.value.forEach { it.warn(tag, message, throwable) }
     }
 
     override fun error(tag: String, message: String, throwable: Throwable?) {
-        consumers.access { it.forEach { it.error(tag, message, throwable) } }
+        consumers.value.forEach { it.error(tag, message, throwable) }
     }
 
     override fun assert(tag: String, message: String, throwable: Throwable?) {
-        consumers.access { it.forEach { it.assert(tag, message, throwable) } }
+        consumers.value.forEach { it.assert(tag, message, throwable) }
     }
 }
