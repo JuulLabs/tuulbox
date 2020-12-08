@@ -2,7 +2,7 @@ package com.juul.tuulbox.logging
 
 import co.touchlab.stately.isolate.IsolateState
 
-private class Reference<T: Any>(var value: T)
+private class Reference<T : Any>(var value: T)
 
 /** Global logging object. To receive logs, call [dispatcher].[install][DispatchLogger.install]. */
 public object Log {
