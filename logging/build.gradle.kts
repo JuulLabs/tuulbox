@@ -1,5 +1,6 @@
 plugins {
     kotlin("multiplatform")
+    id("kotlinx-atomicfu")
     id("org.jmailen.kotlinter")
     jacoco
     `maven-publish`
@@ -13,6 +14,7 @@ kotlin {
 
     jvm()
     js().browser()
+    macosX64()
 
     sourceSets {
         val commonTest by getting {

@@ -1,5 +1,6 @@
 ![badge-js]
 ![badge-jvm]
+![badge-mac]
 
 # Functional
 

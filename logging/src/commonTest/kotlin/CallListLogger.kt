@@ -1,46 +1,49 @@
 package com.juul.tuulbox.logging
 
+import kotlinx.atomicfu.atomic
+import kotlinx.atomicfu.getAndUpdate
+
 class CallListLogger : Logger {
 
-    private val mutableVerboseCalls = mutableListOf<Call>()
-    val verboseCalls: List<Call> = mutableVerboseCalls
+    private val atomicVerboseCalls = atomic(emptyList<Call>())
+    val verboseCalls: List<Call> get() = atomicVerboseCalls.value
 
-    private val mutableDebugCalls = mutableListOf<Call>()
-    val debugCalls: List<Call> = mutableDebugCalls
+    private val atomicDebugCalls = atomic(emptyList<Call>())
+    val debugCalls: List<Call> get() = atomicDebugCalls.value
 
-    private val mutableInfoCalls = mutableListOf<Call>()
-    val infoCalls: List<Call> = mutableInfoCalls
+    private val atomicInfoCalls = atomic(emptyList<Call>())
+    val infoCalls: List<Call> get() = atomicInfoCalls.value
 
-    private val mutableWarnCalls = mutableListOf<Call>()
-    val warnCalls: List<Call> = mutableWarnCalls
+    private val atomicWarnCalls = atomic(emptyList<Call>())
+    val warnCalls: List<Call> get() = atomicWarnCalls.value
 
-    private val mutableErrorCalls = mutableListOf<Call>()
-    val errorCalls: List<Call> = mutableErrorCalls
+    private val atomicErrorCalls = atomic(emptyList<Call>())
+    val errorCalls: List<Call> get() = atomicErrorCalls.value
 
-    private val mutableAssertCalls = mutableListOf<Call>()
-    val assertCalls: List<Call> = mutableAssertCalls
+    private val atomicAssertCalls = atomic(emptyList<Call>())
+    val assertCalls: List<Call> get() = atomicAssertCalls.value
 
     override fun verbose(tag: String, message: String, throwable: Throwable?) {
-        mutableVerboseCalls += Call(tag = tag, message = message, throwable = throwable)
+        atomicVerboseCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun debug(tag: String, message: String, throwable: Throwable?) {
-        mutableDebugCalls += Call(tag = tag, message = message, throwable = throwable)
+        atomicDebugCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun info(tag: String, message: String, throwable: Throwable?) {
-        mutableInfoCalls += Call(tag = tag, message = message, throwable = throwable)
+        atomicInfoCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun warn(tag: String, message: String, throwable: Throwable?) {
-        mutableWarnCalls += Call(tag = tag, message = message, throwable = throwable)
+        atomicWarnCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun error(tag: String, message: String, throwable: Throwable?) {
-        mutableErrorCalls += Call(tag = tag, message = message, throwable = throwable)
+        atomicErrorCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable = throwable) }
     }
 
     override fun assert(tag: String, message: String, throwable: Throwable?) {
-        mutableAssertCalls += Call(tag = tag, message = message, throwable = throwable)
+        atomicAssertCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable = throwable) }
     }
 }

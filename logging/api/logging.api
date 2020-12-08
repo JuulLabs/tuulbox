@@ -44,6 +44,10 @@ public final class com/juul/tuulbox/logging/Log {
 	public static synthetic fun warn$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
 }
 
+public synthetic class com/juul/tuulbox/logging/LogAtomicTagGeneratorRefVolatile {
+	public fun <init> (Ljava/lang/Object;)V
+}
+
 public abstract interface class com/juul/tuulbox/logging/Logger {
 	public abstract fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
 	public abstract fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
