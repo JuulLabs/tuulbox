@@ -1,51 +1,63 @@
 ![badge-js]
 ![badge-jvm]
+![badge-mac]
 
 # Test
 
-Tool box of utilities for test suites.
+Toolbox of utilities for test suites.
 
-## Installation
+## Setup
 
 ### Gradle
 
-Artifacts are hosted on GitHub packages, which can be configured as follows:
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/test/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/test)
+
+Testing toolbox can be configured via Gradle Kotlin DSL as follows:
+
+#### Multiplatform
 
 ```kotlin
-import java.net.URI
+plugins {
+    id("com.android.application") // or id("com.android.library")
+    kotlin("multiplatform")
+}
 
 repositories {
-    maven {
-        url = URI("https://maven.pkg.github.com/juullabs/android-github-packages")
-        credentials {
-            username = findProperty("github.packages.username") as String
-            password = findProperty("github.packages.password") as String
-        }
-    }
+    jcenter() // or mavenCentral()
 }
-```
 
-Then the needed artifact(s) can be defined as dependencies.
-
-**Multiplatform projects**
-
-```kotlin
 kotlin {
+    android()
+    js().browser() // and/or js().node()
+    macosX64()
+
     sourceSets {
-        val commonTest by getting {
-            implementation("com.juul.tuulbox:test:$version")
+        val commonMain by getting {
+            dependencies {
+                implementation("com.juul.tuulbox:test:$version")
+            }
         }
     }
 }
-```
 
-**Platform-specific projects**
-
-```kotlin
-dependencies {
-    testImplementation("com.juul.tuulbox:test-$platform:$version")
+android {
+    // ...
 }
 ```
+
+#### Platform-specific
+
+```kotlin
+repositories {
+    jcenter() // or mavenCentral()
+}
+
+dependencies {
+    implementation("com.juul.tuulbox:test-$platform:$version")
+}
+```
+
+_Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `android`)._
 
 
 [badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat
