@@ -58,7 +58,7 @@ dependencies {
 }
 ```
 
-_Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `android`)._
+_Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `jvm`)._
 
 
 [badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat
