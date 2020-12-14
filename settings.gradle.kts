@@ -15,7 +15,6 @@ pluginManagement {
 }
 
 include(
-    "collections",
     "coroutines",
     "logging",
     "functional",
