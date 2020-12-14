@@ -57,7 +57,7 @@ dependencies {
 }
 ```
 
-_Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `android`)._
+_Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `jvm`)._
 
 
 [Coroutines]: https://kotlinlang.org/docs/reference/coroutines-overview.html
