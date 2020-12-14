@@ -6,47 +6,58 @@
 
 Tool box for a simple multiplatform logging API.
 
-## Installation
+## Setup
 
 ### Gradle
 
-Artifacts are hosted on GitHub packages, which can be configured as follows:
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/logging/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/logging)
+
+Logging toolbox can be configured via Gradle Kotlin DSL as follows:
+
+#### Multiplatform
 
 ```kotlin
-import java.net.URI
+plugins {
+    id("com.android.application") // or id("com.android.library")
+    kotlin("multiplatform")
+}
 
 repositories {
-    maven {
-        url = URI("https://maven.pkg.github.com/juullabs/android-github-packages")
-        credentials {
-            username = findProperty("github.packages.username") as String
-            password = findProperty("github.packages.password") as String
-        }
-    }
+    jcenter() // or mavenCentral()
 }
-```
 
-Then the needed artifact(s) can be defined as dependencies.
-
-**Multiplatform projects**
-
-```kotlin
 kotlin {
+    android()
+    js().browser() // and/or js().node()
+    macosX64()
+
     sourceSets {
         val commonMain by getting {
-            implementation("com.juul.tuulbox:logging:$version")
+            dependencies {
+                implementation("com.juul.tuulbox:logging:$version")
+            }
         }
     }
 }
+
+android {
+    // ...
+}
 ```
 
-**Platform-specific projects**
+#### Platform-specific
 
 ```kotlin
+repositories {
+    jcenter() // or mavenCentral()
+}
+
 dependencies {
     implementation("com.juul.tuulbox:logging-$platform:$version")
 }
 ```
+
+_Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `jvm`)._
 
 
 [badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat

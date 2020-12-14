@@ -21,8 +21,8 @@ subprojects {
         maven {
             url = URI("https://maven.pkg.github.com/juullabs/android-github-packages")
             credentials {
-                username = findProperty("github.packages.username") as String
-                password = findProperty("github.packages.password") as String
+                username = findProperty("github.packages.username") as? String
+                password = findProperty("github.packages.password") as? String
             }
         }
     }
