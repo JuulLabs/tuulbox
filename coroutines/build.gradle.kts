@@ -2,7 +2,8 @@ plugins {
     kotlin("multiplatform")
     id("org.jmailen.kotlinter")
     jacoco
-    `maven-publish`
+    id("org.jetbrains.dokka")
+    id("com.vanniktech.maven.publish")
 }
 
 apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
