@@ -4,6 +4,10 @@ import java.net.URI
 buildscript {
     repositories {
         jcenter()
+        google()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:4.0.2")
     }
 }
 
@@ -20,6 +24,7 @@ plugins {
 subprojects {
     repositories {
         jcenter()
+        google()
         maven {
             url = URI("https://maven.pkg.github.com/juullabs/android-github-packages")
             credentials {
