@@ -23,6 +23,7 @@ subprojects {
     repositories {
         jcenter()
         google()
+        maven(url = "https://kotlin.bintray.com/kotlinx/")
         maven {
             url = URI("https://maven.pkg.github.com/juullabs/android-github-packages")
             credentials {

@@ -25,5 +25,6 @@ include(
     "coroutines",
     "logging",
     "functional",
+    "temporal",
     "test"
 )

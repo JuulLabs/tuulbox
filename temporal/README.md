@@ -5,7 +5,7 @@
 
 # Coroutines
 
-Toolbox of utilities for [Coroutines].
+Toolbox of utilities for dates and times, building on [KotlinX DateTime].
 
 ## Setup
 
@@ -35,7 +35,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("com.juul.tuulbox:coroutines:$version")
+                implementation("com.juul.tuulbox:temporal:$version")
             }
         }
     }
@@ -54,14 +54,14 @@ repositories {
 }
 
 dependencies {
-    implementation("com.juul.tuulbox:coroutines-$platform:$version")
+    implementation("com.juul.tuulbox:temporal-$platform:$version")
 }
 ```
 
 _Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `jvm`)._
 
 
-[Coroutines]: https://kotlinlang.org/docs/reference/coroutines-overview.html
+[KotlinX DateTime]: https://github.com/Kotlin/kotlinx-datetime
 
 [badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat
 [badge-ios]: http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat
