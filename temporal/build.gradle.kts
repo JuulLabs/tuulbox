@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
@@ -13,10 +15,16 @@ apply(from = rootProject.file("gradle/publish.gradle.kts"))
 kotlin {
     explicitApi()
 
-    // jvm()
-    // js().browser()
+    jvm()
+    js().browser()
     android {
         publishAllLibraryVariants()
+    }
+
+    targets.all {
+        compilations.all {
+            kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.time.ExperimentalTime"
+        }
     }
 
     sourceSets {

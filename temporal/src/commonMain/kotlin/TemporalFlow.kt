@@ -25,5 +25,3 @@ public inline fun <T> temporalFlow(
     crossinline factory: () -> T
 ): StateFlow<T> = temporalFlow(factory)
     .stateIn(scope, sharingStarted, factory.invoke())
-
-
