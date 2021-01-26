@@ -1,7 +1,6 @@
 ![badge-android]
 ![badge-js]
 ![badge-jvm]
-![badge-mac]
 
 # Coroutines
 
@@ -30,7 +29,7 @@ repositories {
 kotlin {
     android()
     js().browser() // and/or js().node()
-    macosX64()
+    jvm()
 
     sourceSets {
         val commonMain by getting {
