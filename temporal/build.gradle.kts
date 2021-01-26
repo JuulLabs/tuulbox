@@ -16,7 +16,13 @@ kotlin {
     explicitApi()
 
     jvm()
-    js().browser()
+    js().browser {
+        testTask {
+            useMocha {
+                timeout = "6000ms"
+            }
+        }
+    }
     android {
         publishAllLibraryVariants()
     }
@@ -52,6 +58,18 @@ kotlin {
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
+            }
+        }
+
+        val jvmTest by getting {
+            dependencies {
+                implementation(kotlin("test-junit"))
+            }
+        }
+
+        val jsTest by getting {
+            dependencies {
+                implementation(kotlin("test-js"))
             }
         }
     }

@@ -4,7 +4,9 @@ import android.content.Intent
 import android.content.IntentFilter
 import com.juul.tuulbox.coroutines.flow.broadcastReceiverFlow
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
 @PublishedApi
@@ -17,5 +19,7 @@ internal val temporalEventFilter = IntentFilter().apply {
 
 public actual inline fun <T> temporalFlow(
     crossinline factory: () -> T
-): Flow<T> = broadcastReceiverFlow(temporalEventFilter)
-    .map { factory.invoke() }
+): Flow<T> = flow {
+    emit(factory.invoke())
+    emitAll(broadcastReceiverFlow(temporalEventFilter).map { factory.invoke() })
+}.conflate()

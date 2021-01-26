@@ -4,6 +4,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
@@ -24,11 +25,13 @@ private fun createLocalDate() = createLocalDateTime().date
  * Creates a [temporalFlow] of [Instant]s. Frequency of updates is platform dependent, but
  * should not be more infrequent than approximately once a minute.
  */
-public fun instantFlow(): Flow<Instant> = temporalFlow(::createInstant)
+public fun instantFlow(): Flow<Instant> = temporalFlow(::createInstant).distinctUntilChanged()
 
 /**
  * Creates a [temporalFlow] of [Instant]s. Frequency of updates is platform dependent, but
  * should not be more infrequent than approximately once a minute.
+ *
+ * Arguments [scope] and [sharingStarted] work the same as in [stateIn][kotlinx.coroutines.flow.stateIn].
  */
 public fun instantFlow(
     scope: CoroutineScope,
@@ -39,11 +42,13 @@ public fun instantFlow(
  * Creates a [temporalFlow] of [LocalDateTime]s. Frequency of updates is platform dependent, but
  * should not be more infrequent than approximately once a minute.
  */
-public fun localDateTimeFlow(): Flow<LocalDateTime> = temporalFlow(::createLocalDateTime)
+public fun localDateTimeFlow(): Flow<LocalDateTime> = temporalFlow(::createLocalDateTime).distinctUntilChanged()
 
 /**
  * Creates a [temporalFlow] of [LocalDateTime]s. Frequency of updates is platform dependent, but
  * should not be more infrequent than approximately once a minute.
+ *
+ * Arguments [scope] and [sharingStarted] work the same as in [stateIn][kotlinx.coroutines.flow.stateIn].
  */
 public fun localDateTimeFlow(
     scope: CoroutineScope,
@@ -52,15 +57,16 @@ public fun localDateTimeFlow(
 
 /**
  * Creates a [temporalFlow] of [LocalDate]s. Frequency of updates is platform dependent, but
- * should not be more infrequent than approximately once a minute. The same date will not be
- * emitted twice if no change occurred.
+ * should not be more infrequent than approximately once a minute.
  */
-public fun localDateFlow(): Flow<LocalDate> = temporalFlow(::createLocalDate)
+public fun localDateFlow(): Flow<LocalDate> = temporalFlow(::createLocalDate).distinctUntilChanged()
 
 /**
  * Creates a [temporalFlow] of [LocalDate]s. Frequency of updates is platform dependent, but
  * should not be more infrequent than approximately once a minute. The same date will not be
  * emitted twice if no change occurred.
+ *
+ * Arguments [scope] and [sharingStarted] work the same as in [stateIn][kotlinx.coroutines.flow.stateIn].
  */
 public fun localDateFlow(
     scope: CoroutineScope,

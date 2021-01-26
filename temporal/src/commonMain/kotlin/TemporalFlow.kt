@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.stateIn
 /**
  * Creates a flow that updates on temporal events. Frequency of updates is platform
  * dependent, but should not be more infrequent than approximately once a minute.
+ *
+ * The flow returned by this is [conflated][kotlinx.coroutines.flow.conflate].
  */
 public expect inline fun <T> temporalFlow(
     crossinline factory: () -> T
