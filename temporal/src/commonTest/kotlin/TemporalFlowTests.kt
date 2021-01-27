@@ -19,7 +19,7 @@ import kotlin.time.seconds
 private val EPSILON = 5.seconds
 
 @ExperimentalTime
-// @AndroidIgnore("Cannot use Android classes BroadcastReceiver or IntentFilter.")
+@AndroidIgnore("Cannot use Android classes BroadcastReceiver or IntentFilter.")
 class TemporalFlowTests {
 
     @Test
