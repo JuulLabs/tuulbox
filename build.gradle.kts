@@ -3,8 +3,8 @@ import java.net.URI
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
 }
 
@@ -21,8 +21,8 @@ plugins {
 
 subprojects {
     repositories {
-        jcenter()
         google()
+        jcenter()
         maven(url = "https://kotlin.bintray.com/kotlinx/")
         maven {
             url = URI("https://maven.pkg.github.com/juullabs/android-github-packages")
