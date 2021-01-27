@@ -7,12 +7,13 @@ Toolbox of utilities/helpers for Kotlin development.
 
 # Tuulbox
 
-| Module                     | Description                                 |
-|----------------------------|---------------------------------------------|
-| [`coroutines`](coroutines) | Tools/utilities for [Coroutines].           |
-| [`logging`](logging)       | Multiplatform logging library.              |
-| [`functional`](functional) | Tools/utilities for manipulating functions. |
-| [`test`](test)             | Utilities for test suites.                  |
+| Module                     | Description                                          |
+|----------------------------|------------------------------------------------------|
+| [`coroutines`](coroutines) | Tools/utilities for [Coroutines].                    |
+| [`logging`](logging)       | Multiplatform logging library.                       |
+| [`functional`](functional) | Tools/utilities for manipulating functions.          |
+| [`temporal`](temporal)     | Tools built on `kotlin.time` and `kotlinx.datetime`. |
+| [`test`](test)             | Utilities for test suites.                           |
 
 # License
 

@@ -10,7 +10,6 @@ import kotlin.time.TimeSource
 
 /** Emits values from a [factory], with a [delay] between each emission. */
 @ExperimentalTime
-@PublishedApi
 internal inline fun <T> ticker(
     delay: Duration,
     crossinline factory: () -> T

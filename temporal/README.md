@@ -10,7 +10,7 @@ Toolbox of utilities for dates and times, building on [KotlinX DateTime].
 
 ### Gradle
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/coroutines/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/coroutines)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/temporal/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/temporal)
 
 Coroutines toolbox can be configured via Gradle Kotlin DSL as follows:
 
@@ -27,9 +27,8 @@ repositories {
 }
 
 kotlin {
-    android()
     js().browser() // and/or js().node()
-    jvm()
+    jvm() // or android()
 
     sourceSets {
         val commonMain by getting {
@@ -41,7 +40,8 @@ kotlin {
 }
 
 android {
-    // ...
+    // If this is an application module and your minimum API version is below 26, enable core library
+    // desugaring. See https://developer.android.com/studio/write/java8-support#library-desugaring
 }
 ```
 
@@ -59,7 +59,11 @@ dependencies {
 
 _Where `$platform` represents (should be replaced with) the desired platform dependency (e.g. `jvm`)._
 
+#### Android Notes
 
+Because this is built on top of KotlinX DateTime, [core library desugaring] must be enabled for your project 
+
+[core library desugaring]: https://developer.android.com/studio/write/java8-support#library-desugaring
 [KotlinX DateTime]: https://github.com/Kotlin/kotlinx-datetime
 
 [badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat

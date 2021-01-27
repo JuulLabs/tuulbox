@@ -19,7 +19,7 @@ import kotlin.time.seconds
 private val EPSILON = 5.seconds
 
 @ExperimentalTime
-@AndroidIgnore("Cannot use Android classes BroadcastReceiver or IntentFilter.")
+// @AndroidIgnore("Cannot use Android classes BroadcastReceiver or IntentFilter.")
 class TemporalFlowTests {
 
     @Test
@@ -30,14 +30,6 @@ class TemporalFlowTests {
     }
 
     @Test
-    fun instantStateFlowInitialValueIsCorrect() = runTest {
-        val expected = Clock.System.now()
-        val actual = instantFlow(this, SharingStarted.WhileSubscribed()).value
-        assertSimilar(expected, EPSILON, actual)
-        closeChildrenInJob()
-    }
-
-    @Test
     fun localDateTimeFlowInitialValueIsCorrect() = runTest {
         val expected = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
         val actual = localDateTimeFlow().first()
@@ -45,30 +37,9 @@ class TemporalFlowTests {
     }
 
     @Test
-    fun localDateTimeStateFlowInitialValueIsCorrect() = runTest {
-        val expected = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
-        val actual = localDateTimeFlow(this, SharingStarted.WhileSubscribed()).value
-        assertSimilar(expected, EPSILON, actual)
-        closeChildrenInJob()
-    }
-
-    @Test
     fun localDateFlowInitialValueIsCorrect() = runTest {
         val expected = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
         val actual = localDateFlow().first()
         assertEquals(expected, actual)
-    }
-
-    @Test
-    fun localDateStateFlowInitialValueIsCorrect() = runTest {
-        val expected = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
-        val actual = localDateFlow(this, SharingStarted.WhileSubscribed()).value
-        assertEquals(expected, actual)
-        closeChildrenInJob()
-    }
-
-    /** Close children of this job. This is important because a state flow never completes on its own. */
-    private fun CoroutineScope.closeChildrenInJob() {
-        coroutineContext[Job]?.cancelChildren()
     }
 }
