@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.ir.backend.js.compile
+
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
@@ -12,17 +14,30 @@ apply(from = rootProject.file("gradle/publish.gradle.kts"))
 
 kotlin {
     explicitApi()
+
     jvm()
-    js().browser()
+    js().browser {
+        testTask {
+            useMocha {
+                timeout = "6000ms"
+            }
+        }
+    }
     android {
         publishAllLibraryVariants()
     }
-    macosX64()
+
+    targets.all {
+        compilations.all {
+            kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.time.ExperimentalTime"
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 api(kotlinx.coroutines())
+                api(kotlinx.datetime())
             }
         }
 
@@ -36,8 +51,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                api(kotlinx.coroutines("android"))
-                implementation(androidx.startup())
+                implementation(project(":coroutines"))
             }
         }
 
