@@ -9,9 +9,9 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.4.10" apply false
+    kotlin("multiplatform") version "1.4.31" apply false
     id("com.android.library") version "4.0.2" apply false
-    id("kotlinx-atomicfu") version "0.14.4" apply false
+    id("kotlinx-atomicfu") version "0.15.1" apply false
     id("org.jmailen.kotlinter") version "3.2.0" apply false
     id("binary-compatibility-validator") version "0.2.3"
     id("org.jetbrains.dokka") version "1.4.10.2" apply false
