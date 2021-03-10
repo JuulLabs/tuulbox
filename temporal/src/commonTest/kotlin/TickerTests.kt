@@ -51,6 +51,7 @@ class TickerTests {
     }
 
     @Test
+    @Ignore // Flaky on CI (JavaScript).
     fun testTickerConflatesSlowCollectors() = runTest {
         val actual = createTicker()
             // Delay would be to 2.0 to skip every element exactly (works on JVM) but the dispatcher for JS
