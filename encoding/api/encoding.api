@@ -1,0 +1,39 @@
+public abstract interface class com/juul/tuulbox/encoding/BitSet {
+	public abstract fun asPrimitive ()Ljava/lang/Object;
+	public abstract fun get (I)Z
+	public abstract fun set (IZ)Lcom/juul/tuulbox/encoding/BitSet;
+}
+
+public final class com/juul/tuulbox/encoding/BitSetKt {
+	public static final fun getBits (I)Lcom/juul/tuulbox/encoding/BitSet;
+	public static final fun getBits (J)Lcom/juul/tuulbox/encoding/BitSet;
+}
+
+public final class com/juul/tuulbox/encoding/IntBitSet : com/juul/tuulbox/encoding/BitSet {
+	public fun <init> (I)V
+	public fun asPrimitive ()Ljava/lang/Integer;
+	public synthetic fun asPrimitive ()Ljava/lang/Object;
+	public final fun copy (I)Lcom/juul/tuulbox/encoding/IntBitSet;
+	public static synthetic fun copy$default (Lcom/juul/tuulbox/encoding/IntBitSet;IILjava/lang/Object;)Lcom/juul/tuulbox/encoding/IntBitSet;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (I)Z
+	public fun hashCode ()I
+	public synthetic fun set (IZ)Lcom/juul/tuulbox/encoding/BitSet;
+	public fun set (IZ)Lcom/juul/tuulbox/encoding/IntBitSet;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/juul/tuulbox/encoding/LongBitSet : com/juul/tuulbox/encoding/BitSet {
+	public fun <init> (J)V
+	public fun asPrimitive ()Ljava/lang/Long;
+	public synthetic fun asPrimitive ()Ljava/lang/Object;
+	public final fun copy (J)Lcom/juul/tuulbox/encoding/LongBitSet;
+	public static synthetic fun copy$default (Lcom/juul/tuulbox/encoding/LongBitSet;JILjava/lang/Object;)Lcom/juul/tuulbox/encoding/LongBitSet;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (I)Z
+	public fun hashCode ()I
+	public synthetic fun set (IZ)Lcom/juul/tuulbox/encoding/BitSet;
+	public fun set (IZ)Lcom/juul/tuulbox/encoding/LongBitSet;
+	public fun toString ()Ljava/lang/String;
+}
+

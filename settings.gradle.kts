@@ -26,5 +26,6 @@ include(
     "logging",
     "functional",
     "temporal",
-    "test"
+    "test",
+    "encoding"
 )
