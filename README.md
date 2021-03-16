@@ -139,6 +139,56 @@ assertSimilar(
 )
 ```
 
+## Encoding
+
+![badge-js]
+![badge-jvm]
+![badge-mac]
+
+Utilities for working with binary data.
+
+### `IntBitSet`
+
+```kotlin
+val bitSet = 0.bits
+bitSet[30] = true
+bitSet.asPrimitive() // 1073741824
+```
+
+```kotlin
+/* | Index | ... | 3 | 2 | 1 | 0 |
+ * |-------|-----|---|---|---|---|
+ * | Bit   | ... | 1 | 0 | 1 | 0 |
+ */
+val bitSet = 10.bits
+
+bitSet[0] // false
+bitSet[1] // true
+bitSet[2] // false
+bitSet[3] // true
+```
+
+### `LongBitSet`
+
+```kotlin
+/* | Index | ... | 3 | 2 | 1 | 0 |
+ * |-------|-----|---|---|---|---|
+ * | Bit   | ... | 1 | 1 | 0 | 0 |
+ */
+val bitSet = 12L.bits
+
+bitSet[0] // false
+bitSet[1] // false
+bitSet[2] // true
+bitSet[3] // true
+```
+
+```kotlin
+val bitSet = 0L.bits
+bitSet[40] = true
+bitSet.asPrimitive() // 1099511627776L
+```
+
 # Setup
 
 ### Gradle
@@ -171,6 +221,7 @@ kotlin {
                 implementation("com.juul.tuulbox:logging:$version")
                 implementation("com.juul.tuulbox:functional:$version")
                 implementation("com.juul.tuulbox:temporal:$version")
+                implementation("com.juul.tuulbox:encoding:$version")
             }
         }
         
@@ -195,6 +246,7 @@ dependencies {
     implementation("com.juul.tuulbox:logging:$version")
     implementation("com.juul.tuulbox:functional:$version")
     implementation("com.juul.tuulbox:temporal:$version")
+    implementation("com.juul.tuulbox:encoding:$version")
     testImplementation("com.juul.tuulbox:test:$version")
 }
 ```
