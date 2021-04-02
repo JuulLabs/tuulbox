@@ -1,0 +1,9 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.juul.tuulbox.temporal////PointingToDeclaration/temporal/com.juul.tuulbox.temporal/index.html
+$dokka.location:com.juul.tuulbox.temporal//instantFlow/#/PointingToDeclaration/temporal/com.juul.tuulbox.temporal/instant-flow.html
+$dokka.location:com.juul.tuulbox.temporal//localDateFlow/#/PointingToDeclaration/temporal/com.juul.tuulbox.temporal/local-date-flow.html
+$dokka.location:com.juul.tuulbox.temporal//localDateTimeFlow/#/PointingToDeclaration/temporal/com.juul.tuulbox.temporal/local-date-time-flow.html
+$dokka.location:com.juul.tuulbox.temporal//temporalFlow/#kotlin.Function0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/temporal/com.juul.tuulbox.temporal/temporal-flow.html
+com.juul.tuulbox.temporal
+

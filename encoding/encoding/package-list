@@ -1,0 +1,21 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.juul.tuulbox.encoding////PointingToDeclaration/encoding/com.juul.tuulbox.encoding/index.html
+$dokka.location:com.juul.tuulbox.encoding//bits/kotlin.Int#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/bits.html
+$dokka.location:com.juul.tuulbox.encoding//bits/kotlin.Long#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/bits.html
+$dokka.location:com.juul.tuulbox.encoding/BitSet///PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-bit-set/index.html
+$dokka.location:com.juul.tuulbox.encoding/BitSet/asPrimitive/#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-bit-set/as-primitive.html
+$dokka.location:com.juul.tuulbox.encoding/BitSet/get/#kotlin.Int/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-bit-set/get.html
+$dokka.location:com.juul.tuulbox.encoding/BitSet/set/#kotlin.Int#kotlin.Boolean/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-bit-set/set.html
+$dokka.location:com.juul.tuulbox.encoding/IntBitSet///PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-int-bit-set/index.html
+$dokka.location:com.juul.tuulbox.encoding/IntBitSet/IntBitSet/#kotlin.Int/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-int-bit-set/-int-bit-set.html
+$dokka.location:com.juul.tuulbox.encoding/IntBitSet/asPrimitive/#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-int-bit-set/as-primitive.html
+$dokka.location:com.juul.tuulbox.encoding/IntBitSet/get/#kotlin.Int/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-int-bit-set/get.html
+$dokka.location:com.juul.tuulbox.encoding/IntBitSet/set/#kotlin.Int#kotlin.Boolean/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-int-bit-set/set.html
+$dokka.location:com.juul.tuulbox.encoding/LongBitSet///PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-long-bit-set/index.html
+$dokka.location:com.juul.tuulbox.encoding/LongBitSet/LongBitSet/#kotlin.Long/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-long-bit-set/-long-bit-set.html
+$dokka.location:com.juul.tuulbox.encoding/LongBitSet/asPrimitive/#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-long-bit-set/as-primitive.html
+$dokka.location:com.juul.tuulbox.encoding/LongBitSet/get/#kotlin.Int/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-long-bit-set/get.html
+$dokka.location:com.juul.tuulbox.encoding/LongBitSet/set/#kotlin.Int#kotlin.Boolean/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-long-bit-set/set.html
+com.juul.tuulbox.encoding
+
