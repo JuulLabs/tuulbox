@@ -84,7 +84,7 @@ For a full functional ecosystem, complete with `Monad` and the like, prefer [Arr
 
 Toolbox of utilities for dates and times, building on [KotlinX DateTime].
 
-Various interval [`Flow`]s are provided, such as: `instantFlow`, `localDateTimeFlow`, and `localDateFlow`. For example:
+Various interval [`Flow`]s are provided, such as: [`instantFlow`], [`localDateTimeFlow`], and [`localDateFlow`]. For example:
 
 ```kotlin
 localDateTimeFlow().collect {
@@ -293,6 +293,9 @@ limitations under the License.
 [`assertSimilar`]: https://juullabs.github.io/tuulbox/test/test/com.juul.tuulbox.test/assert-similar.html
 [`IntBitSet`]: https://juullabs.github.io/tuulbox/encoding/encoding/com.juul.tuulbox.encoding/-int-bit-set/index.html
 [`LongBitSet`]: https://juullabs.github.io/tuulbox/encoding/encoding/com.juul.tuulbox.encoding/-long-bit-set/index.html
+[`instantFlow`]: https://juullabs.github.io/tuulbox/temporal/temporal/com.juul.tuulbox.temporal/instant-flow.html
+[`localDateFlow`]: https://juullabs.github.io/tuulbox/temporal/temporal/com.juul.tuulbox.temporal/local-date-flow.html
+[`localDateTimeFlow`]: https://juullabs.github.io/tuulbox/temporal/temporal/com.juul.tuulbox.temporal/local-date-time-flow.html
 
 [badge-android]: http://img.shields.io/badge/platform-android-6EDB8D.svg?style=flat
 [badge-ios]: http://img.shields.io/badge/platform-ios-CDCDCD.svg?style=flat
