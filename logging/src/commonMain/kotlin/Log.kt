@@ -1,6 +1,11 @@
 package com.juul.tuulbox.logging
 
+import com.juul.tuulbox.logging.Log.dispatcher
 import kotlinx.atomicfu.atomic
+import kotlin.native.concurrent.ThreadLocal
+
+@ThreadLocal // Pool mutates internal state, easiest solution is to thread-local this in Kotlin/Native.
+private val metadataPool = Pool(factory = ::Metadata, refurbish = Metadata::clear)
 
 /** Global logging object. To receive logs, call [dispatcher].[install][DispatchLogger.install]. */
 public object Log {
@@ -18,44 +23,62 @@ public object Log {
         }
 
     /** Send a verbose-level log message to the global dispatcher. */
-    public fun verbose(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    public fun verbose(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.verbose(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
+            val metadata = metadataPool.borrow()
+            val body = message(metadata)
+            dispatcher.verbose(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            metadataPool.recycle(metadata)
         }
     }
 
     /** Send a debug-level log message to the global dispatcher. */
-    public fun debug(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    public fun debug(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.debug(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
+            val metadata = metadataPool.borrow()
+            val body = message(metadata)
+            dispatcher.debug(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            metadataPool.recycle(metadata)
         }
     }
 
     /** Send an info-level log message to the global dispatcher. */
-    public fun info(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    public fun info(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.info(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
+            val metadata = metadataPool.borrow()
+            val body = message(metadata)
+            dispatcher.info(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            metadataPool.recycle(metadata)
         }
     }
 
     /** Send an warn-level log message to the global dispatcher. */
-    public fun warn(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    public fun warn(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.warn(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
+            val metadata = metadataPool.borrow()
+            val body = message(metadata)
+            dispatcher.warn(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            metadataPool.recycle(metadata)
         }
     }
 
     /** Send an error-level log message to the global dispatcher. */
-    public fun error(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    public fun error(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.error(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
+            val metadata = metadataPool.borrow()
+            val body = message(metadata)
+            dispatcher.error(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            metadataPool.recycle(metadata)
         }
     }
 
     /** Send an assert-level log message to the global dispatcher. */
-    public fun assert(throwable: Throwable? = null, tag: String? = null, message: () -> String) {
+    public fun assert(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
         if (dispatcher.hasConsumers) {
-            dispatcher.assert(tag ?: tagGenerator.getTag(), message.invoke(), throwable)
+            val metadata = metadataPool.borrow()
+            val body = message(metadata)
+            dispatcher.assert(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            metadataPool.recycle(metadata)
         }
     }
 }

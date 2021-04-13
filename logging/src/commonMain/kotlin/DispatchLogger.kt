@@ -21,27 +21,27 @@ public class DispatchLogger : Logger {
         consumers.value = emptySet()
     }
 
-    override fun verbose(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.verbose(tag, message, throwable) }
+    override fun verbose(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+        consumers.value.forEach { it.verbose(tag, message, throwable, metadata) }
     }
 
-    override fun debug(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.debug(tag, message, throwable) }
+    override fun debug(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+        consumers.value.forEach { it.debug(tag, message, throwable, metadata) }
     }
 
-    override fun info(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.info(tag, message, throwable) }
+    override fun info(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+        consumers.value.forEach { it.info(tag, message, throwable, metadata) }
     }
 
-    override fun warn(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.warn(tag, message, throwable) }
+    override fun warn(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+        consumers.value.forEach { it.warn(tag, message, throwable, metadata) }
     }
 
-    override fun error(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.error(tag, message, throwable) }
+    override fun error(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+        consumers.value.forEach { it.error(tag, message, throwable, metadata) }
     }
 
-    override fun assert(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.assert(tag, message, throwable) }
+    override fun assert(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+        consumers.value.forEach { it.assert(tag, message, throwable, metadata) }
     }
 }
