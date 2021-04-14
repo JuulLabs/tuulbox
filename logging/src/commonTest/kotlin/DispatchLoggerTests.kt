@@ -29,7 +29,7 @@ class DispatchLoggerTests {
         dispatcher.install(second)
         val metadata = Metadata()
         val call = Call(tag = "test-tag", message = "test-message", Throwable(), metadata)
-        dispatcher.verbose(call.tag, call.message, call.throwable, metadata)
+        dispatcher.verbose(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, first.verboseCalls.single())
         assertEquals(call, second.verboseCalls.single())
     }
@@ -43,7 +43,7 @@ class DispatchLoggerTests {
         dispatcher.install(second)
         val metadata = Metadata()
         val call = Call(tag = "test-tag", message = "test-message", Throwable(), metadata)
-        dispatcher.debug(call.tag, call.message, call.throwable, metadata)
+        dispatcher.debug(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, first.debugCalls.single())
         assertEquals(call, second.debugCalls.single())
     }
@@ -57,7 +57,7 @@ class DispatchLoggerTests {
         dispatcher.install(second)
         val metadata = Metadata()
         val call = Call(tag = "test-tag", message = "test-message", Throwable(), metadata)
-        dispatcher.info(call.tag, call.message, call.throwable, metadata)
+        dispatcher.info(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, first.infoCalls.single())
         assertEquals(call, second.infoCalls.single())
     }
@@ -71,7 +71,7 @@ class DispatchLoggerTests {
         dispatcher.install(second)
         val metadata = Metadata()
         val call = Call(tag = "test-tag", message = "test-message", Throwable(), metadata)
-        dispatcher.warn(call.tag, call.message, call.throwable, metadata)
+        dispatcher.warn(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, first.warnCalls.single())
         assertEquals(call, second.warnCalls.single())
     }
@@ -85,7 +85,7 @@ class DispatchLoggerTests {
         dispatcher.install(second)
         val metadata = Metadata()
         val call = Call(tag = "test-tag", message = "test-message", Throwable(), metadata)
-        dispatcher.error(call.tag, call.message, call.throwable, metadata)
+        dispatcher.error(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, first.errorCalls.single())
         assertEquals(call, second.errorCalls.single())
     }
@@ -99,7 +99,7 @@ class DispatchLoggerTests {
         dispatcher.install(second)
         val metadata = Metadata()
         val call = Call(tag = "test-tag", message = "test-message", Throwable(), metadata)
-        dispatcher.assert(call.tag, call.message, call.throwable, metadata)
+        dispatcher.assert(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, first.assertCalls.single())
         assertEquals(call, second.assertCalls.single())
     }
@@ -112,7 +112,7 @@ class DispatchLoggerTests {
         dispatcher.install(consumer)
         val metadata = Metadata()
         val call = Call(tag = "test-tag", message = "test-message", Throwable(), metadata)
-        dispatcher.verbose(call.tag, call.message, call.throwable, metadata)
+        dispatcher.verbose(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, consumer.verboseCalls.single())
     }
 }

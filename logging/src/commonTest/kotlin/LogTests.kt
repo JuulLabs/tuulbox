@@ -2,6 +2,7 @@ package com.juul.tuulbox.logging
 
 import kotlin.test.AfterTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 import kotlin.test.fail
@@ -157,5 +158,21 @@ class LogTests {
         Log.dispatcher.install(logger)
         Log.assert(tag = "explicit tag") { "Test message" }
         assertTrue { logger.assertCalls.all { it.tag == "explicit tag" } }
+    }
+
+    @Test
+    fun verbose_withMetadata_canReadInLogger() {
+        Log.tagGenerator = failTestTagGenerator
+        val logger = object : CallListLogger() {
+            override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
+                super.verbose(tag, message, metadata, throwable)
+                assertEquals("test", metadata[StringKey])
+            }
+        }
+        Log.dispatcher.install(logger)
+        Log.verbose(tag = "explicit tag") { metadata ->
+            metadata[StringKey] = "test"
+            "Test message"
+        }
     }
 }

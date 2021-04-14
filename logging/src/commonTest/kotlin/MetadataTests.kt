@@ -5,10 +5,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertSame
 
-object AnyKey : Key<Any>
-object StringKey : Key<String>
-object BooleanKey : Key<Boolean>
-
 class MetadataTests {
 
     @Test

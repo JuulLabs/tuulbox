@@ -3,7 +3,7 @@ package com.juul.tuulbox.logging
 import kotlinx.atomicfu.atomic
 import kotlinx.atomicfu.getAndUpdate
 
-class CallListLogger : Logger {
+open class CallListLogger : Logger {
 
     private val atomicVerboseCalls = atomic(emptyList<Call>())
     val verboseCalls: List<Call> get() = atomicVerboseCalls.value
@@ -23,27 +23,27 @@ class CallListLogger : Logger {
     private val atomicAssertCalls = atomic(emptyList<Call>())
     val assertCalls: List<Call> get() = atomicAssertCalls.value
 
-    override fun verbose(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+    override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         atomicVerboseCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable, metadata.copy()) }
     }
 
-    override fun debug(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+    override fun debug(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         atomicDebugCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable, metadata.copy()) }
     }
 
-    override fun info(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+    override fun info(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         atomicInfoCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable, metadata.copy()) }
     }
 
-    override fun warn(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+    override fun warn(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         atomicWarnCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable, metadata.copy()) }
     }
 
-    override fun error(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+    override fun error(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         atomicErrorCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable, metadata.copy()) }
     }
 
-    override fun assert(tag: String, message: String, throwable: Throwable?, metadata: ReadMetadata) {
+    override fun assert(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         atomicAssertCalls.getAndUpdate { it + Call(tag = tag, message = message, throwable, metadata.copy()) }
     }
 }

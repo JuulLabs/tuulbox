@@ -4,7 +4,7 @@ import com.juul.tuulbox.logging.Log.dispatcher
 import kotlinx.atomicfu.atomic
 import kotlin.native.concurrent.ThreadLocal
 
-@ThreadLocal // Pool mutates internal state, easiest solution is to thread-local this in Kotlin/Native.
+@ThreadLocal // Thread local pool means that metadata returned from it are safe to mutate on that same thread.
 private val metadataPool = Pool(factory = ::Metadata, refurbish = Metadata::clear)
 
 /** Global logging object. To receive logs, call [dispatcher].[install][DispatchLogger.install]. */
@@ -27,7 +27,7 @@ public object Log {
         if (dispatcher.hasConsumers) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
-            dispatcher.verbose(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            dispatcher.verbose(tag ?: tagGenerator.getTag(), body, metadata, throwable)
             metadataPool.recycle(metadata)
         }
     }
@@ -37,7 +37,7 @@ public object Log {
         if (dispatcher.hasConsumers) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
-            dispatcher.debug(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            dispatcher.debug(tag ?: tagGenerator.getTag(), body, metadata, throwable)
             metadataPool.recycle(metadata)
         }
     }
@@ -47,7 +47,7 @@ public object Log {
         if (dispatcher.hasConsumers) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
-            dispatcher.info(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            dispatcher.info(tag ?: tagGenerator.getTag(), body, metadata, throwable)
             metadataPool.recycle(metadata)
         }
     }
@@ -57,7 +57,7 @@ public object Log {
         if (dispatcher.hasConsumers) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
-            dispatcher.warn(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            dispatcher.warn(tag ?: tagGenerator.getTag(), body, metadata, throwable)
             metadataPool.recycle(metadata)
         }
     }
@@ -67,7 +67,7 @@ public object Log {
         if (dispatcher.hasConsumers) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
-            dispatcher.error(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            dispatcher.error(tag ?: tagGenerator.getTag(), body, metadata, throwable)
             metadataPool.recycle(metadata)
         }
     }
@@ -77,7 +77,7 @@ public object Log {
         if (dispatcher.hasConsumers) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
-            dispatcher.assert(tag ?: tagGenerator.getTag(), body, throwable, metadata)
+            dispatcher.assert(tag ?: tagGenerator.getTag(), body, metadata, throwable)
             metadataPool.recycle(metadata)
         }
     }

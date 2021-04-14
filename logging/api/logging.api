@@ -1,11 +1,11 @@
 public final class com/juul/tuulbox/logging/ConsoleLogger : com/juul/tuulbox/logging/Logger {
 	public static final field INSTANCE Lcom/juul/tuulbox/logging/ConsoleLogger;
-	public fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun verbose (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun warn (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
+	public fun assert (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun debug (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun error (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun info (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun verbose (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun warn (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
 }
 
 public final class com/juul/tuulbox/logging/ConstantTagGenerator : com/juul/tuulbox/logging/TagGenerator {
@@ -15,14 +15,14 @@ public final class com/juul/tuulbox/logging/ConstantTagGenerator : com/juul/tuul
 
 public final class com/juul/tuulbox/logging/DispatchLogger : com/juul/tuulbox/logging/Logger {
 	public fun <init> ()V
-	public fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
+	public fun assert (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
 	public final fun clear ()V
-	public fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
+	public fun debug (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun error (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun info (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
 	public final fun install (Lcom/juul/tuulbox/logging/Logger;)V
-	public fun verbose (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public fun warn (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
+	public fun verbose (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public fun warn (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
 }
 
 public abstract interface class com/juul/tuulbox/logging/Key {
@@ -48,12 +48,12 @@ public final class com/juul/tuulbox/logging/Log {
 }
 
 public abstract interface class com/juul/tuulbox/logging/Logger {
-	public abstract fun assert (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public abstract fun debug (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public abstract fun error (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public abstract fun info (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public abstract fun verbose (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
-	public abstract fun warn (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lcom/juul/tuulbox/logging/ReadMetadata;)V
+	public abstract fun assert (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public abstract fun debug (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public abstract fun error (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public abstract fun info (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public abstract fun verbose (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
+	public abstract fun warn (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
 }
 
 public abstract interface class com/juul/tuulbox/logging/ReadMetadata {
