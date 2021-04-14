@@ -1,7 +1,7 @@
 package com.juul.tuulbox.logging
 
 import kotlinx.atomicfu.atomic
-import kotlinx.atomicfu.getAndUpdate
+import kotlinx.atomicfu.update
 
 /** Implementation of [Logger] which dispatches calls to consumer [Logger]s. */
 public class DispatchLogger : Logger {
@@ -13,7 +13,7 @@ public class DispatchLogger : Logger {
 
     /** Add a consumer to receive future dispatch calls. */
     public fun install(consumer: Logger) {
-        consumers.getAndUpdate { it + consumer }
+        consumers.update { it + consumer }
     }
 
     /** Uninstall all installed consumers. */
