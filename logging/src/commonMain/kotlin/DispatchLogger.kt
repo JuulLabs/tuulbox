@@ -1,7 +1,7 @@
 package com.juul.tuulbox.logging
 
 import kotlinx.atomicfu.atomic
-import kotlinx.atomicfu.getAndUpdate
+import kotlinx.atomicfu.update
 
 /** Implementation of [Logger] which dispatches calls to consumer [Logger]s. */
 public class DispatchLogger : Logger {
@@ -13,7 +13,7 @@ public class DispatchLogger : Logger {
 
     /** Add a consumer to receive future dispatch calls. */
     public fun install(consumer: Logger) {
-        consumers.getAndUpdate { it + consumer }
+        consumers.update { it + consumer }
     }
 
     /** Uninstall all installed consumers. */
@@ -21,27 +21,27 @@ public class DispatchLogger : Logger {
         consumers.value = emptySet()
     }
 
-    override fun verbose(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.verbose(tag, message, throwable) }
+    override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
+        consumers.value.forEach { it.verbose(tag, message, metadata, throwable) }
     }
 
-    override fun debug(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.debug(tag, message, throwable) }
+    override fun debug(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
+        consumers.value.forEach { it.debug(tag, message, metadata, throwable) }
     }
 
-    override fun info(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.info(tag, message, throwable) }
+    override fun info(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
+        consumers.value.forEach { it.info(tag, message, metadata, throwable) }
     }
 
-    override fun warn(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.warn(tag, message, throwable) }
+    override fun warn(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
+        consumers.value.forEach { it.warn(tag, message, metadata, throwable) }
     }
 
-    override fun error(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.error(tag, message, throwable) }
+    override fun error(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
+        consumers.value.forEach { it.error(tag, message, metadata, throwable) }
     }
 
-    override fun assert(tag: String, message: String, throwable: Throwable?) {
-        consumers.value.forEach { it.assert(tag, message, throwable) }
+    override fun assert(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
+        consumers.value.forEach { it.assert(tag, message, metadata, throwable) }
     }
 }

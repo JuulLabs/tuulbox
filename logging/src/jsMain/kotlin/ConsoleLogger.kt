@@ -14,7 +14,7 @@ public actual object ConsoleLogger : Logger {
     private val simpleMessageFormat = "[%s] %s"
     private val throwableMessageFormat = "[%s] %s: %o"
 
-    override fun verbose(tag: String, message: String, throwable: Throwable?) {
+    override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         if (throwable == null) {
             console.asDynamic().debug(simpleMessageFormat, tag, message)
         } else {
@@ -22,7 +22,7 @@ public actual object ConsoleLogger : Logger {
         }
     }
 
-    override fun debug(tag: String, message: String, throwable: Throwable?) {
+    override fun debug(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         if (throwable == null) {
             console.asDynamic().debug(simpleMessageFormat, tag, message)
         } else {
@@ -30,7 +30,7 @@ public actual object ConsoleLogger : Logger {
         }
     }
 
-    override fun info(tag: String, message: String, throwable: Throwable?) {
+    override fun info(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         if (throwable == null) {
             console.info(simpleMessageFormat, tag, message)
         } else {
@@ -38,7 +38,7 @@ public actual object ConsoleLogger : Logger {
         }
     }
 
-    override fun warn(tag: String, message: String, throwable: Throwable?) {
+    override fun warn(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         if (throwable == null) {
             console.warn(simpleMessageFormat, tag, message)
         } else {
@@ -46,7 +46,7 @@ public actual object ConsoleLogger : Logger {
         }
     }
 
-    override fun error(tag: String, message: String, throwable: Throwable?) {
+    override fun error(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         if (throwable == null) {
             console.error(simpleMessageFormat, tag, message)
         } else {
@@ -54,7 +54,7 @@ public actual object ConsoleLogger : Logger {
         }
     }
 
-    override fun assert(tag: String, message: String, throwable: Throwable?) {
+    override fun assert(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         if (throwable == null) {
             console.asDynamic().assert(false, simpleMessageFormat, tag, message)
         } else {

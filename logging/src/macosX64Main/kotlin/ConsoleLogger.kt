@@ -32,27 +32,27 @@ public actual object ConsoleLogger : Logger {
         fflush(stream)
     }
 
-    override fun verbose(tag: String, message: String, throwable: Throwable?) {
+    override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         print(stdout, "V", tag, message, throwable)
     }
 
-    override fun debug(tag: String, message: String, throwable: Throwable?) {
+    override fun debug(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         print(stdout, "D", tag, message, throwable)
     }
 
-    override fun info(tag: String, message: String, throwable: Throwable?) {
+    override fun info(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         print(stdout, "I", tag, message, throwable)
     }
 
-    override fun warn(tag: String, message: String, throwable: Throwable?) {
+    override fun warn(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         print(stdout, "W", tag, message, throwable)
     }
 
-    override fun error(tag: String, message: String, throwable: Throwable?) {
+    override fun error(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         print(stderr, "E", tag, message, throwable)
     }
 
-    override fun assert(tag: String, message: String, throwable: Throwable?) {
+    override fun assert(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         print(stderr, "A", tag, message, throwable)
     }
 }
