@@ -41,4 +41,4 @@ jobs:
         env:
           SONATYPE_NEXUS_USERNAME: ${{ secrets.OSS_SONATYPE_NEXUS_USERNAME }}
           SONATYPE_NEXUS_PASSWORD: ${{ secrets.OSS_SONATYPE_NEXUS_PASSWORD }}
-        run: ./gradlew $GRADLE_ARGS --no-parallel -PVERSION_NAME=main-SNAPSHOT uploadArchives
+        run: ./gradlew $GRADLE_ARGS --no-parallel -PVERSION_NAME=main-SNAPSHOT publish
