@@ -58,7 +58,7 @@ jobs:
           -Psigning.keyId="${{ secrets.SIGNING_KEY_ID }}"
           -Psigning.password="${{ secrets.SIGNING_PASSWORD }}"
           -Psigning.secretKeyRingFile="$HOME/secring.gpg"
-          installArchives
+          publishToMavenLocal
 
       - name: Assemble (Linux)
         if: runner.os == 'Linux'
