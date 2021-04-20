@@ -1,7 +1,8 @@
 name: Snapshot
 on:
   push:
-    branches: [ $default-branch ]
+    branches:
+      - main
 
 jobs:
   snapshot:
@@ -38,7 +39,11 @@ jobs:
         run: ./gradlew $GRADLE_ARGS check
 
       - name: Snapshot
-        env:
-          SONATYPE_NEXUS_USERNAME: ${{ secrets.OSS_SONATYPE_NEXUS_USERNAME }}
-          SONATYPE_NEXUS_PASSWORD: ${{ secrets.OSS_SONATYPE_NEXUS_PASSWORD }}
-        run: ./gradlew $GRADLE_ARGS --no-parallel -PVERSION_NAME=main-SNAPSHOT publish
+        run: >-
+          ./gradlew
+          $GRADLE_ARGS
+          --no-parallel
+          -PmavenCentralRepositoryUsername="${{ secrets.OSS_SONATYPE_NEXUS_USERNAME }}"
+          -PmavenCentralRepositoryPassword="${{ secrets.OSS_SONATYPE_NEXUS_PASSWORD }}"
+          -PVERSION_NAME=main-SNAPSHOT
+          publish
