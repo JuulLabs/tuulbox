@@ -5,8 +5,6 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
-apply(from = rootProject.file("gradle/publish.gradle.kts"))
-
 kotlin {
     explicitApi()
 

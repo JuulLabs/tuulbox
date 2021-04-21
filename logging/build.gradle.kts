@@ -8,7 +8,6 @@ plugins {
 }
 
 apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
-apply(from = rootProject.file("gradle/publish.gradle.kts"))
 
 kotlin {
     explicitApi()
