@@ -10,7 +10,7 @@ class HexStringTest {
     @Test
     fun toHexString_uppercaseDefault() {
         assertEquals(
-            expected = "01 20 A0 FF",
+            expected = "0120A0FF",
             actual = testBytes.toHexString()
         )
     }
@@ -18,16 +18,8 @@ class HexStringTest {
     @Test
     fun toHexString_lowercase() {
         assertEquals(
-            expected = "01 20 a0 ff",
+            expected = "0120a0ff",
             actual = testBytes.toHexString(lowerCase = true)
-        )
-    }
-
-    @Test
-    fun toHexString_withNullSeparator() {
-        assertEquals(
-            expected = "0120A0FF",
-            actual = testBytes.toHexString(separator = null)
         )
     }
 
@@ -40,10 +32,10 @@ class HexStringTest {
     }
 
     @Test
-    fun toHexString_withPrefix() {
+    fun toHexString_withCustomSeparatorAndPrefix() {
         assertEquals(
             expected = "0x01 0x20 0xA0 0xFF",
-            actual = testBytes.toHexString(prefix = "0x")
+            actual = testBytes.toHexString(prefix = "0x", separator = " ")
         )
     }
 
