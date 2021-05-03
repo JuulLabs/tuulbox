@@ -9,6 +9,11 @@ public final class com/juul/tuulbox/encoding/BitSetKt {
 	public static final fun getBits (J)Lcom/juul/tuulbox/encoding/BitSet;
 }
 
+public final class com/juul/tuulbox/encoding/HexStringKt {
+	public static final fun toHexString ([BLjava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+	public static synthetic fun toHexString$default ([BLjava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
+}
+
 public final class com/juul/tuulbox/encoding/IntBitSet : com/juul/tuulbox/encoding/BitSet {
 	public fun <init> (I)V
 	public fun asPrimitive ()Ljava/lang/Integer;
