@@ -25,10 +25,13 @@ public final class com/juul/tuulbox/logging/DispatchLogger : com/juul/tuulbox/lo
 	public fun warn (Ljava/lang/String;Ljava/lang/String;Lcom/juul/tuulbox/logging/ReadMetadata;Ljava/lang/Throwable;)V
 }
 
+public abstract interface class com/juul/tuulbox/logging/HideFromStackTraceTag {
+}
+
 public abstract interface class com/juul/tuulbox/logging/Key {
 }
 
-public final class com/juul/tuulbox/logging/Log {
+public final class com/juul/tuulbox/logging/Log : com/juul/tuulbox/logging/HideFromStackTraceTag {
 	public static final field INSTANCE Lcom/juul/tuulbox/logging/Log;
 	public final fun assert (Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public static synthetic fun assert$default (Lcom/juul/tuulbox/logging/Log;Ljava/lang/Throwable;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
