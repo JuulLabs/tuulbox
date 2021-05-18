@@ -21,6 +21,7 @@ $dokka.location:com.juul.tuulbox.logging/DispatchLogger/info/#kotlin.String#kotl
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/install/#com.juul.tuulbox.logging.Logger/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/install.html
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/verbose/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/verbose.html
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/warn/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/warn.html
+$dokka.location:com.juul.tuulbox.logging/HideFromStackTraceTag///PointingToDeclaration/logging/com.juul.tuulbox.logging/-hide-from-stack-trace-tag/index.html
 $dokka.location:com.juul.tuulbox.logging/Key///PointingToDeclaration/logging/com.juul.tuulbox.logging/-key/index.html
 $dokka.location:com.juul.tuulbox.logging/Log///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/index.html
 $dokka.location:com.juul.tuulbox.logging/Log/assert/#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/assert.html
