@@ -10,7 +10,7 @@ internal object StackTraceTagGenerator : TagGenerator, HideFromStackTraceTag {
     override fun getTag(): String {
         val tagCandidate = Throwable().stackTrace.asSequence()
             .map { Class.forName(it.className) }
-            .first { !ignoreSubclassesOf.isAssignableFrom(it)}
+            .first { !ignoreSubclassesOf.isAssignableFrom(it) }
             .name
             .substringAfterLast('.')
         // This bit of logic is stolen from Timber, so use of Java's Pattern/Matcher
