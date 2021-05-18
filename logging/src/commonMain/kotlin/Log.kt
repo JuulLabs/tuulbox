@@ -8,7 +8,7 @@ import kotlin.native.concurrent.ThreadLocal
 private val metadataPool = Pool(factory = ::Metadata, refurbish = Metadata::clear)
 
 /** Global logging object. To receive logs, call [dispatcher].[install][DispatchLogger.install]. */
-public object Log {
+public object Log : HideFromStackTraceTag {
 
     /** Global log dispatcher. */
     public val dispatcher: DispatchLogger = DispatchLogger()
