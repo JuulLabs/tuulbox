@@ -2,7 +2,7 @@ package com.juul.tuulbox.logging
 
 internal actual val defaultTagGenerator: TagGenerator = StackTraceTagGenerator
 
-internal object StackTraceTagGenerator : TagGenerator {
+internal object StackTraceTagGenerator : TagGenerator, HideFromStackTraceTag {
 
     /**
      * Matches a line of stacktrace output (except the first line).
@@ -13,6 +13,7 @@ internal object StackTraceTagGenerator : TagGenerator {
     private val stackTraceLineMatcher = Regex("""^\s{4}at (\w+)\..*$""")
 
     override fun getTag(): String {
+        // FIXME: This should implement support for [HideFromStackTrace] instead of hard-coding a known depth
         val line = Throwable().stackTraceToString().lineSequence()
             .drop(3)
             .first()

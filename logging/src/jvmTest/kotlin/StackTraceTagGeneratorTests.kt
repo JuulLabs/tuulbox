@@ -26,4 +26,12 @@ class StackTraceTagGeneratorTests {
             .substringBefore("$1")
         assertEquals(expected, supplier.get())
     }
+
+    @Test
+    fun tagIgnoreClassesMarkedWithHide() {
+        class HiddenClass : HideFromStackTraceTag {
+            fun getTag() = StackTraceTagGenerator.getTag()
+        }
+        assertEquals(StackTraceTagGeneratorTests::class.java.simpleName, HiddenClass().getTag())
+    }
 }
