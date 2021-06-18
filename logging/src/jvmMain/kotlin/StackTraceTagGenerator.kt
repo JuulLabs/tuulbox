@@ -3,7 +3,8 @@ package com.juul.tuulbox.logging
 internal actual val defaultTagGenerator: TagGenerator = StackTraceTagGenerator
 
 internal object StackTraceTagGenerator : TagGenerator, HideFromStackTraceTag {
-    private val anonymousClassPattern = Regex("""(\$\d+)$""").toPattern()
+    // Pattern without string escaping (as would work w/ tools such as https://regexr.com/): (\$\$Lambda)?\$([0-9\/]+)$
+    private val anonymousClassPattern = Regex("(\\\$\\\$Lambda)?\\\$([0-9\\/]+)\\\$").toPattern()
 
     private val ignoreSubclassesOf = HideFromStackTraceTag::class.java
 

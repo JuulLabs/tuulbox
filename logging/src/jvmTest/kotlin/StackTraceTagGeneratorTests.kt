@@ -17,13 +17,21 @@ class StackTraceTagGeneratorTests {
     fun tagStripsAnonymousClassNumber() {
         val supplier = Supplier<String> { StackTraceTagGenerator.getTag() }
 
+        /* Examples of `class.java.name`:
+         *
+         * | Kotlin | supplier::class.java.name                                                                     |
+         * |--------|-----------------------------------------------------------------------------------------------|
+         * | 1.4.31 | com.juul.tuulbox.logging.StackTraceTagGeneratorTests$tagStripsAnonymousClassNumber$supplier$1 |
+         * | 1.5.10 | com.juul.tuulbox.logging.StackTraceTagGeneratorTests$$Lambda$4/1813123723                     |
+         */
+
         // Double check that the way we've written this actually generates
         // an anonymous class, instead of being optimized by the compiler.
-        assertTrue(supplier::class.java.name.endsWith("$1"))
+        assertTrue(supplier::class.java.name.contains("\$\$Lambda\$"))
 
         val expected = supplier::class.java.name
             .substringAfterLast('.')
-            .substringBefore("$1")
+            .substringBefore("$")
         assertEquals(expected, supplier.get())
     }
 
