@@ -27,12 +27,9 @@ class StackTraceTagGeneratorTests {
 
         // Double check that the way we've written this actually generates
         // an anonymous class, instead of being optimized by the compiler.
-        assertTrue(supplier::class.java.name.contains("\$\$Lambda\$"))
+        assertTrue(supplier::class.java.name.contains("\$"))
 
-        val expected = supplier::class.java.name
-            .substringAfterLast('.')
-            .substringBefore("$")
-        assertEquals(expected, supplier.get())
+        assertEquals("StackTraceTagGeneratorTests", supplier.get())
     }
 
     @Test
