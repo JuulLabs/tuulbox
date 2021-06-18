@@ -96,6 +96,7 @@ _Note: Because this is built on top of [KotlinX DateTime], [core library desugar
 
 ## [Test](https://juullabs.github.io/tuulbox/test/index.html)
 
+![badge-ios]
 ![badge-js]
 ![badge-jvm]
 ![badge-mac]
