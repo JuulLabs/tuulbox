@@ -17,6 +17,9 @@ kotlin {
         publishAllLibraryVariants()
     }
     macosX64()
+    iosX64()
+    iosArm32()
+    iosArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -56,6 +59,26 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-js"))
             }
+        }
+
+        val appleMain by creating {
+            dependsOn(commonMain)
+        }
+
+        val macosX64Main by getting {
+            dependsOn(appleMain)
+        }
+
+        val iosX64Main by getting {
+            dependsOn(appleMain)
+        }
+
+        val iosArm32Main by getting {
+            dependsOn(appleMain)
+        }
+
+        val iosArm64Main by getting {
+            dependsOn(appleMain)
         }
     }
 }
