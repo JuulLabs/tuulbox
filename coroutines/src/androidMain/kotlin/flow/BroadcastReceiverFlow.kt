@@ -10,7 +10,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-private const val TAG = "Tuulbox/coroutines/broadcastReceiverFlow"
+private const val TAG = "broadcastReceiverFlow"
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 public fun broadcastReceiverFlow(
