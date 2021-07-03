@@ -8,11 +8,12 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 import kotlin.time.seconds
 
 @ExperimentalTime
-private val EPSILON = 5.seconds
+private val EPSILON = Duration.seconds(5)
 
 @ExperimentalTime
 @AndroidIgnore("Cannot use Android classes BroadcastReceiver or IntentFilter.")
