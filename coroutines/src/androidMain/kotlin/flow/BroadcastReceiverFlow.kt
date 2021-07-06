@@ -10,8 +10,6 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-private const val TAG = "broadcastReceiverFlow"
-
 @Suppress("EXPERIMENTAL_API_USAGE")
 public fun broadcastReceiverFlow(
     intentFilter: IntentFilter
@@ -19,7 +17,7 @@ public fun broadcastReceiverFlow(
     val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null) {
-                if (!trySend(intent).isSuccess) Log.w(TAG, "Failed to deliver intent.")
+                trySend(intent)
             }
         }
     }
