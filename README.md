@@ -8,6 +8,7 @@ Toolbox of utilities/helpers for Kotlin development.
 ## [Coroutines](https://juullabs.github.io/tuulbox/coroutines/index.html)
 
 ![badge-android]
+![badge-ios]
 ![badge-js]
 ![badge-jvm]
 ![badge-mac]
@@ -32,6 +33,7 @@ val combined = combine(
 
 ## [Logging](https://juullabs.github.io/tuulbox/logging/index.html)
 
+![badge-ios]
 ![badge-js]
 ![badge-jvm]
 ![badge-mac]
@@ -69,6 +71,7 @@ via [`Log.tagGenerator`] property.
 
 ## [Functional](https://juullabs.github.io/tuulbox/functional/index.html)
 
+![badge-ios]
 ![badge-js]
 ![badge-jvm]
 ![badge-mac]
@@ -142,6 +145,7 @@ assertSimilar(
 
 ## [Encoding](https://juullabs.github.io/tuulbox/encoding/index.html)
 
+![badge-ios]
 ![badge-js]
 ![badge-jvm]
 ![badge-mac]
