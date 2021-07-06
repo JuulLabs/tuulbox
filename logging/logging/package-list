@@ -2,12 +2,12 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.juul.tuulbox.logging////PointingToDeclaration/logging/com.juul.tuulbox.logging/index.html
 $dokka.location:com.juul.tuulbox.logging/ConsoleLogger///PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/index.html
-$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/assert/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[macos-x64]assert.html
-$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/debug/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[macos-x64]debug.html
-$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/error/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[macos-x64]error.html
-$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/info/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[macos-x64]info.html
-$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/verbose/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[macos-x64]verbose.html
-$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/warn/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[macos-x64]warn.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/assert/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]assert.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/debug/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]debug.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/error/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]error.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/info/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]info.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/verbose/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]verbose.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/warn/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]warn.html
 $dokka.location:com.juul.tuulbox.logging/ConstantTagGenerator///PointingToDeclaration/logging/com.juul.tuulbox.logging/-constant-tag-generator/index.html
 $dokka.location:com.juul.tuulbox.logging/ConstantTagGenerator/ConstantTagGenerator/#kotlin.String/PointingToDeclaration/logging/com.juul.tuulbox.logging/-constant-tag-generator/-constant-tag-generator.html
 $dokka.location:com.juul.tuulbox.logging/ConstantTagGenerator/getTag/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-constant-tag-generator/get-tag.html
