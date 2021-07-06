@@ -16,7 +16,7 @@ public fun broadcastReceiverFlow(
     val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null) {
-                offer(intent)
+                trySend(intent)
             }
         }
     }
