@@ -115,4 +115,130 @@ class DispatchLoggerTests {
         dispatcher.verbose(call.tag, call.message, metadata, call.throwable)
         assertEquals(call, consumer.verboseCalls.single())
     }
+
+    @Test
+    fun consumers_withMinimumLogLevelVerbose_receiveAppropriateCalls() {
+        val dispatcher = DispatchLogger()
+        val verboseLevel = object : CallListLogger() {
+            override val minimumLogLevel = LogLevel.Verbose
+        }
+        dispatcher.install(verboseLevel)
+        dispatcher.verbose("tag", "message", Metadata(), null)
+        dispatcher.debug("tag", "message", Metadata(), null)
+        dispatcher.info("tag", "message", Metadata(), null)
+        dispatcher.warn("tag", "message", Metadata(), null)
+        dispatcher.error("tag", "message", Metadata(), null)
+        dispatcher.assert("tag", "message", Metadata(), null)
+        assertEquals(1, verboseLevel.verboseCalls.size)
+        assertEquals(1, verboseLevel.debugCalls.size)
+        assertEquals(1, verboseLevel.infoCalls.size)
+        assertEquals(1, verboseLevel.warnCalls.size)
+        assertEquals(1, verboseLevel.errorCalls.size)
+        assertEquals(1, verboseLevel.assertCalls.size)
+    }
+
+    @Test
+    fun consumers_withMinimumLogLevelDebug_receiveAppropriateCalls() {
+        val dispatcher = DispatchLogger()
+        val verboseLevel = object : CallListLogger() {
+            override val minimumLogLevel = LogLevel.Debug
+        }
+        dispatcher.install(verboseLevel)
+        dispatcher.verbose("tag", "message", Metadata(), null)
+        dispatcher.debug("tag", "message", Metadata(), null)
+        dispatcher.info("tag", "message", Metadata(), null)
+        dispatcher.warn("tag", "message", Metadata(), null)
+        dispatcher.error("tag", "message", Metadata(), null)
+        dispatcher.assert("tag", "message", Metadata(), null)
+        assertEquals(0, verboseLevel.verboseCalls.size)
+        assertEquals(1, verboseLevel.debugCalls.size)
+        assertEquals(1, verboseLevel.infoCalls.size)
+        assertEquals(1, verboseLevel.warnCalls.size)
+        assertEquals(1, verboseLevel.errorCalls.size)
+        assertEquals(1, verboseLevel.assertCalls.size)
+    }
+
+    @Test
+    fun consumers_withMinimumLogLevelInfo_receiveAppropriateCalls() {
+        val dispatcher = DispatchLogger()
+        val verboseLevel = object : CallListLogger() {
+            override val minimumLogLevel = LogLevel.Info
+        }
+        dispatcher.install(verboseLevel)
+        dispatcher.verbose("tag", "message", Metadata(), null)
+        dispatcher.debug("tag", "message", Metadata(), null)
+        dispatcher.info("tag", "message", Metadata(), null)
+        dispatcher.warn("tag", "message", Metadata(), null)
+        dispatcher.error("tag", "message", Metadata(), null)
+        dispatcher.assert("tag", "message", Metadata(), null)
+        assertEquals(0, verboseLevel.verboseCalls.size)
+        assertEquals(0, verboseLevel.debugCalls.size)
+        assertEquals(1, verboseLevel.infoCalls.size)
+        assertEquals(1, verboseLevel.warnCalls.size)
+        assertEquals(1, verboseLevel.errorCalls.size)
+        assertEquals(1, verboseLevel.assertCalls.size)
+    }
+
+    @Test
+    fun consumers_withMinimumLogLevelWarn_receiveAppropriateCalls() {
+        val dispatcher = DispatchLogger()
+        val verboseLevel = object : CallListLogger() {
+            override val minimumLogLevel = LogLevel.Warn
+        }
+        dispatcher.install(verboseLevel)
+        dispatcher.verbose("tag", "message", Metadata(), null)
+        dispatcher.debug("tag", "message", Metadata(), null)
+        dispatcher.info("tag", "message", Metadata(), null)
+        dispatcher.warn("tag", "message", Metadata(), null)
+        dispatcher.error("tag", "message", Metadata(), null)
+        dispatcher.assert("tag", "message", Metadata(), null)
+        assertEquals(0, verboseLevel.verboseCalls.size)
+        assertEquals(0, verboseLevel.debugCalls.size)
+        assertEquals(0, verboseLevel.infoCalls.size)
+        assertEquals(1, verboseLevel.warnCalls.size)
+        assertEquals(1, verboseLevel.errorCalls.size)
+        assertEquals(1, verboseLevel.assertCalls.size)
+    }
+
+    @Test
+    fun consumers_withMinimumLogLevelError_receiveAppropriateCalls() {
+        val dispatcher = DispatchLogger()
+        val verboseLevel = object : CallListLogger() {
+            override val minimumLogLevel = LogLevel.Error
+        }
+        dispatcher.install(verboseLevel)
+        dispatcher.verbose("tag", "message", Metadata(), null)
+        dispatcher.debug("tag", "message", Metadata(), null)
+        dispatcher.info("tag", "message", Metadata(), null)
+        dispatcher.warn("tag", "message", Metadata(), null)
+        dispatcher.error("tag", "message", Metadata(), null)
+        dispatcher.assert("tag", "message", Metadata(), null)
+        assertEquals(0, verboseLevel.verboseCalls.size)
+        assertEquals(0, verboseLevel.debugCalls.size)
+        assertEquals(0, verboseLevel.infoCalls.size)
+        assertEquals(0, verboseLevel.warnCalls.size)
+        assertEquals(1, verboseLevel.errorCalls.size)
+        assertEquals(1, verboseLevel.assertCalls.size)
+    }
+
+    @Test
+    fun consumers_withMinimumLogLevelAssert_receiveAppropriateCalls() {
+        val dispatcher = DispatchLogger()
+        val verboseLevel = object : CallListLogger() {
+            override val minimumLogLevel = LogLevel.Assert
+        }
+        dispatcher.install(verboseLevel)
+        dispatcher.verbose("tag", "message", Metadata(), null)
+        dispatcher.debug("tag", "message", Metadata(), null)
+        dispatcher.info("tag", "message", Metadata(), null)
+        dispatcher.warn("tag", "message", Metadata(), null)
+        dispatcher.error("tag", "message", Metadata(), null)
+        dispatcher.assert("tag", "message", Metadata(), null)
+        assertEquals(0, verboseLevel.verboseCalls.size)
+        assertEquals(0, verboseLevel.debugCalls.size)
+        assertEquals(0, verboseLevel.infoCalls.size)
+        assertEquals(0, verboseLevel.warnCalls.size)
+        assertEquals(0, verboseLevel.errorCalls.size)
+        assertEquals(1, verboseLevel.assertCalls.size)
+    }
 }

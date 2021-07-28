@@ -24,7 +24,7 @@ public object Log : HideFromStackTraceTag {
 
     /** Send a verbose-level log message to the global dispatcher. */
     public fun verbose(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
-        if (dispatcher.hasConsumers) {
+        if (dispatcher.canLog(LogLevel.Verbose)) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
             dispatcher.verbose(tag ?: tagGenerator.getTag(), body, metadata, throwable)
@@ -34,7 +34,7 @@ public object Log : HideFromStackTraceTag {
 
     /** Send a debug-level log message to the global dispatcher. */
     public fun debug(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
-        if (dispatcher.hasConsumers) {
+        if (dispatcher.canLog(LogLevel.Debug)) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
             dispatcher.debug(tag ?: tagGenerator.getTag(), body, metadata, throwable)
@@ -44,7 +44,7 @@ public object Log : HideFromStackTraceTag {
 
     /** Send an info-level log message to the global dispatcher. */
     public fun info(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
-        if (dispatcher.hasConsumers) {
+        if (dispatcher.canLog(LogLevel.Info)) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
             dispatcher.info(tag ?: tagGenerator.getTag(), body, metadata, throwable)
@@ -54,7 +54,7 @@ public object Log : HideFromStackTraceTag {
 
     /** Send an warn-level log message to the global dispatcher. */
     public fun warn(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
-        if (dispatcher.hasConsumers) {
+        if (dispatcher.canLog(LogLevel.Warn)) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
             dispatcher.warn(tag ?: tagGenerator.getTag(), body, metadata, throwable)
@@ -64,7 +64,7 @@ public object Log : HideFromStackTraceTag {
 
     /** Send an error-level log message to the global dispatcher. */
     public fun error(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
-        if (dispatcher.hasConsumers) {
+        if (dispatcher.canLog(LogLevel.Error)) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
             dispatcher.error(tag ?: tagGenerator.getTag(), body, metadata, throwable)
@@ -74,11 +74,14 @@ public object Log : HideFromStackTraceTag {
 
     /** Send an assert-level log message to the global dispatcher. */
     public fun assert(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
-        if (dispatcher.hasConsumers) {
+        if (dispatcher.canLog(LogLevel.Assert)) {
             val metadata = metadataPool.borrow()
             val body = message(metadata)
             dispatcher.assert(tag ?: tagGenerator.getTag(), body, metadata, throwable)
             metadataPool.recycle(metadata)
         }
     }
+
+    private fun DispatchLogger.canLog(level: LogLevel): Boolean =
+        hasConsumers && level >= minimumLogLevel
 }
