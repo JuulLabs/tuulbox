@@ -3,6 +3,8 @@ package com.juul.tuulbox.logging
 import kotlinx.atomicfu.atomic
 import kotlinx.atomicfu.update
 
+private val EMPTY_STATE = DispatcherState(emptySet())
+
 private data class DispatcherState(
     val consumers: Set<Logger>,
 ) {
@@ -10,16 +12,12 @@ private data class DispatcherState(
         consumers.maxOfOrNull { it.minimumLogLevel }
             ?: LogLevel.Assert
     }
-
-    companion object {
-        val EMPTY = DispatcherState(emptySet())
-    }
 }
 
 /** Implementation of [Logger] which dispatches calls to consumer [Logger]s. */
 public class DispatchLogger : Logger {
 
-    private val state = atomic(DispatcherState.EMPTY)
+    private val state = atomic(EMPTY_STATE)
 
     override val minimumLogLevel: LogLevel
         get() = state.value.logLevel
@@ -35,7 +33,7 @@ public class DispatchLogger : Logger {
 
     /** Uninstall all installed consumers. */
     public fun clear() {
-        state.value = DispatcherState.EMPTY
+        state.value = EMPTY_STATE
     }
 
     override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
