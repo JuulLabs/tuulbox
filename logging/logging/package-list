@@ -1,6 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.juul.tuulbox.logging////PointingToDeclaration/logging/com.juul.tuulbox.logging/index.html
+$dokka.location:com.juul.tuulbox.logging//withMinimumLogLevel/com.juul.tuulbox.logging.Logger#com.juul.tuulbox.logging.LogLevel/PointingToDeclaration/logging/com.juul.tuulbox.logging/with-minimum-log-level.html
 $dokka.location:com.juul.tuulbox.logging/ConsoleLogger///PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/index.html
 $dokka.location:com.juul.tuulbox.logging/ConsoleLogger/assert/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]assert.html
 $dokka.location:com.juul.tuulbox.logging/ConsoleLogger/debug/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]debug.html
@@ -19,6 +20,7 @@ $dokka.location:com.juul.tuulbox.logging/DispatchLogger/debug/#kotlin.String#kot
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/error/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/error.html
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/info/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/info.html
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/install/#com.juul.tuulbox.logging.Logger/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/install.html
+$dokka.location:com.juul.tuulbox.logging/DispatchLogger/minimumLogLevel/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/minimum-log-level.html
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/verbose/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/verbose.html
 $dokka.location:com.juul.tuulbox.logging/DispatchLogger/warn/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-dispatch-logger/warn.html
 $dokka.location:com.juul.tuulbox.logging/HideFromStackTraceTag///PointingToDeclaration/logging/com.juul.tuulbox.logging/-hide-from-stack-trace-tag/index.html
@@ -32,11 +34,31 @@ $dokka.location:com.juul.tuulbox.logging/Log/info/#kotlin.Throwable?#kotlin.Stri
 $dokka.location:com.juul.tuulbox.logging/Log/tagGenerator/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/tag-generator.html
 $dokka.location:com.juul.tuulbox.logging/Log/verbose/#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/verbose.html
 $dokka.location:com.juul.tuulbox.logging/Log/warn/#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/warn.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Assert///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-assert/index.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Assert/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-assert/name.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Assert/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-assert/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Debug///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-debug/index.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Debug/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-debug/name.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Debug/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-debug/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Error///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-error/index.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Error/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-error/name.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Error/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-error/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Info///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-info/index.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Info/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-info/name.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Info/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-info/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Verbose///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-verbose/index.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Verbose/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-verbose/name.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Verbose/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-verbose/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Warn///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-warn/index.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Warn/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-warn/name.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel.Warn/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/-warn/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/LogLevel///PointingToDeclaration/logging/com.juul.tuulbox.logging/-log-level/index.html
 $dokka.location:com.juul.tuulbox.logging/Logger///PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/index.html
 $dokka.location:com.juul.tuulbox.logging/Logger/assert/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/assert.html
 $dokka.location:com.juul.tuulbox.logging/Logger/debug/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/debug.html
 $dokka.location:com.juul.tuulbox.logging/Logger/error/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/error.html
 $dokka.location:com.juul.tuulbox.logging/Logger/info/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/info.html
+$dokka.location:com.juul.tuulbox.logging/Logger/minimumLogLevel/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/minimum-log-level.html
 $dokka.location:com.juul.tuulbox.logging/Logger/verbose/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/verbose.html
 $dokka.location:com.juul.tuulbox.logging/Logger/warn/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-logger/warn.html
 $dokka.location:com.juul.tuulbox.logging/ReadMetadata///PointingToDeclaration/logging/com.juul.tuulbox.logging/-read-metadata/index.html
