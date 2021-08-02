@@ -107,6 +107,49 @@ class LogTests {
     }
 
     @Test
+    fun verbose_withAssertOnlyLogger_doesntCreateMessage() {
+        val logger = CallListLogger().withMinimumLogLevel(LogLevel.Assert)
+        Log.dispatcher.install(logger)
+        Log.verbose { fail("Lambda should not be called") }
+    }
+
+    @Test
+    fun debug_withAssertOnlyLogger_doesntCreateMessage() {
+        val logger = CallListLogger().withMinimumLogLevel(LogLevel.Assert)
+        Log.dispatcher.install(logger)
+        Log.debug { fail("Lambda should not be called") }
+    }
+
+    @Test
+    fun info_withAssertOnlyLogger_doesntCreateMessage() {
+        val logger = CallListLogger().withMinimumLogLevel(LogLevel.Assert)
+        Log.dispatcher.install(logger)
+        Log.info { fail("Lambda should not be called") }
+    }
+
+    @Test
+    fun warn_withAssertOnlyLogger_doesntCreateMessage() {
+        val logger = CallListLogger().withMinimumLogLevel(LogLevel.Assert)
+        Log.dispatcher.install(logger)
+        Log.warn { fail("Lambda should not be called") }
+    }
+
+    @Test
+    fun error_withAssertOnlyLogger_doesntCreateMessage() {
+        val logger = CallListLogger().withMinimumLogLevel(LogLevel.Assert)
+        Log.dispatcher.install(logger)
+        Log.error { fail("Lambda should not be called") }
+    }
+
+    @Test
+    fun assert_withAssertOnlyLogger_createsMessage() {
+        val logger = CallListLogger()
+        Log.dispatcher.install(logger.withMinimumLogLevel(LogLevel.Assert))
+        Log.assert { "Success" }
+        assertEquals(1, logger.assertCalls.size)
+    }
+
+    @Test
     fun verboseExplicitTagIsUsed() {
         Log.tagGenerator = failTestTagGenerator
         val logger = CallListLogger()

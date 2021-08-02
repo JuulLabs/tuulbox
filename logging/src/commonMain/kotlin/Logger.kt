@@ -3,6 +3,10 @@ package com.juul.tuulbox.logging
 /** Classes which implement [Logger] can write logs. */
 public interface Logger {
 
+    /** Minimum level for this logger. Defaults to [LogLevel.Verbose] (all logs) if not overwritten. */
+    public val minimumLogLevel: LogLevel
+        get() = LogLevel.Verbose
+
     /** Log at verbose-level. Do not store a reference to [metadata], create a [copy][ReadMetadata.copy] if you need to. */
     public fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?)
 
