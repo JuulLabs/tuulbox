@@ -50,6 +50,14 @@ Log.dispatcher.install(ConsoleLogger)
 
 Custom loggers can be created by implementing the [`Logger`] interface.
 
+#### Apple (NSLog)
+
+Log to the Apple System Log by installing the `AppleSystemLogger`.
+
+```kotlin
+Log.dispatcher.install(AppleSystemLogger)
+```
+
 ### Log
 
 Log message can be logged via:
