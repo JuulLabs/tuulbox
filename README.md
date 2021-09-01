@@ -50,6 +50,21 @@ Log.dispatcher.install(ConsoleLogger)
 
 Custom loggers can be created by implementing the [`Logger`] interface.
 
+#### Android (Logcat)
+
+Because Kotlin Multiplatform does not yet nicely support Android and JVM as a hierarchical dependency, Logcat logging
+is provided as a separate artifact.
+
+```kotlin
+implementation("com.juul.tuulbox:logging-android:$version")
+```
+
+After adding the Gradle dependency, it can be installed as follows.
+
+```kotlin
+Log.dispatcher.install(AndroidLogger)
+```
+
 #### Apple (NSLog)
 
 Log to the Apple System Log by installing the `AppleSystemLogger`.

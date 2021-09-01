@@ -24,6 +24,7 @@ pluginManagement {
 include(
     "coroutines",
     "logging",
+    "logging-android",
     "functional",
     "temporal",
     "test",
