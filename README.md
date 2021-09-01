@@ -65,6 +65,14 @@ After adding the Gradle dependency, it can be installed as follows.
 Log.dispatcher.install(AndroidLogger)
 ```
 
+#### Apple (NSLog)
+
+Log to the Apple System Log by installing the `AppleSystemLogger`.
+
+```kotlin
+Log.dispatcher.install(AppleSystemLogger)
+```
+
 ### Log
 
 Log message can be logged via:
