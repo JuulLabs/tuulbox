@@ -2,6 +2,13 @@ $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:com.juul.tuulbox.logging////PointingToDeclaration/logging/com.juul.tuulbox.logging/index.html
 $dokka.location:com.juul.tuulbox.logging//withMinimumLogLevel/com.juul.tuulbox.logging.Logger#com.juul.tuulbox.logging.LogLevel/PointingToDeclaration/logging/com.juul.tuulbox.logging/with-minimum-log-level.html
+$dokka.location:com.juul.tuulbox.logging/AppleSystemLogger///PointingToDeclaration/logging/com.juul.tuulbox.logging/-apple-system-logger/index.html
+$dokka.location:com.juul.tuulbox.logging/AppleSystemLogger/assert/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-apple-system-logger/assert.html
+$dokka.location:com.juul.tuulbox.logging/AppleSystemLogger/debug/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-apple-system-logger/debug.html
+$dokka.location:com.juul.tuulbox.logging/AppleSystemLogger/error/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-apple-system-logger/error.html
+$dokka.location:com.juul.tuulbox.logging/AppleSystemLogger/info/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-apple-system-logger/info.html
+$dokka.location:com.juul.tuulbox.logging/AppleSystemLogger/verbose/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-apple-system-logger/verbose.html
+$dokka.location:com.juul.tuulbox.logging/AppleSystemLogger/warn/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-apple-system-logger/warn.html
 $dokka.location:com.juul.tuulbox.logging/ConsoleLogger///PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/index.html
 $dokka.location:com.juul.tuulbox.logging/ConsoleLogger/assert/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]assert.html
 $dokka.location:com.juul.tuulbox.logging/ConsoleLogger/debug/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]debug.html
