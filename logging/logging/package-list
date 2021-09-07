@@ -71,6 +71,14 @@ $dokka.location:com.juul.tuulbox.logging/Logger/warn/#kotlin.String#kotlin.Strin
 $dokka.location:com.juul.tuulbox.logging/ReadMetadata///PointingToDeclaration/logging/com.juul.tuulbox.logging/-read-metadata/index.html
 $dokka.location:com.juul.tuulbox.logging/ReadMetadata/copy/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-read-metadata/copy.html
 $dokka.location:com.juul.tuulbox.logging/ReadMetadata/get/#com.juul.tuulbox.logging.Key[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-read-metadata/get.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity.Companion///PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/-companion/index.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity.NotSensitive///PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/-not-sensitive/index.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity.NotSensitive/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/-not-sensitive/name.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity.NotSensitive/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/-not-sensitive/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity.Sensitive///PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/-sensitive/index.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity.Sensitive/name/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/-sensitive/name.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity.Sensitive/ordinal/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/-sensitive/ordinal.html
+$dokka.location:com.juul.tuulbox.logging/Sensitivity///PointingToDeclaration/logging/com.juul.tuulbox.logging/-sensitivity/index.html
 $dokka.location:com.juul.tuulbox.logging/TagGenerator///PointingToDeclaration/logging/com.juul.tuulbox.logging/-tag-generator/index.html
 $dokka.location:com.juul.tuulbox.logging/TagGenerator/getTag/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-tag-generator/get-tag.html
 $dokka.location:com.juul.tuulbox.logging/WriteMetadata///PointingToDeclaration/logging/com.juul.tuulbox.logging/-write-metadata/index.html
