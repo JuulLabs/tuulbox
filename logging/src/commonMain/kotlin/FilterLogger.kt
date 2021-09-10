@@ -13,6 +13,9 @@ private class FilterLogger(
     private val inner: Logger,
 ) : Logger {
 
+    override val minimumLogLevel: LogLevel
+        get() = inner.minimumLogLevel
+
     override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {
         if (filter.canLog(tag, message, metadata, throwable)) {
             inner.verbose(tag, message, metadata, throwable)

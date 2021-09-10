@@ -48,7 +48,8 @@ Logging can be initialized via [`install`]:
 Log.dispatcher.install(ConsoleLogger)
 ```
 
-Custom loggers can be created by implementing the [`Logger`] interface.
+If no [`Logger`] is installed, then log blocks are not called at runtime. Custom loggers can be created by
+implementing the [`Logger`] interface.
 
 #### Android (Logcat)
 
@@ -131,6 +132,46 @@ A helpful pattern for many types is using the `companion object` as the metadata
 enum class Sample {
     A, B, C;
     companion object : Key<Sample>
+}
+```
+
+### Filtering
+
+Tuulbox implements log filtering by decorating [`Logger`]s. 
+
+#### Log Level Filters
+
+Log level filters are installed with [`Logger.withMinimumLogLevel`]. Because the filtering is based on which log call is
+made, instead of the content of the log call, these can be used as an optimization: if all [`Logger`]s installed in the
+root [`DispatchLogger`] have a minimum log level higher than the log call being made, then the log block is never called.
+
+```kotlin
+Log.dispatcher.install(
+    ConsoleLogger
+        .withMinimumLogLevel(LogLevel.Warn)
+)
+
+Log.debug { "This is not called." }
+Log.warn { "This still gets called." }
+```
+
+#### Log Content Filters
+
+Log content filters are installed with [`Logger.withFilter`], and have full access to the content of a log.
+
+
+```kotlin
+Log.dispatcher.install(
+    ConsoleLogger
+        .withFilter { tag, message, metadata, throwable ->
+            metadata[Sensitivity] == Sensitivity.NotSensitive
+        }
+)
+
+Log.debug { "This block is evaluated, but does not get printed to the console." }
+Log.warn { metadata ->
+    metadata[Sensitivity] = Sensitivity.NotSensitive
+    "This is also evaluated, and does print to the console."
 }
 ```
 
@@ -361,6 +402,9 @@ limitations under the License.
 [`WriteMetadata`]: https://juullabs.github.io/tuulbox/logging/logging/com.juul.tuulbox.logging/-write-metadata/index.html
 [`ReadMetadata`]: https://juullabs.github.io/tuulbox/logging/logging/com.juul.tuulbox.logging/-read-metadata/index.html
 [`Key`]: https://juullabs.github.io/tuulbox/logging/logging/com.juul.tuulbox.logging/-key/index.html
+[`Logger.withMinimumLogLevel`]: https://juullabs.github.io/tuulbox/logging/logging/com.juul.tuulbox.logging/with-minimum-log-level.html
+[`DispatchLogger`]: https://juullabs.github.io/tuulbox/logging/logging/com.juul.tuulbox.logging/-dispatch-logger/index.html
+[`Logger.withFilter`]: https://juullabs.github.io/tuulbox/logging/logging/com.juul.tuulbox.logging/with-filter.html
 [`runTest`]: https://juullabs.github.io/tuulbox/test/test/com.juul.tuulbox.test/run-test.html
 [`assertContains`]: https://juullabs.github.io/tuulbox/test/test/com.juul.tuulbox.test/assert-contains.html
 [`assertSimilar`]: https://juullabs.github.io/tuulbox/test/test/com.juul.tuulbox.test/assert-similar.html
