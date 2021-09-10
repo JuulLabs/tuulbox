@@ -48,8 +48,9 @@ Logging can be initialized via [`install`]:
 Log.dispatcher.install(ConsoleLogger)
 ```
 
-If no [`Logger`] is installed, then log blocks are not called at runtime. Custom loggers can be created by
-implementing the [`Logger`] interface.
+If no [`Logger`] is installed, then log blocks are not called at runtime.
+
+Custom loggers can be created by implementing the [`Logger`] interface.
 
 #### Android (Logcat)
 
