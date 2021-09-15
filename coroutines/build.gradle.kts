@@ -25,6 +25,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(kotlinx.coroutines())
+                api(kotlinx.datetime())
             }
         }
 
