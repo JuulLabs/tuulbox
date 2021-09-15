@@ -9,16 +9,25 @@ import kotlin.math.pow
 import kotlin.time.ExperimentalTime
 import kotlin.time.TimeSource
 
+/**
+ * Interface, using the strategy pattern, for an implementer to delay for periods of time.
+ */
 public interface DelayStrategy {
     public suspend fun await(iteration: Int, elapsedMillis: Long)
 }
 
+/**
+ * DelayStrategy that, when await() is called, will delay for a fixed amount of time, to be determined by [delayMillis].
+ */
 public class FixedDelay(private val delayMillis: Long) : DelayStrategy {
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
         delay(delayMillis - elapsedMillis)
     }
 }
 
+/**
+ * DelayStrategy with an exponentially increasing delay, calculated with [calculateExponentialBackoffDelay].
+ */
 public class ExponentialBackoff(
     private val minimumMillis: Long,
     private val maximumMillis: Long
@@ -35,6 +44,15 @@ internal fun calculateExponentialBackoffDelay(
     maximumMillis: Long
 ) = (E.pow(iteration / E).toLong() * 1000L).coerceIn(minimumMillis..maximumMillis) - elapsedMillis
 
+/**
+ * Dynamic [DelayStrategy], allowing for switching between multiple other DelayStrategies utilizing a [trigger]
+ * (to provide an input) and a [selector] function (to determine a resulting DelayStrategy from said input).
+ *
+ * The resulting [DelayStrategy]'s await will be called with an ellapsedMillis determined by the amount
+ * of time that has passed since the Dynamic DelayStrategy's await was called, allowing it to factor that into its
+ * calculation (for the purposes of adjusting one DelayStrategy's delay based on the amount of time that passed in another
+ * DelayStrategy's delay).
+ */
 @OptIn(ExperimentalTime::class)
 public class Dynamic<T> : DelayStrategy {
 
