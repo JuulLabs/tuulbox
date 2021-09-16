@@ -1,3 +1,5 @@
+package com.juul.tuulbox.coroutines.delay
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -17,7 +19,7 @@ public interface DelayStrategy {
 }
 
 /**
- * DelayStrategy that, when await() is called, will delay for a fixed amount of time, to be determined by [delayMillis].
+ * [DelayStrategy] that, when [await] is called, will delay for a fixed amount of time, specified by [delayMillis].
  */
 public class FixedDelay(private val delayMillis: Long) : DelayStrategy {
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
@@ -26,7 +28,7 @@ public class FixedDelay(private val delayMillis: Long) : DelayStrategy {
 }
 
 /**
- * DelayStrategy with an exponentially increasing delay, calculated with [calculateExponentialBackoffDelay].
+ * [DelayStrategy] with an exponentially increasing delay, calculated with [calculateExponentialBackoffDelay].
  */
 public class ExponentialBackoff(
     private val minimumMillis: Long,
