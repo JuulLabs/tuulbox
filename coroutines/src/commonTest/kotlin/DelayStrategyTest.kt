@@ -1,8 +1,5 @@
-package com.juul.tuulbox.coroutines.flow
+package com.juul.tuulbox.coroutines.delay
 
-import DelayStrategy
-import Dynamic
-import calculateExponentialBackoffDelay
 import com.juul.tuulbox.test.runTest
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.cancelAndJoin
