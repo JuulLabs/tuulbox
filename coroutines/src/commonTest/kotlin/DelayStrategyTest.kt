@@ -16,38 +16,40 @@ import kotlin.time.TimeSource
 import kotlin.time.toDuration
 
 class DelayStrategyTest {
+    @Test
+    fun defaultsWithMaximumDelayMillis_largeRetryNumber_adheresToMaximum() {
+        assertEquals(1_000L, getExponentialBackoffMillis(baseTimeMillis = 100, maximumDelayMillis = 1_000L, iteration = 20))
+    }
 
     @Test
-    fun testExponentialBackoff() {
-        val bounceOffMinimumBoundDelay = calculateExponentialBackoffDelay(
-            0, 0, 2_000, 20_000
-        )
-        assertEquals(2_000, bounceOffMinimumBoundDelay)
+    fun calculatedDelayResultsInInfinity_returnsMaximumDelayMillis() {
+        assertEquals(1_000L, getExponentialBackoffMillis(baseTimeMillis = 100_000L, maximumDelayMillis = 1_000L, iteration = 100_000))
+    }
 
-        val fiveIterationsDelay = calculateExponentialBackoffDelay(
-            5, 0, 2_000, 20_000
-        )
-        assertEquals(6_000, fiveIterationsDelay)
+    @Test
+    fun defaultsWithMinimumDelayMillis_numberBelowMinimum() {
+        assertEquals(1_000L, getExponentialBackoffMillis(baseTimeMillis = 10, minimumDelayMillis = 1_000L, iteration = 0))
+    }
 
-        val eightIterationsDelay = calculateExponentialBackoffDelay(
-            8, 0, 2_000, 20_000
-        )
-        assertEquals(18_000, eightIterationsDelay)
+    @Test
+    fun firstIteration_hasDelayEqualToBaseTimeMillis() {
+        assertEquals(100, getExponentialBackoffMillis(baseTimeMillis = 100, iteration = 0))
+    }
 
-        val bounceOffMaximumBoundDelay = calculateExponentialBackoffDelay(
-            30, 0, 2_000, 20_000
-        )
-        assertEquals(20_000, bounceOffMaximumBoundDelay)
-
-        val minusInitialElapsedDelay = calculateExponentialBackoffDelay(
-            0, 1_000, 2_000, 20_000
-        )
-        assertEquals(1_000, minusInitialElapsedDelay)
+    @Test
+    fun multipleRetries_increaseExponentially() {
+        val baseTimeMillis = 100L
+        var delay = baseTimeMillis
+        val iterations = 0..10
+        iterations.forEach { iteration ->
+            assertEquals(delay, getExponentialBackoffMillis(baseTimeMillis = 100L, iteration = iteration), "Backoff retry #$iteration")
+            delay *= 2
+        }
     }
 
     @Test
     @OptIn(ExperimentalTime::class)
-    fun testDynamicBackoff() = runTest {
+    fun dynamicDelayStrategy_switchesBetweenStrategies_usingTrigger() = runTest {
         val trigger = MutableStateFlow(true)
         val outputFlow: MutableStateFlow<Triple<Char, Int, Long>?> = MutableStateFlow(null)
         // TestDelay that will push an 'A' test value to the output and suspend indefinitely.
