@@ -2,7 +2,7 @@ object kotlinx {
 
     fun coroutines(
         module: String = "core",
-        version: String = "1.5.1"
+        version: String = "1.5.2"
     ) = "org.jetbrains.kotlinx:kotlinx-coroutines-$module:$version"
 
     fun datetime(
