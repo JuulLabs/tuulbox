@@ -100,30 +100,15 @@ internal fun getExponentialBackoffMillis(
  * DelayStrategy's delay).
  */
 @OptIn(ExperimentalTime::class)
-public class Dynamic<T> : DelayStrategy {
-
-    private val trigger: Flow<T>
-    private val selector: (T) -> DelayStrategy
-    private val timeSource: TimeSource
-
+public class Dynamic<T> internal constructor(
+    private val trigger: Flow<T>,
+    private val timeSource: TimeSource,
+    private val selector: (T) -> DelayStrategy,
+) : DelayStrategy {
     public constructor(
         trigger: Flow<T>,
-        selector: (T) -> DelayStrategy
-    ) {
-        this.trigger = trigger
-        this.selector = selector
-        timeSource = Clock.System.asTimeSource()
-    }
-
-    internal constructor(
-        trigger: Flow<T>,
         selector: (T) -> DelayStrategy,
-        timeSource: TimeSource
-    ) {
-        this.trigger = trigger
-        this.selector = selector
-        this.timeSource = timeSource
-    }
+    ) : this(trigger, Clock.System.asTimeSource(), selector)
 
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
         val mark = timeSource.markNow()

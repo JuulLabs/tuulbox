@@ -1,14 +1,15 @@
 package com.juul.tuulbox.coroutines.delay
 
 import com.juul.tuulbox.test.runTest
-import kotlinx.coroutines.awaitCancellation
-import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeout
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.TimeMark
@@ -51,52 +52,49 @@ class DelayStrategyTest {
     @OptIn(ExperimentalTime::class)
     fun dynamicDelayStrategy_switchesBetweenStrategies_usingTrigger() = runTest {
         val trigger = MutableStateFlow(true)
-        val outputFlow: MutableStateFlow<Triple<Char, Int, Long>?> = MutableStateFlow(null)
-        // TestDelay that will push an 'A' test value to the output and suspend indefinitely.
-        val testDelayA = TestDelay { (iteration, elapsedMillis) ->
-            outputFlow.value = Triple('A', iteration, elapsedMillis)
+        val timeMachine = TimeMachine()
+        val delayA = TimeMachineDelayStrategy(timeMachine, delayUntilMilliseconds = 1_000L)
+        val delayB = TimeMachineDelayStrategy(timeMachine, delayUntilMilliseconds = 2_000L)
+        val dynamic = Dynamic(trigger, timeMachine) { if (it) delayA else delayB }
+        val job = launch {
+            dynamic.await(iteration = 0, elapsedMillis = 0L)
         }
-        // TestDelay that will push a 'B' test value to the output and suspend indefinitely.
-        val testDelayB = TestDelay { (iteration, elapsedMillis) ->
-            outputFlow.value = Triple('B', iteration, elapsedMillis)
-        }
-        // Switch between testDelayA and testDelayB, based on the trigger.
-        val selector: (Boolean) -> DelayStrategy = { if (it) testDelayA else testDelayB }
-
-        // TimeSource that will increment by a second every time ElapsedNow() is called.
-        val timeSource = object : TimeSource {
-            private var fakedTime = 1
-
-            override fun markNow() = object : TimeMark() {
-                override fun elapsedNow() = fakedTime++.toDuration(DurationUnit.SECONDS)
-            }
-        }
-
-        val delayJob = launch {
-            val dynamic = Dynamic(
-                trigger,
-                selector,
-                timeSource
-            )
-            dynamic.await(0, 0)
-        }
-
-        withTimeout(10_000) {
-            delay(100L)
-            assertEquals(Triple('A', 0, 1_000L), outputFlow.value)
-            trigger.value = false
-            delay(100L)
-            assertEquals(Triple('B', 0, 2_000L), outputFlow.value)
-            delayJob.cancelAndJoin()
-        }
+        assertEquals(
+            expected = Invocation.Await(iteration = 0, elapsedMilliseconds = 0L),
+            actual = delayA.invocation.receive(),
+        )
+        assertFalse(job.isCompleted)
+        timeMachine.advanceBy(milliseconds = 500L)
+        trigger.value = false
+        assertEquals(
+            expected = Invocation.Await(iteration = 0, elapsedMilliseconds = 500L),
+            actual = delayB.invocation.receive(),
+        )
+        assertFalse(job.isCompleted)
+        timeMachine.advanceBy(milliseconds = 3_000L)
     }
 
-    private class TestDelay(
-        private val onAwait: (Pair<Int, Long>) -> Unit
+    @OptIn(ExperimentalTime::class)
+    private class TimeMachine : TimeSource {
+        private val elapsedMillis = MutableStateFlow(0L)
+        fun advanceBy(milliseconds: Long) { elapsedMillis.update { value -> value + milliseconds } }
+        suspend fun delayUntil(milliseconds: Long) { elapsedMillis.first { it >= milliseconds } }
+        private class TimeMachineMark(private val parent: TimeMachine) : TimeMark() {
+            override fun elapsedNow(): Duration = parent.elapsedMillis.value.toDuration(DurationUnit.MILLISECONDS)
+        }
+        override fun markNow(): TimeMark = TimeMachineMark(this)
+    }
+    private sealed class Invocation {
+        data class Await(val iteration: Int, val elapsedMilliseconds: Long) : Invocation()
+    }
+    private class TimeMachineDelayStrategy(
+        private val timeMachine: TimeMachine,
+        private val delayUntilMilliseconds: Long,
     ) : DelayStrategy {
+        val invocation = Channel<Invocation>()
         override suspend fun await(iteration: Int, elapsedMillis: Long) {
-            onAwait(iteration to elapsedMillis)
-            awaitCancellation()
+            invocation.send(Invocation.Await(iteration, elapsedMillis))
+            timeMachine.delayUntil(milliseconds = delayUntilMilliseconds)
         }
     }
 }
