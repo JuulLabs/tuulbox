@@ -56,6 +56,7 @@ class DelayStrategyTest {
         val delayA = TimeMachineDelayStrategy(timeMachine, delayUntilMilliseconds = 1_000L)
         val delayB = TimeMachineDelayStrategy(timeMachine, delayUntilMilliseconds = 2_000L)
         val dynamic = Dynamic(trigger, timeMachine) { if (it) delayA else delayB }
+
         val job = launch {
             dynamic.await(iteration = 0, elapsedMillis = 0L)
         }
@@ -64,6 +65,7 @@ class DelayStrategyTest {
             actual = delayA.invocation.receive(),
         )
         assertFalse(job.isCompleted)
+
         timeMachine.advanceBy(milliseconds = 500L)
         trigger.value = false
         assertEquals(
@@ -71,6 +73,7 @@ class DelayStrategyTest {
             actual = delayB.invocation.receive(),
         )
         assertFalse(job.isCompleted)
+
         timeMachine.advanceBy(milliseconds = 3_000L)
     }
 }
