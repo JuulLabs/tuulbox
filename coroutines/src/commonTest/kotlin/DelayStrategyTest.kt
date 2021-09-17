@@ -73,28 +73,30 @@ class DelayStrategyTest {
         assertFalse(job.isCompleted)
         timeMachine.advanceBy(milliseconds = 3_000L)
     }
+}
 
-    @OptIn(ExperimentalTime::class)
-    private class TimeMachine : TimeSource {
-        private val elapsedMillis = MutableStateFlow(0L)
-        fun advanceBy(milliseconds: Long) { elapsedMillis.update { value -> value + milliseconds } }
-        suspend fun delayUntil(milliseconds: Long) { elapsedMillis.first { it >= milliseconds } }
-        private class TimeMachineMark(private val parent: TimeMachine) : TimeMark() {
-            override fun elapsedNow(): Duration = parent.elapsedMillis.value.toDuration(DurationUnit.MILLISECONDS)
-        }
-        override fun markNow(): TimeMark = TimeMachineMark(this)
+@OptIn(ExperimentalTime::class)
+private class TimeMachine : TimeSource {
+    private val elapsedMillis = MutableStateFlow(0L)
+    fun advanceBy(milliseconds: Long) { elapsedMillis.update { value -> value + milliseconds } }
+    suspend fun delayUntil(milliseconds: Long) { elapsedMillis.first { it >= milliseconds } }
+    private class TimeMachineMark(private val parent: TimeMachine) : TimeMark() {
+        override fun elapsedNow(): Duration = parent.elapsedMillis.value.toDuration(DurationUnit.MILLISECONDS)
     }
-    private sealed class Invocation {
-        data class Await(val iteration: Int, val elapsedMilliseconds: Long) : Invocation()
-    }
-    private class TimeMachineDelayStrategy(
-        private val timeMachine: TimeMachine,
-        private val delayUntilMilliseconds: Long,
-    ) : DelayStrategy {
-        val invocation = Channel<Invocation>()
-        override suspend fun await(iteration: Int, elapsedMillis: Long) {
-            invocation.send(Invocation.Await(iteration, elapsedMillis))
-            timeMachine.delayUntil(milliseconds = delayUntilMilliseconds)
-        }
+    override fun markNow(): TimeMark = TimeMachineMark(this)
+}
+
+private sealed class Invocation {
+    data class Await(val iteration: Int, val elapsedMilliseconds: Long) : Invocation()
+}
+
+private class TimeMachineDelayStrategy(
+    private val timeMachine: TimeMachine,
+    private val delayUntilMilliseconds: Long,
+) : DelayStrategy {
+    val invocation = Channel<Invocation>()
+    override suspend fun await(iteration: Int, elapsedMillis: Long) {
+        invocation.send(Invocation.Await(iteration, elapsedMillis))
+        timeMachine.delayUntil(milliseconds = delayUntilMilliseconds)
     }
 }

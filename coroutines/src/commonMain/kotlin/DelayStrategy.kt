@@ -54,7 +54,7 @@ private const val DEFAULT_MAXIMUM_DELAY = Long.MAX_VALUE
  * |     4     |  1600 |
  * |    ...    |   ... |
  *
- * * Inspired by:
+ * Inspired by:
  * [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
  */
 public class ExponentialBackoff(
