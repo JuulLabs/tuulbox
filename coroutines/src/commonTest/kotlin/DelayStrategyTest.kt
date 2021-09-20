@@ -38,6 +38,11 @@ class DelayStrategyTest {
     }
 
     @Test
+    fun firstIteration_hasDelayEqualToBaseTimeMillisMinusElapsed() {
+        assertEquals(50, getExponentialBackoffMillis(baseTimeMillis = 100, iteration = 0, elapsedMillis = 50L))
+    }
+
+    @Test
     fun multipleRetries_increaseExponentially() {
         val baseTimeMillis = 100L
         var delay = baseTimeMillis
