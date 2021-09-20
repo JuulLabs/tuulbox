@@ -73,7 +73,8 @@ public class ExponentialBackoff(
                 baseTimeMillis,
                 multiplier,
                 minimumDelayMillis,
-                maximumDelayMillis
+                maximumDelayMillis,
+                elapsedMillis
             )
         )
     }
@@ -84,11 +85,12 @@ internal fun getExponentialBackoffMillis(
     baseTimeMillis: Long = DEFAULT_BASE_TIME_MILLIS,
     multiplier: Float = DEFAULT_MULTIPLIER,
     minimumDelayMillis: Long = DEFAULT_MINIMUM_DELAY,
-    maximumDelayMillis: Long = DEFAULT_MAXIMUM_DELAY
+    maximumDelayMillis: Long = DEFAULT_MAXIMUM_DELAY,
+    elapsedMillis: Long = 0L
 ) = (baseTimeMillis * multiplier.pow(iteration))
     .toLong()
     .coerceAtLeast(minimumDelayMillis)
-    .coerceAtMost(maximumDelayMillis)
+    .coerceAtMost(maximumDelayMillis) - elapsedMillis
 
 /**
  * Dynamic [DelayStrategy], allowing for switching between multiple other DelayStrategies utilizing a [trigger]
