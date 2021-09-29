@@ -1,8 +1,8 @@
 package com.juul.tuulbox.logging
 
 import com.juul.tuulbox.logging.Log.dispatcher
-import kotlinx.atomicfu.atomic
 import kotlin.native.concurrent.ThreadLocal
+import kotlinx.atomicfu.atomic
 
 @ThreadLocal // Thread local pool means that metadata returned from it are safe to mutate on that same thread.
 private val metadataPool = Pool(factory = ::Metadata, refurbish = Metadata::clear)
@@ -21,6 +21,18 @@ public object Log : HideFromStackTraceTag {
         set(value) {
             atomicTagGenerator.value = value
         }
+
+    /** Send a log message at a dynamic [level] to the global dispatcher. */
+    public fun dynamic(level: LogLevel, throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
+        when (level) {
+            LogLevel.Verbose -> verbose(throwable, tag, message)
+            LogLevel.Debug -> debug(throwable, tag, message)
+            LogLevel.Info -> info(throwable, tag, message)
+            LogLevel.Warn -> warn(throwable, tag, message)
+            LogLevel.Error -> error(throwable, tag, message)
+            LogLevel.Assert -> assert(throwable, tag, message)
+        }
+    }
 
     /** Send a verbose-level log message to the global dispatcher. */
     public fun verbose(throwable: Throwable? = null, tag: String? = null, message: (WriteMetadata) -> String) {
