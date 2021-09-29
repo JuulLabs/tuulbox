@@ -37,6 +37,7 @@ $dokka.location:com.juul.tuulbox.logging/Log///PointingToDeclaration/logging/co
 $dokka.location:com.juul.tuulbox.logging/Log/assert/#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/assert.html
 $dokka.location:com.juul.tuulbox.logging/Log/debug/#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/debug.html
 $dokka.location:com.juul.tuulbox.logging/Log/dispatcher/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/dispatcher.html
+$dokka.location:com.juul.tuulbox.logging/Log/dynamic/#com.juul.tuulbox.logging.LogLevel#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/dynamic.html
 $dokka.location:com.juul.tuulbox.logging/Log/error/#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/error.html
 $dokka.location:com.juul.tuulbox.logging/Log/info/#kotlin.Throwable?#kotlin.String?#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.String]/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/info.html
 $dokka.location:com.juul.tuulbox.logging/Log/tagGenerator/#/PointingToDeclaration/logging/com.juul.tuulbox.logging/-log/tag-generator.html
