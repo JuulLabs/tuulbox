@@ -23,16 +23,18 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":logging"))
-                api("io.ktor:ktor-client-core:1.6.3")
-                api("io.ktor:ktor-client-logging:1.6.3")
+                api(ktor.client("core"))
+                api(ktor.client("logging"))
             }
         }
 
         val commonTest by getting {
             dependencies {
+                implementation(project(":logging-test"))
                 implementation(project(":test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation(ktor.client("mock"))
             }
         }
 
@@ -52,20 +54,47 @@ kotlin {
             dependsOn(commonMain)
         }
 
+        val appleTest by creating {
+            dependsOn(commonTest)
+            dependencies {
+                implementation(kotlinx.coroutines("core", "1.5.2-native-mt")) {
+                    version {
+                        strictly("1.5.2-native-mt")
+                    }
+                }
+            }
+        }
+
         val macosX64Main by getting {
             dependsOn(appleMain)
+        }
+
+        val macosX64Test by getting {
+            dependsOn(appleTest)
         }
 
         val iosX64Main by getting {
             dependsOn(appleMain)
         }
 
+        val iosX64Test by getting {
+            dependsOn(appleTest)
+        }
+
         val iosArm32Main by getting {
             dependsOn(appleMain)
         }
 
+        val iosArm32Test by getting {
+            dependsOn(appleTest)
+        }
+
         val iosArm64Main by getting {
             dependsOn(appleMain)
+        }
+
+        val iosArm64Test by getting {
+            dependsOn(appleTest)
         }
     }
 }

@@ -218,4 +218,15 @@ class LogTests {
             "Test message"
         }
     }
+
+    @Test
+    fun dynamic_atEachLevel_usesAppropriateLevel() {
+        for (level in LogLevel.values()) {
+            val logger = CallListLogger()
+            Log.dispatcher.install(logger)
+            Log.dynamic(level) { "test" }
+            assertTrue { logger.allCalls.any { it.level == level } }
+            Log.dispatcher.clear()
+        }
+    }
 }
