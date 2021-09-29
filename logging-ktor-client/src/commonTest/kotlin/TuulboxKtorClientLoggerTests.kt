@@ -14,14 +14,14 @@ import kotlin.test.assertTrue
 private const val URL = "https://localhost"
 private const val RESPONSE = "Hello, world."
 
-class TuulboxLoggerTests {
+class TuulboxKtorClientLoggerTests {
 
     @AfterTest
     fun cleanup() {
         Log.dispatcher.clear()
     }
 
-    private fun createClient(tuulboxLogger: TuulboxLogger): HttpClient {
+    private fun createClient(tuulboxLogger: TuulboxKtorClientLogger): HttpClient {
         val engine = MockEngine { request -> respond(RESPONSE) }
         return HttpClient(engine) {
             install(Logging) {
@@ -35,7 +35,7 @@ class TuulboxLoggerTests {
     fun tuulboxlogger_atDefaultLevel_logsVerbose() = runTest {
         val logger = CallListLogger()
         Log.dispatcher.install(logger)
-        val client = createClient(TuulboxLogger())
+        val client = createClient(TuulboxKtorClientLogger())
         client.get<String>(URL)
         assertTrue { logger.verboseCalls.isNotEmpty() }
     }
@@ -45,7 +45,7 @@ class TuulboxLoggerTests {
         for (level in LogLevel.values()) {
             val logger = CallListLogger()
             Log.dispatcher.install(logger)
-            val client = createClient(TuulboxLogger(level))
+            val client = createClient(TuulboxKtorClientLogger(level))
             client.get<String>(URL)
             assertTrue { logger.allCalls.any { it.level == level } }
             Log.dispatcher.clear()
@@ -56,7 +56,7 @@ class TuulboxLoggerTests {
     fun tuulboxlogger_withMetadataCallback_installsMetadata() = runTest {
         val logger = CallListLogger()
         Log.dispatcher.install(logger)
-        val client = createClient(TuulboxLogger { metadata -> metadata[Sensitivity] = Sensitivity.Sensitive })
+        val client = createClient(TuulboxKtorClientLogger { metadata -> metadata[Sensitivity] = Sensitivity.Sensitive })
         client.get<String>(URL)
         assertTrue { logger.allCalls.any { it.metadata[Sensitivity] == Sensitivity.Sensitive } }
     }

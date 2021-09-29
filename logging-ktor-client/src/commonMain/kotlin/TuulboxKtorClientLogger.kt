@@ -10,12 +10,12 @@ import io.ktor.client.features.logging.Logger as KtorLogger
  * ```kotlin
  * HttpClient {
  *     install(Logging) {
- *         logger = TuulboxLogger()
+ *         logger = TuulboxKtorClientLogger()
  *     }
  * }
  * ```
  */
-public class TuulboxLogger(
+public class TuulboxKtorClientLogger(
     private val level: LogLevel = Verbose,
     private val writeMetadata: (WriteMetadata) -> Unit = {},
 ) : KtorLogger {
