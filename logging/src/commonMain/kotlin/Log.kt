@@ -1,8 +1,8 @@
 package com.juul.tuulbox.logging
 
 import com.juul.tuulbox.logging.Log.dispatcher
-import kotlin.native.concurrent.ThreadLocal
 import kotlinx.atomicfu.atomic
+import kotlin.native.concurrent.ThreadLocal
 
 @ThreadLocal // Thread local pool means that metadata returned from it are safe to mutate on that same thread.
 private val metadataPool = Pool(factory = ::Metadata, refurbish = Metadata::clear)
