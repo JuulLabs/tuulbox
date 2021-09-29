@@ -11,7 +11,7 @@ import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertTrue
 
-private const val URL = "https://example.com"
+private const val URL = "https://localhost"
 private const val RESPONSE = "Hello, world."
 
 class TuulboxLoggerTests {
