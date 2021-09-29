@@ -21,6 +21,7 @@ internal class Metadata : ReadMetadata, WriteMetadata {
 
     override fun equals(other: Any?): Boolean = other is Metadata && storedData == other.storedData
     override fun hashCode(): Int = storedData.hashCode()
+    override fun toString(): String = storedData.toString()
 }
 
 /**
