@@ -51,4 +51,13 @@ class TuulboxLoggerTests {
             Log.dispatcher.clear()
         }
     }
+
+    @Test
+    fun tuulboxlogger_withMetadataCallback_installsMetadata() = runTest {
+        val logger = CallListLogger()
+        Log.dispatcher.install(logger)
+        val client = createClient(TuulboxLogger { metadata -> metadata[Sensitivity] = Sensitivity.Sensitive })
+        client.get<String>(URL)
+        assertTrue { logger.allCalls.any { it.metadata[Sensitivity] == Sensitivity.Sensitive } }
+    }
 }
