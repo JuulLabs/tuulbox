@@ -1,10 +1,11 @@
-package com.juul.tuulbox.coroutines.flow
+package flow
 
+import com.juul.tuulbox.coroutines.flow.combine
 import com.juul.tuulbox.test.runTest
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.single
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.single
 
 class CombineParametersTest {
 

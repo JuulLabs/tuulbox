@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
+    id("kotlinx-atomicfu")
     id("org.jmailen.kotlinter")
     jacoco
     id("org.jetbrains.dokka")
