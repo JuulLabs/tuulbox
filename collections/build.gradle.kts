@@ -19,6 +19,8 @@ kotlin {
     iosArm64()
 
     sourceSets {
+        val commonMain by getting { }
+
         val commonTest by getting {
             dependencies {
                 implementation(project(":test"))

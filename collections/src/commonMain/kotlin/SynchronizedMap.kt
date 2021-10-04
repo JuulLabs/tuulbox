@@ -68,6 +68,16 @@ public class SynchronizedMap<K, V>(
     /**
      * Performs [action] with this map's [ReentrantLock] locked. Useful for when correctness dictates that unlocks should not
      * occur between multiple calls, such as when calling [MutableMap.getOrPut].
+     *
+     * ```kotlin
+     * // Extension functions on `MutableMap` that compose read-and-writes can be protected to work atomically
+     * map.synchronized { getOrPut("key") { defaultValue } }
+     * // Also useful when a value is updated based on its previous value.
+     * map.synchronized {
+     *     val previous = get("key")
+     *     put("key", (previous ?: 0) + 1)
+     * }
+     * ```
      */
     public inline fun <T> synchronized(action: SynchronizedMap<K, V>.() -> T): T = lock.withLock { action(this) }
 }
