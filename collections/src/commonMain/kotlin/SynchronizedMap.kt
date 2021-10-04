@@ -1,4 +1,4 @@
-package com.juul.tuulbox.coroutines
+package com.juul.tuulbox.collections
 
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.reentrantLock

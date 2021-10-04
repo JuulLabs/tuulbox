@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.library")
     kotlin("multiplatform")
+    id("kotlinx-atomicfu")
     id("org.jmailen.kotlinter")
     jacoco
     id("org.jetbrains.dokka")
@@ -13,40 +13,17 @@ kotlin {
     explicitApi()
     jvm()
     js().browser()
-    android {
-        publishAllLibraryVariants()
-    }
     macosX64()
     iosX64()
     iosArm32()
     iosArm64()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(kotlinx.coroutines())
-                api(kotlinx.datetime())
-            }
-        }
-
         val commonTest by getting {
             dependencies {
                 implementation(project(":test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-            }
-        }
-
-        val androidMain by getting {
-            dependencies {
-                api(kotlinx.coroutines("android"))
-                implementation(androidx.startup())
-            }
-        }
-
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
             }
         }
 
@@ -80,26 +57,6 @@ kotlin {
 
         val iosArm64Main by getting {
             dependsOn(appleMain)
-        }
-    }
-}
-
-android {
-    compileSdkVersion(31)
-
-    defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(31)
-    }
-
-    lintOptions {
-        isAbortOnError = true
-        isWarningsAsErrors = true
-    }
-
-    sourceSets {
-        val main by getting {
-            manifest.srcFile("src/androidMain/AndroidManifest.xml")
         }
     }
 }
