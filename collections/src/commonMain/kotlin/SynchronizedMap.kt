@@ -4,10 +4,23 @@ import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.reentrantLock
 import kotlinx.atomicfu.locks.withLock
 
+/** Returns an empty new [SynchronizedMap]. */
+public fun <K, V> synchronizedMapOf(): SynchronizedMap<K, V> =
+    SynchronizedMap(linkedMapOf())
+
+/** Returns a new [SynchronizedMap] with the specified contents. */
+public fun <K, V> synchronizedMapOf(vararg pairs: Pair<K, V>): SynchronizedMap<K, V> =
+    SynchronizedMap(linkedMapOf(*pairs))
+
 /** A [MutableMap] where all reads and writes are protected by a [ReentrantLock]. */
-public class SynchronizedMap<K, V>(
-    private val inner: MutableMap<K, V>,
+public class SynchronizedMap<K, V> internal constructor(
+    private val inner: LinkedHashMap<K, V>,
 ) : MutableMap<K, V> {
+
+    public constructor() : this(LinkedHashMap())
+    public constructor(capacity: Int) : this(LinkedHashMap(capacity))
+    public constructor(capacity: Int, loadFactor: Float) : this(LinkedHashMap(capacity, loadFactor))
+    public constructor(original: Map<K, V>) : this(LinkedHashMap(original))
 
     private inner class Entry(
         val entry: MutableMap.MutableEntry<K, V>,
