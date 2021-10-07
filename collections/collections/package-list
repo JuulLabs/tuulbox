@@ -1,0 +1,25 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.juul.tuulbox.collections////PointingToDeclaration/collections/com.juul.tuulbox.collections/index.html
+$dokka.location:com.juul.tuulbox.collections//synchronizedMapOf/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/synchronized-map-of.html
+$dokka.location:com.juul.tuulbox.collections//synchronizedMapOf/#kotlin.Array[kotlin.Pair[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/collections/com.juul.tuulbox.collections/synchronized-map-of.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap///PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/index.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/SynchronizedMap/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/-synchronized-map.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/SynchronizedMap/#kotlin.Int#kotlin.Float/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/-synchronized-map.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/SynchronizedMap/#kotlin.Int/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/-synchronized-map.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/SynchronizedMap/#kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/-synchronized-map.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/clear/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/clear.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/containsKey/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/contains-key.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/containsValue/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/contains-value.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/entries/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/entries.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/get/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/get.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/isEmpty/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/is-empty.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/keys/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/keys.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/put/#TypeParam(bounds=[kotlin.Any?])#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/put.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/putAll/#kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/put-all.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/remove/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/remove.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/size/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/size.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/synchronized/#kotlin.Function1[com.juul.tuulbox.collections.SynchronizedMap[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/synchronized.html
+$dokka.location:com.juul.tuulbox.collections/SynchronizedMap/values/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/values.html
+com.juul.tuulbox.collections
+
