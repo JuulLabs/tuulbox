@@ -5,6 +5,28 @@
 
 Toolbox of utilities/helpers for Kotlin development.
 
+## [Collections](https://juullabs.github.io/tuulbox/collections/index.html)
+
+![badge-ios]
+![badge-js]
+![badge-jvm]
+![badge-mac]
+
+### [`SynchronizedMap`]
+
+Provides a map where read and write operations are protected using a reentrant lock, allowing mutation from multiple
+threads without fear of data corruption.
+
+Use `SynchronizedMap.synchronize` when multiple read and write operations need to happen atomically, such as when
+performing a `getOrPut`. 
+
+```kotlin
+// Creating a synchronized map
+val map = SynchronizedMap(mutableMapOf("key" to "value"))
+// Synchronize across multiple operations
+val value = map.synchronized { getOrPut("key") { "defaultValue" } }
+```
+
 ## [Coroutines](https://juullabs.github.io/tuulbox/coroutines/index.html)
 
 ![badge-android]
@@ -329,6 +351,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation("com.juul.tuulbox:collections:$version")
                 implementation("com.juul.tuulbox:coroutines:$version")
                 implementation("com.juul.tuulbox:logging:$version")
                 implementation("com.juul.tuulbox:functional:$version")
@@ -383,6 +406,7 @@ limitations under the License.
 
 
 [Collections]: https://kotlinlang.org/docs/reference/collections-overview.html
+[`SynchronizedMap`]: https://juullabs.github.io/tuulbox/collections/collections/com.juul.tuulbox.collections/-synchronized-map/index.html 
 [Coroutines]: https://kotlinlang.org/docs/reference/coroutines-overview.html
 [KotlinX DateTime]: https://github.com/Kotlin/kotlinx-datetime
 [core library desugaring]: https://developer.android.com/studio/write/java8-support#library-desugaring
