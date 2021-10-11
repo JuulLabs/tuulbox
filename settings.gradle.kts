@@ -22,6 +22,7 @@ pluginManagement {
 }
 
 include(
+    "collections",
     "coroutines",
     "logging",
     "logging-android",
