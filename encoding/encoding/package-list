@@ -3,6 +3,11 @@ $dokka.linkExtension:html
 $dokka.location:com.juul.tuulbox.encoding////PointingToDeclaration/encoding/com.juul.tuulbox.encoding/index.html
 $dokka.location:com.juul.tuulbox.encoding//bits/kotlin.Int#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/bits.html
 $dokka.location:com.juul.tuulbox.encoding//bits/kotlin.Long#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/bits.html
+$dokka.location:com.juul.tuulbox.encoding//decodeBase64/kotlin.CharSequence#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/decode-base64.html
+$dokka.location:com.juul.tuulbox.encoding//decodeBase64Sequence/kotlin.CharSequence#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/decode-base64-sequence.html
+$dokka.location:com.juul.tuulbox.encoding//encodeBase64/kotlin.ByteArray#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/encode-base64.html
+$dokka.location:com.juul.tuulbox.encoding//encodeBase64/kotlin.collections.Iterable[kotlin.Byte]#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/encode-base64.html
+$dokka.location:com.juul.tuulbox.encoding//encodeBase64/kotlin.sequences.Sequence[kotlin.Byte]#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/encode-base64.html
 $dokka.location:com.juul.tuulbox.encoding//toHexString/kotlin.ByteArray#kotlin.String?#kotlin.String?#kotlin.Boolean/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/to-hex-string.html
 $dokka.location:com.juul.tuulbox.encoding/BitSet///PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-bit-set/index.html
 $dokka.location:com.juul.tuulbox.encoding/BitSet/asPrimitive/#/PointingToDeclaration/encoding/com.juul.tuulbox.encoding/-bit-set/as-primitive.html
