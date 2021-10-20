@@ -29,4 +29,12 @@ class Base64Tests {
             assertEquals(expected, base64.decodeBase64Sequence().toList().toByteArray().decodeToString())
         }
     }
+
+    @Test
+    fun encodeBase64_forRfcTestVectors_matchesRfc() {
+        for ((input, expected) in testVectors) {
+            println(input)
+            assertEquals(expected, input.encodeToByteArray().encodeBase64())
+        }
+    }
 }

@@ -1,18 +1,14 @@
 package com.juul.tuulbox.encoding
 
-private val UPPERCASE_LETTERS = 'A'..'Z'
-private val LOWERCASE_LETTERS = 'a'..'z'
-private val NUMBERS = '0'..'9'
-
 /**
  * Decode a single character to an integer between `0` and `63` (6 bits).
  *
  * Padding characters decode to `0`, and illegal characters throw an exception.
  */
 private fun Char.decode(): Int = when (this) {
-    in UPPERCASE_LETTERS -> this - 'A'
-    in LOWERCASE_LETTERS -> this - 'a' + 26
-    in NUMBERS -> this - '0' + 52
+    in 'A'..'Z' -> this - 'A'
+    in 'a'..'z' -> this - 'a' + 26
+    in '0'..'9' -> this - '0' + 52
     '+' -> 62
     '/' -> 63
     '=' -> 0
@@ -69,4 +65,46 @@ public fun CharSequence.decodeBase64Sequence(): Sequence<Byte> = sequence {
         }
         index += 4
     }
+}
+
+/** Encodes an integer between `0` and `63` (6 bits) to a single base 64 character. */
+private fun Int.encode(): Char = when (this) {
+    in 0..25 -> 'A' + this
+    in 26..51 -> 'a' + this - 26
+    in 52..61 -> '0' + this - 52
+    62 -> '+'
+    63 -> '/'
+    else -> error("Cannot encode more than 6 bits. Received `${this.toString(radix = 2)}`.")
+}
+
+public fun ByteArray.encodeBase64(): String {
+    // TODO: On JVM only, we can supply a `capacity` as an optimization.
+    val builder = StringBuilder()
+    var index = 0
+    var buffer = 0
+    var bufferBits = 0
+    while (index < size) {
+        if (bufferBits < 6) {
+            buffer = (buffer shl 8) or get(index).toInt()
+            index += 1
+            bufferBits += 8
+        }
+        while (bufferBits >= 6) {
+            val remainingBits = bufferBits - 6
+            builder.append((buffer shr remainingBits).encode())
+            buffer = when (val wipeBits = 32 - remainingBits) {
+                32 -> 0
+                else -> (buffer shl wipeBits) ushr wipeBits
+            }
+            bufferBits = remainingBits
+        }
+    }
+    if (bufferBits != 0) {
+        builder.append((buffer shl (6 - bufferBits)).encode())
+    }
+    when (size % 3) {
+        1 -> builder.append("==")
+        2 -> builder.append("=")
+    }
+    return builder.toString()
 }
