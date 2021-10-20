@@ -77,15 +77,18 @@ private fun Int.encode(): Char = when (this) {
     else -> error("Cannot encode more than 6 bits. Received `${this.toString(radix = 2)}`.")
 }
 
-public fun ByteArray.encodeBase64(): String {
-    // TODO: On JVM only, we can supply a `capacity` as an optimization.
+public fun ByteArray.encodeBase64(): String = iterator().encodeBase64()
+public fun Sequence<Byte>.encodeBase64(): String = iterator().encodeBase64()
+public fun Iterable<Byte>.encodeBase64(): String = iterator().encodeBase64()
+
+private fun Iterator<Byte>.encodeBase64(): String {
     val builder = StringBuilder()
     var index = 0
     var buffer = 0
     var bufferBits = 0
-    while (index < size) {
+    while (hasNext()) {
         if (bufferBits < 6) {
-            buffer = (buffer shl 8) or get(index).toInt()
+            buffer = (buffer shl 8) or next().toInt()
             index += 1
             bufferBits += 8
         }
@@ -101,10 +104,10 @@ public fun ByteArray.encodeBase64(): String {
     }
     if (bufferBits != 0) {
         builder.append((buffer shl (6 - bufferBits)).encode())
-    }
-    when (size % 3) {
-        1 -> builder.append("==")
-        2 -> builder.append("=")
+        when (bufferBits) {
+            2 -> builder.append("==") // ended on the first byte of a triplet (8 - 6 = 2)
+            4 -> builder.append("=") // ended on the second byte of a triplet (16 - 12 = 4)
+        }
     }
     return builder.toString()
 }
