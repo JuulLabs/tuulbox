@@ -15,22 +15,36 @@ private fun Char.decode(): Int = when (this) {
     else -> error("Illegal base64 character: `$this`.")
 }
 
+private fun CharSequence.getOrPad(index: Int) = getOrElse(index) { '=' }
+
 /**
  * Decodes a quartet of characters to a triplet of bytes, packed into the lower 24 bits of an integer.
  *
  * Note that the padding character `=` is packed as `000000`, and must be handled by the calling function.
  */
 private fun CharSequence.decodeQuartet(index: Int): Int =
-    (get(index).decode() shl 18) or (get(index + 1).decode() shl 12) or (get(index + 2).decode() shl 6) or (get(index + 3).decode())
+    (get(index).decode() shl 18) or
+        (get(index + 1).decode() shl 12) or
+        (getOrPad(index + 2).decode() shl 6) or
+        (getOrPad(index + 3).decode())
 
 /** Decodes a base64 character sequence to bytes. Decoding is done eagerly. */
 public fun CharSequence.decodeBase64(): ByteArray {
-    require(length % 4 == 0) { "Base64 strings must be an exact multiple of 4 characters long." }
     val numBytes = when {
         isEmpty() -> return byteArrayOf()
-        endsWith("==") -> (length / 4 * 3) - 2
-        endsWith('=') -> (length / 4 * 3) - 1
-        else -> length / 4 * 3
+        else -> when (length % 4) {
+            // Well-formed base64 with padding bytes
+            0 -> when {
+                endsWith("==") -> (length / 4 * 3) - 2
+                endsWith('=') -> (length / 4 * 3) - 1
+                else -> length / 4 * 3
+            }
+            // Padding bytes are likely just omitted
+            2 -> (length / 4 * 3) + 1
+            3 -> (length / 4 * 3) + 2
+            // Invalid base64
+            else -> error("Base64 strings cannot be one more than an exact multiple of 4 characters long.")
+        }
     }
 
     val byteBuffer = ByteArray(numBytes)
@@ -39,9 +53,9 @@ public fun CharSequence.decodeBase64(): ByteArray {
         val buffer = decodeQuartet(index)
         val byteIndex = (index / 4) * 3
         byteBuffer[byteIndex] = (buffer shr 16).toByte()
-        if (get(index + 2) != '=') {
+        if (getOrPad(index + 2) != '=') {
             byteBuffer[byteIndex + 1] = (buffer shr 8).toByte()
-            if (get(index + 3) != '=') {
+            if (getOrPad(index + 3) != '=') {
                 byteBuffer[byteIndex + 2] = buffer.toByte()
             }
         }
@@ -52,14 +66,13 @@ public fun CharSequence.decodeBase64(): ByteArray {
 
 /** Decodes a base64 character sequence to bytes. Decoding is done lazily. */
 public fun CharSequence.decodeBase64Sequence(): Sequence<Byte> = sequence {
-    require(length % 4 == 0) { "Base64 strings must be an exact multiple of 4 characters long." }
     var index = 0
     while (index < length) {
         val buffer = decodeQuartet(index)
         yield((buffer shr 16).toByte())
-        if (get(index + 2) != '=') {
+        if (getOrPad(index + 2) != '=') {
             yield((buffer shr 8).toByte())
-            if (get(index + 3) != '=') {
+            if (getOrPad(index + 3) != '=') {
                 yield(buffer.toByte())
             }
         }

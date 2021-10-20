@@ -14,6 +14,13 @@ private val testVectors = listOf(
     "foobar" to "Zm9vYmFy"
 )
 
+private val omittedPaddingTestVectors = listOf(
+    "f" to "Zg",
+    "fo" to "Zm8",
+    "foob" to "Zm9vYg",
+    "fooba" to "Zm9vYmE",
+)
+
 class Base64Tests {
 
     @Test
@@ -24,8 +31,22 @@ class Base64Tests {
     }
 
     @Test
+    fun decodeBase64_withOmittedPadding_isRecoverable() {
+        for ((expected, base64) in omittedPaddingTestVectors) {
+            assertEquals(expected, base64.decodeBase64().decodeToString())
+        }
+    }
+
+    @Test
     fun decodeBase64Sequence_forRfcTestVectors_matchesRfc() {
         for ((expected, base64) in testVectors) {
+            assertEquals(expected, base64.decodeBase64Sequence().toList().toByteArray().decodeToString())
+        }
+    }
+
+    @Test
+    fun decodeBase64Sequence_withOmittedPadding_isRecoverable() {
+        for ((expected, base64) in omittedPaddingTestVectors) {
             assertEquals(expected, base64.decodeBase64Sequence().toList().toByteArray().decodeToString())
         }
     }
