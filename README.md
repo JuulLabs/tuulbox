@@ -440,6 +440,7 @@ limitations under the License.
 
 [Collections]: https://kotlinlang.org/docs/reference/collections-overview.html
 [`SynchronizedMap`]: https://juullabs.github.io/tuulbox/collections/collections/com.juul.tuulbox.collections/-synchronized-map/index.html 
+[`Map.toJsObject`]: https://juullabs.github.io/tuulbox/collections/collections/com.juul.tuulbox.collections/to-js-object.html
 [Coroutines]: https://kotlinlang.org/docs/reference/coroutines-overview.html
 [KotlinX DateTime]: https://github.com/Kotlin/kotlinx-datetime
 [core library desugaring]: https://developer.android.com/studio/write/java8-support#library-desugaring
