@@ -377,6 +377,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.juul.tuulbox:collections:$version")
     implementation("com.juul.tuulbox:coroutines:$version")
     implementation("com.juul.tuulbox:logging:$version")
     implementation("com.juul.tuulbox:functional:$version")
