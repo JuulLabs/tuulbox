@@ -27,6 +27,39 @@ val map = SynchronizedMap(mutableMapOf("key" to "value"))
 val value = map.synchronized { getOrPut("key") { "defaultValue" } }
 ```
 
+### [`Map.toJsObject`]
+
+Convert a map to a Plain Old JavaScript Object by transforming the keys to strings and the values to any of the JavaScript types.
+
+`Map` is not directly accessible from Javascript code. For example:
+```kotlin
+val simple = mapOf(1 to "a")
+val json = js("JSON.stringify(simple)") as String
+println(json)
+>>>
+{
+  "_keys_up5z3z$_0": null,
+  "_values_6nw1f1$_0": null,
+  <and lots of other name-mangled properties>
+}
+
+val value = js("simple['1']") as String
+println(value)
+>>> ClassCastException: Illegal cast
+```
+
+Using this convertor to emit `Object` with the expected properties:
+```kotlin
+val simple = mapOf(1 to "a").toJsObject { it.key.toString() to it.value }
+val json = js("JSON.stringify(simple)") as String
+println(json)
+>>> {"1":"a"}
+
+val value = js("simple['1']") as String
+println(value)
+>>> a
+```
+
 ## [Coroutines](https://juullabs.github.io/tuulbox/coroutines/index.html)
 
 ![badge-android]
