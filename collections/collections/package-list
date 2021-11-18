@@ -3,6 +3,7 @@ $dokka.linkExtension:html
 $dokka.location:com.juul.tuulbox.collections////PointingToDeclaration/collections/com.juul.tuulbox.collections/index.html
 $dokka.location:com.juul.tuulbox.collections//synchronizedMapOf/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/synchronized-map-of.html
 $dokka.location:com.juul.tuulbox.collections//synchronizedMapOf/#kotlin.Array[kotlin.Pair[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/collections/com.juul.tuulbox.collections/synchronized-map-of.html
+$dokka.location:com.juul.tuulbox.collections//toJsObject/kotlin.collections.Map[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]#kotlin.Function1[kotlin.collections.Map.Entry[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])],kotlin.Pair[kotlin.String,kotlin.Any]]/PointingToDeclaration/collections/com.juul.tuulbox.collections/to-js-object.html
 $dokka.location:com.juul.tuulbox.collections/SynchronizedMap///PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/index.html
 $dokka.location:com.juul.tuulbox.collections/SynchronizedMap/SynchronizedMap/#/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/-synchronized-map.html
 $dokka.location:com.juul.tuulbox.collections/SynchronizedMap/SynchronizedMap/#kotlin.Int#kotlin.Float/PointingToDeclaration/collections/com.juul.tuulbox.collections/-synchronized-map/-synchronized-map.html
