@@ -35,6 +35,12 @@ kotlin {
             }
         }
 
+        val jsMain by getting {
+            dependencies {
+                implementation(wrappers.extensions())
+            }
+        }
+
         val jsTest by getting {
             dependencies {
                 implementation(kotlin("test-js"))

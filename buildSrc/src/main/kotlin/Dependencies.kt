@@ -30,3 +30,12 @@ object ktor {
         version: String = VERSION
     ) = "io.ktor:ktor-server-$module:$version"
 }
+
+/** https://github.com/JetBrains/kotlin-wrappers */
+object wrappers {
+    private const val groupId = "org.jetbrains.kotlin-wrappers"
+
+    fun extensions(
+        version: String = "1.0.1-pre.245-kotlin-1.5.30"
+    ) = "$groupId:kotlin-extensions:$version"
+}
