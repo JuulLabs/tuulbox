@@ -14,7 +14,7 @@ import kotlinext.js.jsObject
  *                  The value may be converted to an appropriate type as required.
  */
 public fun <K, V> Map<K, V>.toJsObject(
-    transform: (Map.Entry<K, V>) -> Pair<String, Any>
+    transform: (Map.Entry<K, V>) -> Pair<String, dynamic>
 ): Object {
     val pojo = jsObject<Object>()
     for (entry in this) {
@@ -24,7 +24,7 @@ public fun <K, V> Map<K, V>.toJsObject(
     return pojo
 }
 
-private fun Object.setProperty(name: String, value: Any) {
+private fun Object.setProperty(name: String, value: dynamic) {
     Object.defineProperty<Any, dynamic>(
         o = this,
         p = name,
@@ -32,7 +32,7 @@ private fun Object.setProperty(name: String, value: Any) {
     )
 }
 
-private fun propertyDescriptor(value: Any): PropertyDescriptor<Any> =
+private fun propertyDescriptor(value: dynamic): PropertyDescriptor<dynamic> =
     jsObject {
         this.enumerable = true
         this.value = value
