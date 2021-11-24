@@ -1,3 +1,11 @@
+public final class com/juul/tuulbox/encoding/Base64Kt {
+	public static final fun decodeBase64 (Ljava/lang/CharSequence;)[B
+	public static final fun decodeBase64Sequence (Ljava/lang/CharSequence;)Lkotlin/sequences/Sequence;
+	public static final fun encodeBase64 (Ljava/lang/Iterable;)Ljava/lang/String;
+	public static final fun encodeBase64 (Lkotlin/sequences/Sequence;)Ljava/lang/String;
+	public static final fun encodeBase64 ([B)Ljava/lang/String;
+}
+
 public abstract interface class com/juul/tuulbox/encoding/BitSet {
 	public abstract fun asPrimitive ()Ljava/lang/Object;
 	public abstract fun get (I)Z

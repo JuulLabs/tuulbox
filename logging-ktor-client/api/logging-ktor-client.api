@@ -1,0 +1,7 @@
+public final class com/juul/tuulbox/logging/TuulboxKtorClientLogger : io/ktor/client/features/logging/Logger {
+	public fun <init> ()V
+	public fun <init> (Lcom/juul/tuulbox/logging/LogLevel;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (Lcom/juul/tuulbox/logging/LogLevel;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun log (Ljava/lang/String;)V
+}
+
