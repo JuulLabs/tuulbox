@@ -1,0 +1,30 @@
+[versions]
+kotlin = "1.5.30"
+wrappers = "1.0.1-pre.245-kotlin-1.5.30"
+coroutines = "1.5.2"
+coroutines-native = "1.5.2-native-mt!!"
+ktor = "1.6.3"
+jacoco = "0.8.7"
+android-compile = "android-31"
+android-min = "24"
+
+[libraries]
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-native = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-native" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.2.1" }
+kotlin-wrappers = { module = "org.jetbrains.kotlin-wrappers:kotlin-extensions", version.ref = "wrappers" }
+androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.0.0" }
+ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version = "4.2.2" }
+atomicfu = { id = "kotlinx-atomicfu", version = "0.16.3" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "3.4.4" }
+dokka = { id = "org.jetbrains.dokka", version = "1.4.32" }
+android-publish = { id = "com.vanniktech.maven.publish", version = "0.15.1" }
+one-eight = { id = "net.mbonnin.one.eight", version = "0.2" }
+binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.8.0" }
