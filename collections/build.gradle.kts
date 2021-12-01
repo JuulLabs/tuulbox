@@ -37,7 +37,7 @@ kotlin {
 
         val jsMain by getting {
             dependencies {
-                implementation(wrappers.extensions())
+                implementation(libs.kotlin.wrappers)
             }
         }
 

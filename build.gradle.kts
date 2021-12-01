@@ -6,14 +6,14 @@ buildscript {
 }
 
 plugins {
-    kotlin("multiplatform") version "1.5.30" apply false
-    id("com.android.library") version "4.2.2" apply false
-    id("kotlinx-atomicfu") version "0.16.3" apply false
-    id("org.jmailen.kotlinter") version "3.4.4" apply false
-    id("org.jetbrains.dokka") version "1.4.32"
-    id("com.vanniktech.maven.publish") version "0.15.1" apply false
-    id("net.mbonnin.one.eight") version "0.2"
-    id("binary-compatibility-validator") version "0.8.0"
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.atomicfu) apply false
+    alias(libs.plugins.kotlinter) apply false
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.android.publish) apply false
+    alias(libs.plugins.one.eight)
+    alias(libs.plugins.binary.compatibility.validator)
 }
 
 allprojects {
@@ -34,7 +34,7 @@ allprojects {
 
     withPluginWhenEvaluated("jacoco") {
         configure<JacocoPluginExtension> {
-            toolVersion = "0.8.7"
+            toolVersion = libs.versions.jacoco.get()
         }
     }
 }

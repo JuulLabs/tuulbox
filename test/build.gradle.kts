@@ -19,8 +19,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(kotlin("test-common"))
-                api(kotlinx.coroutines())
-                api(kotlinx.datetime())
+                api(libs.kotlinx.coroutines.core)
+                api(libs.kotlinx.datetime)
             }
         }
 

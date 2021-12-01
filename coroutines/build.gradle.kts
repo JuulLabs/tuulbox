@@ -24,8 +24,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(kotlinx.coroutines())
-                api(kotlinx.datetime())
+                api(libs.kotlinx.coroutines.core)
+                api(libs.kotlinx.datetime)
             }
         }
 
@@ -39,8 +39,8 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                api(kotlinx.coroutines("android"))
-                implementation(androidx.startup())
+                api(libs.kotlinx.coroutines.android)
+                implementation(libs.androidx.startup)
             }
         }
 
@@ -85,11 +85,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(libs.versions.android.compile.get())
 
     defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(31)
+        minSdkVersion(libs.versions.android.min.get())
     }
 
     lintOptions {
