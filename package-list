@@ -1,0 +1,28 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/assert/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]assert.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/debug/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]debug.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/error/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]error.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/info/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]info.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/verbose/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]verbose.html
+$dokka.location:com.juul.tuulbox.logging/ConsoleLogger/warn/#kotlin.String#kotlin.String#com.juul.tuulbox.logging.ReadMetadata#kotlin.Throwable?/PointingToDeclaration/logging/com.juul.tuulbox.logging/-console-logger/[jvm]warn.html
+module:collections
+com.juul.tuulbox.collections
+module:coroutines
+com.juul.tuulbox.coroutines
+com.juul.tuulbox.coroutines.delay
+com.juul.tuulbox.coroutines.flow
+module:encoding
+com.juul.tuulbox.encoding
+module:functional
+com.juul.tuulbox.functional
+module:logging
+com.juul.tuulbox.logging
+module:logging-android
+com.juul.tuulbox.logging
+module:logging-ktor-client
+com.juul.tuulbox.logging
+module:temporal
+com.juul.tuulbox.temporal
+module:test
+com.juul.tuulbox.test

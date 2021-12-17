@@ -1,8 +1,0 @@
-$dokka.format:html-v1
-$dokka.linkExtension:html
-$dokka.location:com.juul.tuulbox.logging////PointingToDeclaration/logging-ktor-client/com.juul.tuulbox.logging/index.html
-$dokka.location:com.juul.tuulbox.logging/TuulboxKtorClientLogger///PointingToDeclaration/logging-ktor-client/com.juul.tuulbox.logging/-tuulbox-ktor-client-logger/index.html
-$dokka.location:com.juul.tuulbox.logging/TuulboxKtorClientLogger/TuulboxKtorClientLogger/#com.juul.tuulbox.logging.LogLevel#kotlin.Function1[com.juul.tuulbox.logging.WriteMetadata,kotlin.Unit]/PointingToDeclaration/logging-ktor-client/com.juul.tuulbox.logging/-tuulbox-ktor-client-logger/-tuulbox-ktor-client-logger.html
-$dokka.location:com.juul.tuulbox.logging/TuulboxKtorClientLogger/log/#kotlin.String/PointingToDeclaration/logging-ktor-client/com.juul.tuulbox.logging/-tuulbox-ktor-client-logger/log.html
-com.juul.tuulbox.logging
-
