@@ -1,7 +1,7 @@
 [versions]
 android-compile = "android-31"
 android-min = "24"
-coroutines = "1.5.2"
+coroutines = "1.6.0"
 coroutines-native = "1.5.2-native-mt!!"
 jacoco = "0.8.7"
 kotlin = "1.6.10"
