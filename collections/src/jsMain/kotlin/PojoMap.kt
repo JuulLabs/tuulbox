@@ -2,7 +2,7 @@ package com.juul.tuulbox.collections
 
 import kotlinext.js.Object
 import kotlinext.js.PropertyDescriptor
-import kotlinext.js.jsObject
+import kotlinext.js.jso
 
 /**
  * Convert a map to a Plain Old JavaScript Object by transforming the keys to strings and the values
@@ -16,7 +16,7 @@ import kotlinext.js.jsObject
 public fun <K, V> Map<K, V>.toJsObject(
     transform: (Map.Entry<K, V>) -> Pair<String, dynamic>
 ): Object {
-    val pojo = jsObject<Object>()
+    val pojo = jso<Object>()
     for (entry in this) {
         val (key, value) = transform(entry)
         pojo.setProperty(key, value)
@@ -33,7 +33,7 @@ private fun Object.setProperty(name: String, value: dynamic) {
 }
 
 private fun propertyDescriptor(value: dynamic): PropertyDescriptor<dynamic> =
-    jsObject {
+    jso {
         this.enumerable = true
         this.value = value
     }
