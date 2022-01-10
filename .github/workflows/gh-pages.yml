@@ -34,7 +34,7 @@ jobs:
 
       - run: ./gradlew dokkaHtmlMultiModule
 
-      - uses: JamesIves/github-pages-deploy-action@4.1.8
+      - uses: JamesIves/github-pages-deploy-action@4.2.1
         with:
           branch: gh-pages
           folder: build/gh-pages
