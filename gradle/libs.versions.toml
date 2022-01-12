@@ -1,6 +1,5 @@
 [versions]
-android-compile = "android-31"
-android-min = "24"
+android-compile = "31"
 coroutines = "1.6.0"
 coroutines-native = "1.6.0-native-mt!!"
 jacoco = "0.8.7"

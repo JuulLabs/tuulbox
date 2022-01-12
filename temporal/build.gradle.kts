@@ -73,10 +73,10 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(libs.versions.android.compile.get())
+    compileSdk = libs.versions.android.compile.get().toInt()
 
     defaultConfig {
-        minSdkVersion(libs.versions.android.min.get())
+        minSdk = 16
     }
 
     lintOptions {
