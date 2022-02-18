@@ -5,7 +5,7 @@ coroutines-native = "1.6.0-native-mt!!"
 jacoco = "0.8.7"
 kotlin = "1.6.10"
 ktor = "1.6.7"
-wrappers = "1.0.1-pre.299-kotlin-1.6.10"
+wrappers = "1.0.1-pre.301-kotlin-1.6.10"
 
 [libraries]
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
