@@ -1,8 +1,8 @@
 package com.juul.tuulbox.collections
 
-import kotlinext.js.Object
-import kotlinext.js.PropertyDescriptor
-import kotlinext.js.jso
+import kotlinx.js.Object
+import kotlinx.js.PropertyDescriptor
+import kotlinx.js.jso
 
 /**
  * Convert a map to a Plain Old JavaScript Object by transforming the keys to strings and the values
