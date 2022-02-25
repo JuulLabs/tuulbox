@@ -2,7 +2,7 @@ package com.juul.tuulbox.logging
 
 import com.juul.tuulbox.logging.LogLevel.Verbose
 import io.ktor.client.HttpClient
-import io.ktor.client.features.logging.Logger as KtorLogger
+import io.ktor.client.plugins.logging.Logger as KtorLogger
 
 /**
  * A logger for use with a Ktor [HttpClient].
