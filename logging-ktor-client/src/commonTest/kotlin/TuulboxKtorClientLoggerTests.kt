@@ -2,10 +2,11 @@ package com.juul.tuulbox.logging
 
 import com.juul.tuulbox.test.runTest
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
-import io.ktor.client.features.logging.LogLevel.ALL
-import io.ktor.client.features.logging.Logging
+import io.ktor.client.plugins.logging.LogLevel.ALL
+import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.get
 import kotlin.test.AfterTest
 import kotlin.test.Test
@@ -36,7 +37,7 @@ class TuulboxKtorClientLoggerTests {
         val logger = CallListLogger()
         Log.dispatcher.install(logger)
         val client = createClient(TuulboxKtorClientLogger())
-        client.get<String>(URL)
+        client.get(URL).body<String>()
         assertTrue { logger.verboseCalls.isNotEmpty() }
     }
 
@@ -46,7 +47,7 @@ class TuulboxKtorClientLoggerTests {
             val logger = CallListLogger()
             Log.dispatcher.install(logger)
             val client = createClient(TuulboxKtorClientLogger(level))
-            client.get<String>(URL)
+            client.get(URL).body<String>()
             assertTrue { logger.allCalls.any { it.level == level } }
             Log.dispatcher.clear()
         }
@@ -57,7 +58,7 @@ class TuulboxKtorClientLoggerTests {
         val logger = CallListLogger()
         Log.dispatcher.install(logger)
         val client = createClient(TuulboxKtorClientLogger { metadata -> metadata[Sensitivity] = Sensitivity.Sensitive })
-        client.get<String>(URL)
+        client.get(URL).body<String>()
         assertTrue { logger.allCalls.any { it.metadata[Sensitivity] == Sensitivity.Sensitive } }
     }
 }
