@@ -5,11 +5,9 @@ coroutines-native = "1.6.0-native-mt!!"
 jacoco = "0.8.7"
 kotlin = "1.6.10"
 ktor = "2.0.0-beta-1"
-wrappers = "1.0.1-pre.304-kotlin-1.6.10"
 
 [libraries]
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
-kotlin-wrappers = { module = "org.jetbrains.kotlin-wrappers:kotlin-extensions", version.ref = "wrappers" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-native = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-native" }

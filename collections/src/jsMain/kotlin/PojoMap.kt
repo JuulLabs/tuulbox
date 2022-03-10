@@ -1,9 +1,5 @@
 package com.juul.tuulbox.collections
 
-import kotlinx.js.Object
-import kotlinx.js.PropertyDescriptor
-import kotlinx.js.jso
-
 /**
  * Convert a map to a Plain Old JavaScript Object by transforming the keys to strings and the values
  * to any of the JavaScript types.
@@ -15,25 +11,11 @@ import kotlinx.js.jso
  */
 public fun <K, V> Map<K, V>.toJsObject(
     transform: (Map.Entry<K, V>) -> Pair<String, dynamic>
-): Object {
-    val pojo = jso<Object>()
+): dynamic {
+    val pojo = js("({})")
     for (entry in this) {
         val (key, value) = transform(entry)
-        pojo.setProperty(key, value)
+        pojo[key] = value
     }
     return pojo
 }
-
-private fun Object.setProperty(name: String, value: dynamic) {
-    Object.defineProperty<Any, dynamic>(
-        o = this,
-        p = name,
-        attributes = propertyDescriptor(value)
-    )
-}
-
-private fun propertyDescriptor(value: dynamic): PropertyDescriptor<dynamic> =
-    jso {
-        this.enumerable = true
-        this.value = value
-    }
