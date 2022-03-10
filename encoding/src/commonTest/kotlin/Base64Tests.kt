@@ -58,4 +58,14 @@ class Base64Tests {
             assertEquals(expected, input.encodeToByteArray().encodeBase64())
         }
     }
+
+    @Test
+    fun encodeBase64_byteArrayWithMsbSet_encodesWithoutException() {
+        // gzip of the string '["a","b","c"]'
+        val data = byteArrayOf(31, -117, 8, 0, 0, 0, 0, 0, 0, 0, -117, 86, 74, 84, -46, 81, 74, 2, -30, 100, -91, 88, 0, -17, 71, -25, -80, 13, 0, 0, 0)
+        assertEquals(
+            expected = "H4sIAAAAAAAAAItWSlTSUUoC4mSlWADvR+ewDQAAAA==",
+            actual = data.encodeBase64()
+        )
+    }
 }

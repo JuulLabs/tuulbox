@@ -101,7 +101,7 @@ private fun Iterator<Byte>.encodeBase64(): String {
     var bufferBits = 0
     while (hasNext()) {
         if (bufferBits < 6) {
-            buffer = (buffer shl 8) or next().toInt()
+            buffer = (buffer shl 8) or next().toUByte().toInt()
             index += 1
             bufferBits += 8
         }
