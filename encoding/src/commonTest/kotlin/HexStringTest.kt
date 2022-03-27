@@ -1,6 +1,7 @@
 package com.juul.tuulbox.encoding
 
 import kotlin.test.Test
+import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
@@ -50,33 +51,33 @@ class HexStringTest {
 
     @Test
     fun parseHex() {
-        assertEquals(
-            expected = byteArrayOf(1, 2, 3).asList(),
-            actual = "010203".parseHex().asList(),
+        assertContentEquals(
+            expected = byteArrayOf(1, 2, 3),
+            actual = "010203".parseHex(),
         )
     }
 
     @Test
     fun parseHex_lowercaseHexCharacters() {
-        assertEquals(
-            expected = byteArrayOf(-54, -2).asList(),
-            actual = "cafe".parseHex().asList(),
+        assertContentEquals(
+            expected = byteArrayOf(-54, -2),
+            actual = "cafe".parseHex(),
         )
     }
 
     @Test
     fun parseHex_uppercaseHexCharacters() {
-        assertEquals(
-            expected = byteArrayOf(-54, -2).asList(),
-            actual = "CAFE".parseHex().asList(),
+        assertContentEquals(
+            expected = byteArrayOf(-54, -2),
+            actual = "CAFE".parseHex(),
         )
     }
 
     @Test
     fun parseHex_mixedCaseHexCharacters() {
-        assertEquals(
-            expected = byteArrayOf(-54, -2).asList(),
-            actual = "CaFe".parseHex().asList(),
+        assertContentEquals(
+            expected = byteArrayOf(-54, -2),
+            actual = "CaFe".parseHex(),
         )
     }
 
