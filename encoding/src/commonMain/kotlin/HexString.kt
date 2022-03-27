@@ -21,3 +21,29 @@ public fun ByteArray.toHexString(
     }
     return r.toString()
 }
+
+/**
+ * Provides basic hex [CharSequence] to [ByteArray] conversion. Modified version of kotlinx.serialization's `HexConverter`:
+ * https://github.com/Kotlin/kotlinx.serialization/blob/43d5f7841fc744b072a636b712e194081456b5ba/formats/cbor/commonTest/src/kotlinx/serialization/HexConverter.kt
+ */
+public fun CharSequence.parseHex(): ByteArray {
+    if (isEmpty()) return byteArrayOf()
+    require(length % 2 == 0) { "Hex sequence must contain an even number of characters" }
+    val bytes = ByteArray(length / 2)
+    var i = 0
+    while (i < length) {
+        val h = hexToInt(this[i])
+        val l = hexToInt(this[i + 1])
+        require(!(h == -1 || l == -1)) { "Invalid hex characters '${this[i]}${this[i + 1]}' at $i" }
+        bytes[i / 2] = ((h shl 4) + l).toByte()
+        i += 2
+    }
+    return bytes
+}
+
+private fun hexToInt(ch: Char): Int = when (ch) {
+    in '0'..'9' -> ch - '0'
+    in 'A'..'F' -> ch - 'A' + 10
+    in 'a'..'f' -> ch - 'a' + 10
+    else -> -1
+}
