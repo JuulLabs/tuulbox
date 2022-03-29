@@ -30,13 +30,11 @@ public fun CharSequence.parseHex(): ByteArray {
     if (isEmpty()) return byteArrayOf()
     require(length % 2 == 0) { "Hex sequence must contain an even number of characters" }
     val bytes = ByteArray(length / 2)
-    var i = 0
-    while (i < length) {
+    for (i in 0 until length step 2) {
         val h = hexToInt(this[i])
         val l = hexToInt(this[i + 1])
         require(!(h == -1 || l == -1)) { "Invalid hex characters '${this[i]}${this[i + 1]}' at $i" }
         bytes[i / 2] = ((h shl 4) + l).toByte()
-        i += 2
     }
     return bytes
 }
