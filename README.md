@@ -268,17 +268,6 @@ _Note: Because this is built on top of [KotlinX DateTime], [core library desugar
 
 Utilities for test suites.
 
-### [`runTest`]
-
-Multiplatform test analogy to [`runBlocking`]:
-
-```kotlin
-@Test
-fun exampleUnitTest() = runTest {
-    // ...
-}
-```
-
 ### [`assertContains`]
 
 ```kotlin
