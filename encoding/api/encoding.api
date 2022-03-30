@@ -18,6 +18,7 @@ public final class com/juul/tuulbox/encoding/BitSetKt {
 }
 
 public final class com/juul/tuulbox/encoding/HexStringKt {
+	public static final fun parseHex (Ljava/lang/CharSequence;)[B
 	public static final fun toHexString ([BLjava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
 	public static synthetic fun toHexString$default ([BLjava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
 }
