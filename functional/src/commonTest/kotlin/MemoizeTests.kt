@@ -9,10 +9,11 @@ class MemoizeTests {
     private class DuplicationChecker {
         private val visitedValues = mutableSetOf<List<*>>()
 
-        fun visit(vararg values: Any?) {
+        fun visit(vararg values: Any?): Array<out Any?> {
             val list = values.toList()
             check(list !in visitedValues)
             visitedValues.add(list)
+            return values
         }
     }
 
