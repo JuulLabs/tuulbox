@@ -23,7 +23,7 @@ kotlin {
     sourceSets {
         val commonTest by getting {
             dependencies {
-                implementation(project(":test"))
+                implementation(libs.kotlinx.coroutines.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }

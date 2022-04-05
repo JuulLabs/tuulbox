@@ -1,10 +1,12 @@
 package com.juul.tuulbox.functional
 
-import com.juul.tuulbox.test.runTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class RepeatTests {
 
     @Test
