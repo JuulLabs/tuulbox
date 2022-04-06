@@ -1,12 +1,12 @@
 package com.juul.tuulbox.temporal
 
-import com.juul.tuulbox.test.runTest
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.takeWhile
 import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals

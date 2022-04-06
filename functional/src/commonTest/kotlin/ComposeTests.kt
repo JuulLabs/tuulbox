@@ -1,10 +1,13 @@
 package com.juul.tuulbox.functional
 
-import com.juul.tuulbox.test.runTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class ComposeTests {
+
     @Test
     fun checkOfOrderIsCorrect() = runTest {
         assertEquals(202, double.of(increment).invoke(100))

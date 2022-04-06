@@ -1,11 +1,13 @@
 package com.juul.tuulbox.coroutines.flow
 
-import com.juul.tuulbox.test.runTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.single
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class CombineParametersTest {
 
     @Test

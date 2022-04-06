@@ -1,4 +1,5 @@
-import com.juul.tuulbox.collections.toJsObject
+package com.juul.tuulbox.collections
+
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

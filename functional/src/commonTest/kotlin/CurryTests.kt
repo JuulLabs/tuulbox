@@ -1,10 +1,13 @@
 package com.juul.tuulbox.functional
 
-import com.juul.tuulbox.test.runTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class CurryTests {
+
     @Test
     fun checkCurryWorksWithArity2() = runTest {
         val expected = stringConcat2("one", "two")

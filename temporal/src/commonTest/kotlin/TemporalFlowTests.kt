@@ -1,21 +1,19 @@
 package com.juul.tuulbox.temporal
 
 import com.juul.tuulbox.test.assertSimilar
-import com.juul.tuulbox.test.runTest
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
 
-@ExperimentalTime
-private val EPSILON = Duration.seconds(5)
+private val EPSILON = 5.seconds
 
-@ExperimentalTime
+@OptIn(ExperimentalTime::class)
 @AndroidIgnore("Cannot use Android classes BroadcastReceiver or IntentFilter.")
 class TemporalFlowTests {
 
