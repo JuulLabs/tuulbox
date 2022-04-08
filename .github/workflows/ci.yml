@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-
 
       - run: ./gradlew assemble
-      - run: ./gradlew --continue check
+      - run: ./gradlew --continue -Pkotlin.native.binary.memoryModel=experimental check
 
       - run: |
           set -o xtrace
