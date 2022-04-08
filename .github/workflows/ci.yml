@@ -34,6 +34,9 @@ jobs:
             ${{ runner.os }}-
 
       - run: ./gradlew assemble
+
+      # Enabled new memory model for tests to workaround `MockEngine` freezing issue (after upgrading to Ktor 2.0.0).
+      # https://github.com/JuulLabs/tuulbox/pull/168
       - run: ./gradlew --continue -Pkotlin.native.binary.memoryModel=experimental check
 
       - run: |
