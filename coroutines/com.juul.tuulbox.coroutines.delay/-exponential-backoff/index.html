@@ -1,86 +1,102 @@
+<!doctype html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ExponentialBackoff</title>
-</head><body><link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
-    <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><link href="../../../styles/prism.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script><script type="text/javascript" src="../../../scripts/main.js" defer></script><script type="text/javascript" src="../../../scripts/prism.js" async></script><script>const storage = localStorage.getItem("dokka-dark-mode")
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
 const savedDarkMode = storage ? JSON.parse(storage) : false
 if(savedDarkMode === true){
     document.getElementsByTagName("html")[0].classList.add("theme-dark")
 }</script>
-
-  
-    <div class="navigation-wrapper" id="navigation-wrapper">
-      <div id="leftToggler"><span class="icon-toggler"></span></div>
-      <div class="library-name"><a href="../../../index.html"><span>tuulbox</span></a></div>
-      <div></div>
-      <div class="pull-right d-flex">
-        <div class="filter-section" id="filter-section"><button class="platform-tag platform-selector common-like" data-active="" data-filter=":coroutines:dokkaHtmlPartial/commonMain">common</button></div>
-<button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
-      </div>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script></head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+<a href="../../../index.html">
+<span>tuulbox</span>            </a>    </div>
+    <div>
     </div>
-    <div id="container">
-      <div id="leftColumn">
+    <div class="pull-right d-flex">
+            <div class="filter-section" id="filter-section">
+                    <button class="platform-tag platform-selector common-like" data-active="" data-filter=":coroutines:dokkaHtmlPartial/commonMain">common</button>
+            </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
         <div id="sideMenu"></div>
-      </div>
-      <div id="main">
-        <div class="main-content" id="content" pageids="coroutines::com.juul.tuulbox.coroutines.delay/ExponentialBackoff///PointingToDeclaration//209415640">
-          <div class="breadcrumbs"><a href="../../index.html">coroutines</a>/<a href="../index.html">com.juul.tuulbox.coroutines.delay</a>/<a href="index.html">ExponentialBackoff</a></div>
-          <div class="cover ">
-            <h1 class="cover"><span>Exponential</span><wbr><span><span>Backoff</span></span></h1>
-            <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-              <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":coroutines:dokkaHtmlPartial/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ExponentialBackoff</a><span class="token punctuation">(</span>baseTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span>multiplier<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span>minimumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span>maximumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span> : <a href="../-delay-strategy/index.html">DelayStrategy</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><a href="../-delay-strategy/index.html">DelayStrategy</a> with an exponentially increasing delay, calculated with <a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/index.html">getExponentialBackoffMillis</a>.</p><p class="paragraph"><a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/-exponential-backoff/minimum-delay-millis.html">minimumDelayMillis</a> indicates the capped minimum delay (in milliseconds). <a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/-exponential-backoff/maximum-delay-millis.html">maximumDelayMillis</a> indicates the capped maximum delay (in milliseconds).</p><p class="paragraph">Delay is calculated using the following formula:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">delay = base * multiplier ^ iteration</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">For example (using <code class="lang-kotlin">base = 100</code> and <code class="lang-kotlin">multiplier = 2</code>):</p><table><thead><tr><th>iteration</th><th>delay</th></tr></thead><tbody><tr><td>0</td><td>100</td></tr><tr><td>1</td><td>200</td></tr><tr><td>2</td><td>400</td></tr><tr><td>3</td><td>800</td></tr><tr><td>4</td><td>1600</td></tr><tr><td>...</td><td>...</td></tr></tbody></table><p class="paragraph">Inspired by: <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/">Exponential Backoff And Jitter</a></p></div>            </div>
-          </div>
-          <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
-            <div class="tabs-section-body">
-              <h2 class="tabbedcontent">Constructors</h2>
-              <div class="table" data-togglable="Constructors"><a data-name="734753470%2FConstructors%2F209415640" anchor-label="ExponentialBackoff" id="734753470%2FConstructors%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
-                <div class="table-row" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
-                  <div class="main-subrow keyValue TabbedContent">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="-exponential-backoff.html"><span>Exponential</span><wbr><span><span>Backoff</span></span></a></div>
+    </div>
+    <div id="main">
+<div class="main-content" id="content" pageids="coroutines::com.juul.tuulbox.coroutines.delay/ExponentialBackoff///PointingToDeclaration//209415640">
+  <div class="breadcrumbs"><a href="../../index.html">coroutines</a><span class="delimiter">/</span><a href="../index.html">com.juul.tuulbox.coroutines.delay</a><span class="delimiter">/</span><a href="index.html">ExponentialBackoff</a></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Exponential</span><wbr><span><span>Backoff</span></span></h1>
+    <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+      <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":coroutines:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ExponentialBackoff</a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;baseTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_BASE_TIME_MILLIS<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;multiplier<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>DEFAULT_MULTIPLIER<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;minimumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_MINIMUM_DELAY<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;maximumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_MAXIMUM_DELAY</span></span><span class="token punctuation">)</span> : <a href="../-delay-strategy/index.html">DelayStrategy</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph"><a href="../-delay-strategy/index.html">DelayStrategy</a> with an exponentially increasing delay, calculated with <a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/index.html">getExponentialBackoffMillis</a>.</p><p class="paragraph"><a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/-exponential-backoff/minimum-delay-millis.html">minimumDelayMillis</a> indicates the capped minimum delay (in milliseconds). <a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/-exponential-backoff/maximum-delay-millis.html">maximumDelayMillis</a> indicates the capped maximum delay (in milliseconds).</p><p class="paragraph">Delay is calculated using the following formula:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">delay = base * multiplier ^ iteration</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">For example (using <code class="lang-kotlin">base = 100</code> and <code class="lang-kotlin">multiplier = 2</code>):</p><table><thead><tr><th>iteration</th><th>delay</th></tr></thead><tbody><tr><td>0</td><td>100</td></tr><tr><td>1</td><td>200</td></tr><tr><td>2</td><td>400</td></tr><tr><td>3</td><td>800</td></tr><tr><td>4</td><td>1600</td></tr><tr><td>...</td><td>...</td></tr></tbody></table><p class="paragraph">Inspired by: <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/">Exponential Backoff And Jitter</a></p></div>    </div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
+    <div class="tabs-section-body">
+      <h2 class="tabbedcontent">Constructors</h2>
+      <div class="table" data-togglable="Constructors"><a data-name="734753470%2FConstructors%2F209415640" anchor-label="ExponentialBackoff" id="734753470%2FConstructors%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
+        <div class="table-row" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
+          <div class="main-subrow keyValue TabbedContent">
+            <div class=""><span class="inline-flex">
+                <div><a href="-exponential-backoff.html"><span>Exponential</span><wbr><span><span>Backoff</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="734753470%2FConstructors%2F209415640"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":coroutines:dokkaHtmlPartial/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-exponential-backoff.html"><span class="token function">ExponentialBackoff</span></a><span class="token punctuation">(</span>baseTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_BASE_TIME_MILLIS<span class="token punctuation">, </span>multiplier<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>DEFAULT_MULTIPLIER<span class="token punctuation">, </span>minimumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_MINIMUM_DELAY<span class="token punctuation">, </span>maximumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_MAXIMUM_DELAY<span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="-989616186%2FFunctions%2F209415640" anchor-label="await" id="-989616186%2FFunctions%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
-                <div class="table-row" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex">
-                        <div><a href="await.html"><span><span>await</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-989616186%2FFunctions%2F209415640"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                          <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":coroutines:dokkaHtmlPartial/commonMain">common</button></div>
-<div class="content sourceset-depenent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="await.html"><span class="token function">await</span></a><span class="token punctuation">(</span>iteration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span>elapsedMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":coroutines:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-exponential-backoff.html"><span class="token function">ExponentialBackoff</span></a><span class="token punctuation">(</span><span class="parameters wrapped"><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;baseTimeMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_BASE_TIME_MILLIS<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;multiplier<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span>DEFAULT_MULTIPLIER<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;minimumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_MINIMUM_DELAY<span class="token punctuation">, </span></span><span class="parameter indented">&nbsp;&nbsp;&nbsp;&nbsp;maximumDelayMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>DEFAULT_MAXIMUM_DELAY</span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+      <h2 class="">Functions</h2>
+      <div class="table" data-togglable="Functions"><a data-name="-989616186%2FFunctions%2F209415640" anchor-label="await" id="-989616186%2FFunctions%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
+        <div class="table-row" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="await.html"><span><span>await</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-989616186%2FFunctions%2F209415640"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                  <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark common-like" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain" data-active="" data-toggle=":coroutines:dokkaHtmlPartial/commonMain">common</button></div>
+<div class="content sourceset-depenent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="await.html"><span class="token function">await</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">iteration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">elapsedMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div>                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  
-</body></html>
+  </div>
+</div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2022 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+        </div>
+    </div>
+</div>
 
+</body></html>
 
