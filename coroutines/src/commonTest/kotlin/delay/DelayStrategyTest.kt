@@ -89,7 +89,7 @@ private class TimeMachine : TimeSource {
     private val elapsedMillis = MutableStateFlow(0L)
     fun advanceBy(milliseconds: Long) { elapsedMillis.update { value -> value + milliseconds } }
     suspend fun delayUntil(milliseconds: Long) { elapsedMillis.first { it >= milliseconds } }
-    private class TimeMachineMark(private val parent: TimeMachine) : TimeMark() {
+    private class TimeMachineMark(private val parent: TimeMachine) : TimeMark {
         override fun elapsedNow(): Duration = parent.elapsedMillis.value.toDuration(DurationUnit.MILLISECONDS)
     }
     override fun markNow(): TimeMark = TimeMachineMark(this)
