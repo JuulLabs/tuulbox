@@ -60,7 +60,7 @@ jobs:
       - run: ./gradlew jacocoTestReport
         if: runner.os == 'Linux'
 
-      - uses: EnricoMi/publish-unit-test-result-action@v1
+      - uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           files: '**/build/test-results/**/*.xml'
           report_individual_runs: 'true'
