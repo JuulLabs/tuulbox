@@ -1,14 +1,9 @@
-// Maintain binary compatibility while conforming to lint `filename` rule.
-// todo: Delete this w/ next major version bump.
-@file:JvmName("FlowsKt")
-
 @file:Suppress("UNCHECKED_CAST")
 
 package com.juul.tuulbox.coroutines.flow
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import kotlin.jvm.JvmName
 
 /**
  * Returns a [Flow] whose values are generated with [transform] function by combining
