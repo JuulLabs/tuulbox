@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
  * should be slightly more efficient due to inlining.
  */
 internal expect inline fun <T> inlineTemporalFlow(
-    crossinline factory: () -> T
+    crossinline factory: () -> T,
 ): Flow<T>
 
 /**
@@ -22,5 +22,5 @@ internal expect inline fun <T> inlineTemporalFlow(
  * The flow returned by this is [conflated][kotlinx.coroutines.flow.conflate].
  */
 public expect fun <T> temporalFlow(
-    factory: () -> T
+    factory: () -> T,
 ): Flow<T>

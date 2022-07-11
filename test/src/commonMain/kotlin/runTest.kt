@@ -9,5 +9,5 @@ import kotlinx.coroutines.CoroutineScope
  */
 @Deprecated("Use official Coroutines `runTest`")
 public expect fun runTest(
-    action: suspend CoroutineScope.() -> Unit
+    action: suspend CoroutineScope.() -> Unit,
 )

@@ -11,7 +11,7 @@ private val testVectors = listOf(
     "foo" to "Zm9v",
     "foob" to "Zm9vYg==",
     "fooba" to "Zm9vYmE=",
-    "foobar" to "Zm9vYmFy"
+    "foobar" to "Zm9vYmFy",
 )
 
 private val omittedPaddingTestVectors = listOf(
@@ -65,7 +65,7 @@ class Base64Tests {
         val data = byteArrayOf(31, -117, 8, 0, 0, 0, 0, 0, 0, 0, -117, 86, 74, 84, -46, 81, 74, 2, -30, 100, -91, 88, 0, -17, 71, -25, -80, 13, 0, 0, 0)
         assertEquals(
             expected = "H4sIAAAAAAAAAItWSlTSUUoC4mSlWADvR+ewDQAAAA==",
-            actual = data.encodeBase64()
+            actual = data.encodeBase64(),
         )
     }
 }
