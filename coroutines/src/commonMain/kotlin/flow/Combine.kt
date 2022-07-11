@@ -1,4 +1,7 @@
-@file:JvmName("FlowsKt") // Maintain binary compatibility while conforming to lint `filename` rule. Delete this w/ next major version bump.
+// Maintain binary compatibility while conforming to lint `filename` rule.
+// todo: Delete this w/ next major version bump.
+@file:JvmName("FlowsKt")
+
 @file:Suppress("UNCHECKED_CAST")
 
 package com.juul.tuulbox.coroutines.flow
