@@ -76,7 +76,7 @@ public fun assertSimilar(
     target: LocalDateTime,
     epsilon: Duration,
     value: LocalDateTime,
-    timeZone: TimeZone = TimeZone.currentSystemDefault()
+    timeZone: TimeZone = TimeZone.currentSystemDefault(),
 ) {
     assertSimilar(target.toInstant(timeZone), epsilon, value.toInstant(timeZone))
 }

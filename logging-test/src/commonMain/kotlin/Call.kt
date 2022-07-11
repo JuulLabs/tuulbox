@@ -5,5 +5,5 @@ public data class Call(
     val tag: String,
     val message: String,
     val throwable: Throwable?,
-    val metadata: ReadMetadata
+    val metadata: ReadMetadata,
 )

@@ -18,14 +18,14 @@ internal val temporalEventFilter = IntentFilter().apply {
 }
 
 internal actual inline fun <T> inlineTemporalFlow(
-    crossinline factory: () -> T
+    crossinline factory: () -> T,
 ): Flow<T> = flow {
     emit(factory.invoke())
     emitAll(broadcastReceiverFlow(temporalEventFilter).map { factory.invoke() })
 }.conflate()
 
 public actual fun <T> temporalFlow(
-    factory: () -> T
+    factory: () -> T,
 ): Flow<T> = flow {
     emit(factory.invoke())
     emitAll(broadcastReceiverFlow(temporalEventFilter).map { factory.invoke() })

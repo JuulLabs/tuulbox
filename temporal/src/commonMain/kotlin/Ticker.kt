@@ -12,7 +12,7 @@ import kotlin.time.TimeSource
 @ExperimentalTime
 internal inline fun <T> ticker(
     delay: Duration,
-    crossinline factory: () -> T
+    crossinline factory: () -> T,
 ): Flow<T> =
     flow {
         val marker = TimeSource.Monotonic
