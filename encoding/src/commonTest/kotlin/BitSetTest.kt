@@ -49,7 +49,7 @@ class IntBitSetTests {
 
     @Test
     fun extract_nothing_isZero() {
-        val sut = 0.bits
+        val sut: BitSet<Int> = 0.bits
         assertEquals(
             expected = 0,
             actual = sut.extract(0, 0),
@@ -58,7 +58,7 @@ class IntBitSetTests {
 
     @Test
     fun extract_oneFromLowestBit_isOne() {
-        val sut = 1.bits
+        val sut: BitSet<Int> = 1.bits
         assertEquals(
             expected = 1,
             actual = sut.extract(0, 1),
@@ -67,7 +67,7 @@ class IntBitSetTests {
 
     @Test
     fun extract_zeroFromLowestBit_isZero() {
-        val sut = 0.bits
+        val sut: BitSet<Int> = 0.bits
         assertEquals(
             expected = 0,
             actual = sut.extract(0, 1),
@@ -76,7 +76,7 @@ class IntBitSetTests {
 
     @Test
     fun extract_oneFromHighestBit_isOne() {
-        val sut = 0x80000000.bits
+        val sut: BitSet<Int> = 0x80000000u.toInt().bits
         assertEquals(
             expected = 1,
             actual = sut.extract(31, 1),
@@ -85,7 +85,7 @@ class IntBitSetTests {
 
     @Test
     fun extract_zeroFromHighestBit_isZero() {
-        val sut = 0.bits
+        val sut: BitSet<Int> = 0.bits
         assertEquals(
             expected = 0,
             actual = sut.extract(31, 1),
@@ -94,7 +94,7 @@ class IntBitSetTests {
 
     @Test
     fun extract_twoOneBitsFromSecondNibble_isThree() {
-        val sut = 0b00110000.bits
+        val sut: BitSet<Int> = 0b00110000.bits
         assertEquals(
             expected = 3,
             actual = sut.extract(4, 2),
@@ -103,7 +103,7 @@ class IntBitSetTests {
 
     @Test
     fun extract_twoZeroBitsFromSecondNibble_isZero() {
-        val sut = 0xFFFFFFCF.bits
+        val sut: BitSet<Int> = 0xFFFFFFCFu.toInt().bits
         assertEquals(
             expected = 0,
             actual = sut.extract(4, 2),
@@ -111,15 +111,42 @@ class IntBitSetTests {
     }
 
     @Test
+    fun extract_rangeOfOneFromLowestBit_isOne() {
+        val sut: BitSet<Int> = 1.bits
+        assertEquals(
+            expected = 1,
+            actual = sut.extract(0..0),
+        )
+    }
+
+    @Test
+    fun extract_rangeOfOneFromHighestBit_isOne() {
+        val sut: BitSet<Int> = 0x80000000u.toInt().bits
+        assertEquals(
+            expected = 1,
+            actual = sut.extract(31..31),
+        )
+    }
+
+    @Test
+    fun extract_rangeOfTwoOneBitsFromSecondNibble_isThree() {
+        val sut: BitSet<Int> = 0b00110000.bits
+        assertEquals(
+            expected = 3,
+            actual = sut.extract(4..5),
+        )
+    }
+
+    @Test
     fun extract_offset_boundsChecksEnforced() {
-        val sut = 0.bits
+        val sut: BitSet<Int> = 0.bits
         assertFailsWith<IllegalArgumentException> { sut.extract(-1, 0) }
         assertFailsWith<IllegalArgumentException> { sut.extract(32, 0) }
     }
 
     @Test
     fun extract_count_boundsChecksEnforced() {
-        val sut = 0.bits
+        val sut: BitSet<Int> = 0.bits
         assertFailsWith<IllegalArgumentException> { sut.extract(0, 33) }
         assertFailsWith<IllegalArgumentException> { sut.extract(31, 2) }
     }
@@ -198,7 +225,7 @@ class LongBitSetTests {
 
     @Test
     fun extract_nothing_isZero() {
-        val sut = 0L.bits
+        val sut: BitSet<Long> = 0L.bits
         assertEquals(
             expected = 0,
             actual = sut.extract(0, 0),
@@ -207,7 +234,7 @@ class LongBitSetTests {
 
     @Test
     fun extract_oneFromLowestBit_isOne() {
-        val sut = 1L.bits
+        val sut: BitSet<Long> = 1L.bits
         assertEquals(
             expected = 1,
             actual = sut.extract(0, 1),
@@ -216,7 +243,7 @@ class LongBitSetTests {
 
     @Test
     fun extract_zeroFromLowestBit_isZero() {
-        val sut = 0L.bits
+        val sut: BitSet<Long> = 0L.bits
         assertEquals(
             expected = 0,
             actual = sut.extract(0, 1),
@@ -225,7 +252,7 @@ class LongBitSetTests {
 
     @Test
     fun extract_oneFromHighestBit_isOne() {
-        val sut = 0x8000_0000_0000_0000uL.toLong().bits
+        val sut: BitSet<Long> = 0x8000_0000_0000_0000uL.toLong().bits
         assertEquals(
             expected = 1,
             actual = sut.extract(63, 1),
@@ -234,7 +261,7 @@ class LongBitSetTests {
 
     @Test
     fun extract_zeroFromHighestBit_isZero() {
-        val sut = 0L.bits
+        val sut: BitSet<Long> = 0L.bits
         assertEquals(
             expected = 0,
             actual = sut.extract(63, 1),
@@ -243,7 +270,7 @@ class LongBitSetTests {
 
     @Test
     fun extract_twoOneBitsFromSecondNibble_isThree() {
-        val sut = 0b00110000L.bits
+        val sut: BitSet<Long> = 0b00110000L.bits
         assertEquals(
             expected = 3,
             actual = sut.extract(4, 2),
@@ -252,7 +279,7 @@ class LongBitSetTests {
 
     @Test
     fun extract_twoZeroBitsFromSecondNibble_isZero() {
-        val sut = 0xFFFFFFCFL.bits
+        val sut: BitSet<Long> = 0xFFFFFFCFL.bits
         assertEquals(
             expected = 0,
             actual = sut.extract(4, 2),
@@ -260,15 +287,42 @@ class LongBitSetTests {
     }
 
     @Test
+    fun extract_rangeOfOneFromLowestBit_isOne() {
+        val sut: BitSet<Long> = 1L.bits
+        assertEquals(
+            expected = 1,
+            actual = sut.extract(0..0),
+        )
+    }
+
+    @Test
+    fun extract_rangeOfOneFromHighestBit_isOne() {
+        val sut: BitSet<Long> = 0x8000_0000_0000_0000uL.toLong().bits
+        assertEquals(
+            expected = 1,
+            actual = sut.extract(63..63),
+        )
+    }
+
+    @Test
+    fun extract_rangeOfTwoOneBitsFromSecondNibble_isThree() {
+        val sut: BitSet<Long> = 0b00110000L.bits
+        assertEquals(
+            expected = 3,
+            actual = sut.extract(4..5),
+        )
+    }
+
+    @Test
     fun extract_offset_boundsChecksEnforced() {
-        val sut = 0L.bits
+        val sut: BitSet<Long> = 0L.bits
         assertFailsWith<IllegalArgumentException> { sut.extract(-1, 0) }
         assertFailsWith<IllegalArgumentException> { sut.extract(64, 0) }
     }
 
     @Test
     fun extract_count_boundsChecksEnforced() {
-        val sut = 0L.bits
+        val sut: BitSet<Long> = 0L.bits
         assertFailsWith<IllegalArgumentException> { sut.extract(0, 65) }
         assertFailsWith<IllegalArgumentException> { sut.extract(64, 2) }
     }
