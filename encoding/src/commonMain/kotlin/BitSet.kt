@@ -9,7 +9,7 @@ public interface BitSet<T> {
     public fun extract(offset: Int, count: Int): T
 }
 
-/** Extracts [range] bits . e.g. `0b00001100.extract(2..3) = 0b11 = 0x03`. */
+/** Extracts [range] bits. e.g. `0b00001100.extract(2..3) = 0b11 = 0x03`. */
 public fun <T> BitSet<T>.extract(range: IntRange): T =
     extract(range.first, range.last - range.first + 1)
 
