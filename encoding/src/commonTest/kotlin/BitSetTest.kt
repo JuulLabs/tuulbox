@@ -17,7 +17,7 @@ class IntBitSetTests {
 
     @Test
     fun getWorks() {
-        var set = Int.MIN_VALUE.bits
+        var set: BitSet<Int> = Int.MIN_VALUE.bits
         for (i in 0..30) assertFalse(set[i])
         assertTrue(set[31])
 
@@ -30,7 +30,7 @@ class IntBitSetTests {
 
     @Test
     fun setWorks() {
-        val set = 1.bits
+        val set: BitSet<Int> = 1.bits
         set[0] = false
         set[1] = true
         assertFalse(set[0])
@@ -40,7 +40,7 @@ class IntBitSetTests {
 
     @Test
     fun boundsChecksEnforced() {
-        val set = 0.bits
+        val set: BitSet<Int> = 0.bits
         assertFailsWith<IllegalArgumentException> { set[-1] }
         assertFailsWith<IllegalArgumentException> { set[-1] = true }
         assertFailsWith<IllegalArgumentException> { set[32] }
@@ -193,7 +193,7 @@ class LongBitSetTests {
 
     @Test
     fun getWorks() {
-        var set = Long.MIN_VALUE.bits
+        var set: BitSet<Long> = Long.MIN_VALUE.bits
         for (i in 0..62) assertFalse(set[i])
         assertTrue(set[63])
 
@@ -206,7 +206,7 @@ class LongBitSetTests {
 
     @Test
     fun setWorks() {
-        val set = 1L.bits
+        val set: BitSet<Long> = 1L.bits
         set[0] = false
         set[1] = true
         assertFalse(set[0])
@@ -216,7 +216,7 @@ class LongBitSetTests {
 
     @Test
     fun boundsChecksEnforced() {
-        val set = 0L.bits
+        val set: BitSet<Long> = 0L.bits
         assertFailsWith<IllegalArgumentException> { set[-1] }
         assertFailsWith<IllegalArgumentException> { set[-1] = true }
         assertFailsWith<IllegalArgumentException> { set[64] }
