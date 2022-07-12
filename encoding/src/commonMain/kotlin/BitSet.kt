@@ -37,8 +37,8 @@ public data class IntBitSet(private var buffer: Int) : BitSet<Int> {
     override fun asPrimitive(): Int = buffer
 
     override fun extract(offset: Int, count: Int): Int {
-        require(offset in 0 until 32) { "Offset expected 0-31 but got $offset " }
-        require(count in 0 until 32 - offset + 1) { "count expected 0-${32 - offset + 1} but got $count " }
+        require(offset in 0 until 32) { "Offset expected 0-31 but got $offset" }
+        require(count in 0 until 32 - offset + 1) { "count expected 0-${32 - offset + 1} but got $count" }
         return (buffer ushr offset) and flatBitMask(count)
     }
 }
@@ -61,20 +61,20 @@ public data class LongBitSet(private var buffer: Long) : BitSet<Long> {
     override fun asPrimitive(): Long = buffer
 
     override fun extract(offset: Int, count: Int): Long {
-        require(offset in 0 until 64) { "Offset expected 0-63 but got $offset " }
-        require(count in 0 until 64 - offset + 1) { "count expected 0-${64 - offset + 1} but got $count " }
+        require(offset in 0 until 64) { "Offset expected 0-63 but got $offset" }
+        require(count in 0 until 64 - offset + 1) { "count expected 0-${64 - offset + 1} but got $count" }
         return (buffer ushr offset) and flatLongBitMask(count)
     }
 }
 
 /** Create an [Int] mask of `count` length e.g. flatBitMask(3) = 0b00000111`. */
 public fun flatBitMask(count: Int): Int {
-    require(count in 0..32) { "count expected 0-32 but got $count " }
+    require(count in 0..32) { "count expected 0-32 but got $count" }
     return if (count == 32) -1 else (1 shl count) - 1
 }
 
 /** Create a [Long] mask of `count` length e.g. flatLongBitMask(3) = 0b00000111L`. */
 public fun flatLongBitMask(count: Int): Long {
-    require(count in 0..64) { "count expected 0-64 but got $count " }
+    require(count in 0..64) { "count expected 0-64 but got $count" }
     return if (count == 64) -1L else (1L shl count) - 1L
 }
