@@ -18,7 +18,7 @@ class CombineParametersTest {
             flowOf("3"),
             flowOf(4.toByte()),
             flowOf(null),
-            flowOf("6")
+            flowOf("6"),
         ) { a, b, c, d, e, f ->
             a + b + c + d + e + f
         }
@@ -34,7 +34,7 @@ class CombineParametersTest {
             flowOf(4.toByte()),
             flowOf(null),
             flowOf("6"),
-            flowOf(7)
+            flowOf(7),
         ) { a, b, c, d, e, f, g ->
             a + b + c + d + e + f + g
         }
@@ -51,7 +51,7 @@ class CombineParametersTest {
             flowOf(null),
             flowOf("6"),
             flowOf(7),
-            flowOf("8")
+            flowOf("8"),
         ) { a, b, c, d, e, f, g, h ->
             a + b + c + d + e + f + g + h
         }
@@ -69,7 +69,7 @@ class CombineParametersTest {
             flowOf("6"),
             flowOf(7),
             flowOf("8"),
-            flowOf(9.toByte())
+            flowOf(9.toByte()),
         ) { a, b, c, d, e, f, g, h, i ->
             a + b + c + d + e + f + g + h + i
         }
@@ -88,7 +88,7 @@ class CombineParametersTest {
             flowOf(7),
             flowOf("8"),
             flowOf(9.toByte()),
-            flowOf(null)
+            flowOf(null),
         ) { a, b, c, d, e, f, g, h, i, j ->
             a + b + c + d + e + f + g + h + i + j
         }

@@ -5,7 +5,7 @@ public fun interface LogFilter {
 }
 
 public fun Logger.withFilter(
-    filter: LogFilter
+    filter: LogFilter,
 ): Logger = FilterLogger(filter, this)
 
 private class FilterLogger(

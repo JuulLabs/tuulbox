@@ -10,7 +10,7 @@ package com.juul.tuulbox.collections
  *                  The value may be converted to an appropriate type as required.
  */
 public fun <K, V> Map<K, V>.toJsObject(
-    transform: (Map.Entry<K, V>) -> Pair<String, dynamic>
+    transform: (Map.Entry<K, V>) -> Pair<String, dynamic>,
 ): dynamic {
     val pojo = js("({})")
     for (entry in this) {

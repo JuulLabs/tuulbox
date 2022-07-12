@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.callbackFlow
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 public fun broadcastReceiverFlow(
-    intentFilter: IntentFilter
+    intentFilter: IntentFilter,
 ): Flow<Intent> = callbackFlow {
     val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {

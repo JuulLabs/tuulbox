@@ -61,11 +61,11 @@ public class ExponentialBackoff(
     private val baseTimeMillis: Long = DEFAULT_BASE_TIME_MILLIS,
     private val multiplier: Float = DEFAULT_MULTIPLIER,
     private val minimumDelayMillis: Long = DEFAULT_MINIMUM_DELAY,
-    private val maximumDelayMillis: Long = DEFAULT_MAXIMUM_DELAY
+    private val maximumDelayMillis: Long = DEFAULT_MAXIMUM_DELAY,
 ) : DelayStrategy {
     override suspend fun await(
         iteration: Int,
-        elapsedMillis: Long
+        elapsedMillis: Long,
     ) {
         delay(
             getExponentialBackoffMillis(
@@ -74,8 +74,8 @@ public class ExponentialBackoff(
                 multiplier,
                 minimumDelayMillis,
                 maximumDelayMillis,
-                elapsedMillis
-            )
+                elapsedMillis,
+            ),
         )
     }
 }
@@ -86,7 +86,7 @@ internal fun getExponentialBackoffMillis(
     multiplier: Float = DEFAULT_MULTIPLIER,
     minimumDelayMillis: Long = DEFAULT_MINIMUM_DELAY,
     maximumDelayMillis: Long = DEFAULT_MAXIMUM_DELAY,
-    elapsedMillis: Long = 0L
+    elapsedMillis: Long = 0L,
 ) = (baseTimeMillis * multiplier.pow(iteration))
     .toLong()
     .coerceAtLeast(minimumDelayMillis)
