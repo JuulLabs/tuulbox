@@ -4,6 +4,9 @@ public interface BitSet<T> {
     public operator fun get(index: Int): Boolean
     public operator fun set(index: Int, value: Boolean): BitSet<T>
     public fun asPrimitive(): T
+
+    /** Extracts [count] bits at [offset]. e.g. `0b00001100.extract(2, 2) = 0x03`. */
+    public fun extract(offset: Int, count: Int): T
 }
 
 // Would kill for C++ templates right about now. Which is not something I can normally say.
@@ -27,6 +30,12 @@ public data class IntBitSet(private var buffer: Int) : BitSet<Int> {
     }
 
     override fun asPrimitive(): Int = buffer
+
+    override fun extract(offset: Int, count: Int): Int {
+        require(offset in 0 until 32)
+        require(count in 0 until 32 - offset + 1)
+        return (buffer ushr offset) and flatBitMask(count)
+    }
 }
 
 public data class LongBitSet(private var buffer: Long) : BitSet<Long> {
@@ -45,4 +54,22 @@ public data class LongBitSet(private var buffer: Long) : BitSet<Long> {
     }
 
     override fun asPrimitive(): Long = buffer
+
+    override fun extract(offset: Int, count: Int): Long {
+        require(offset in 0 until 64)
+        require(count in 0 until 64 - offset + 1)
+        return (buffer ushr offset) and flatLongBitMask(count)
+    }
+}
+
+/** Create an [Int] mask of `count` length e.g. flatBitMask(3) = 0b00000111`. */
+public fun flatBitMask(count: Int): Int {
+    require(count in 0..32)
+    return if (count == 32) -1 else (1 shl count) - 1
+}
+
+/** Create a [Long] mask of `count` length e.g. flatLongBitMask(3) = 0b00000111L`. */
+public fun flatLongBitMask(count: Int): Long {
+    require(count in 0..64)
+    return if (count == 64) -1L else (1L shl count) - 1L
 }
