@@ -40,7 +40,7 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(project(":test"))
+                implementation(projects.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 implementation(libs.kotlinx.coroutines.test)
@@ -49,7 +49,7 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(project(":coroutines"))
+                implementation(projects.coroutines)
             }
         }
 
