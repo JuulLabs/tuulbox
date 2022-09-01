@@ -24,7 +24,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":logging"))
+                api(projects.logging)
                 api(libs.ktor.core)
                 api(libs.ktor.logging)
             }
@@ -32,8 +32,8 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(project(":logging-test"))
-                implementation(project(":test"))
+                implementation(projects.loggingTest)
+                implementation(projects.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 implementation(libs.ktor.mock)
