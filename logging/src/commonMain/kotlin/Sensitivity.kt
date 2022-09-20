@@ -8,7 +8,8 @@ package com.juul.tuulbox.logging
  */
 public enum class Sensitivity {
     NotSensitive,
-    Sensitive;
+    Sensitive,
+    ;
 
     public companion object : Key<Sensitivity>
 }
