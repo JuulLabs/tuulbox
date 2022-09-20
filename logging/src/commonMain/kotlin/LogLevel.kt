@@ -6,5 +6,5 @@ public enum class LogLevel {
     Info,
     Warn,
     Error,
-    Assert
+    Assert,
 }

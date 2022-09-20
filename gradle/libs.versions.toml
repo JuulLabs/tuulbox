@@ -24,5 +24,5 @@ atomicfu = { id = "kotlinx-atomicfu", version = "0.18.3" }
 binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.8.0" }
 dokka = { id = "org.jetbrains.dokka", version = "1.7.10" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.1" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "3.12.0" }
 one-eight = { id = "net.mbonnin.one.eight", version = "0.2" }
