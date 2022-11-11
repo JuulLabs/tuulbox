@@ -58,9 +58,6 @@ kotlin {
 
         val appleTest by creating {
             dependsOn(commonTest)
-            dependencies {
-                implementation(libs.kotlinx.coroutines.native)
-            }
         }
 
         val macosX64Main by getting {
