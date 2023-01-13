@@ -11,7 +11,7 @@ import kotlin.test.Ignore
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
-import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 import kotlin.time.TimeSource
 
@@ -21,13 +21,13 @@ private const val ERROR_TOO_FAST = "Flow collected too quickly."
 private const val ERROR_TOO_SLOW = "Flow collected too slowly."
 
 @ExperimentalTime
-private val TIME_TICK = Duration.seconds(0.5)
+private val TIME_TICK = 0.5.seconds
 
 @ExperimentalTime
 private val TIME_EXPECTED = TIME_TICK * (NUM_TICKS - 1)
 
 @ExperimentalTime
-private val TIME_EPSILON = Duration.seconds(0.125)
+private val TIME_EPSILON = 0.125.seconds
 
 @ExperimentalTime
 class TickerTests {
