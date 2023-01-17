@@ -31,8 +31,10 @@ allprojects {
             showCauses = true
         }
     }
+}
 
-    withPluginWhenEvaluated("jacoco") {
+subprojects {
+    plugins.withType<JacocoPlugin> {
         configure<JacocoPluginExtension> {
             toolVersion = libs.versions.jacoco.get()
         }
@@ -41,17 +43,4 @@ allprojects {
 
 tasks.dokkaHtmlMultiModule.configure {
     outputDirectory.set(buildDir.resolve("gh-pages"))
-}
-
-fun Project.withPluginWhenEvaluated(plugin: String, action: Project.() -> Unit) {
-    pluginManager.withPlugin(plugin) { whenEvaluated(action) }
-}
-
-// `afterEvaluate` does nothing when the project is already in executed state, so we need a special check for this case.
-fun <T> Project.whenEvaluated(action: Project.() -> T) {
-    if (state.executed) {
-        action()
-    } else {
-        afterEvaluate { action() }
-    }
 }
