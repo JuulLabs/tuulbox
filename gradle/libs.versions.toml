@@ -3,7 +3,7 @@ android-compile = "31"
 coroutines = "1.6.4"
 jacoco = "0.8.7"
 kotlin = "1.8.10"
-ktor = "2.2.2"
+ktor = "2.2.3"
 
 [libraries]
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
