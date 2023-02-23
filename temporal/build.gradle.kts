@@ -75,14 +75,11 @@ kotlin {
 
 android {
     compileSdk = libs.versions.android.compile.get().toInt()
+    defaultConfig.minSdk = 16
 
-    defaultConfig {
-        minSdk = 16
-    }
-
-    lintOptions {
-        isAbortOnError = true
-        isWarningsAsErrors = true
+    lint {
+        abortOnError = true
+        warningsAsErrors = true
     }
 
     sourceSets {
