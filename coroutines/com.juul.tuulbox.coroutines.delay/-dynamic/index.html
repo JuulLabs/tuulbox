@@ -49,44 +49,48 @@
         <div id="sideMenu"></div>
     </div>
     <div id="main">
-<div class="main-content" id="content" pageids="coroutines::com.juul.tuulbox.coroutines.delay/Dynamic///PointingToDeclaration//209415640">
+<div class="main-content" data-page-type="classlike" id="content" pageids="coroutines::com.juul.tuulbox.coroutines.delay/Dynamic///PointingToDeclaration//209415640">
   <div class="breadcrumbs"><a href="../../index.html">coroutines</a><span class="delimiter">/</span><a href="../index.html">com.juul.tuulbox.coroutines.delay</a><span class="delimiter">/</span><span class="current">Dynamic</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Dynamic</span></span></h1>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Dynamic</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span> : <a href="../-delay-strategy/index.html">DelayStrategy</a></div><p class="paragraph">Dynamic <a href="../-delay-strategy/index.html">DelayStrategy</a>, allowing for switching between multiple other DelayStrategies utilizing a <a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/-dynamic/trigger.html">trigger</a> (to provide an input) and a <a href="../../../coroutines/com.juul.tuulbox.coroutines.delay/-dynamic/selector.html">selector</a> function (to determine a resulting DelayStrategy from said input).</p><p class="paragraph">The resulting <a href="../-delay-strategy/index.html">DelayStrategy</a>'s await will be called with an elapsedMillis determined by the amount of time that has passed since the Dynamic DelayStrategy's await was called, allowing it to factor that into its calculation (for the purposes of adjusting one DelayStrategy's delay based on the amount of time that passed in another DelayStrategy's delay).</p></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button></div>
     <div class="tabs-section-body">
-      <h2 class="tabbedcontent">Constructors</h2>
-      <div class="table" data-togglable="Constructors"><a data-name="-992433042%2FConstructors%2F209415640" anchor-label="Dynamic" id="-992433042%2FConstructors%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
-        <div class="table-row" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
-          <div class="main-subrow keyValue TabbedContent">
-            <div class=""><span class="inline-flex">
-                <div><a href="-dynamic.html"><span><span>Dynamic</span></span></a></div>
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-992433042%2FConstructors%2F209415640" anchor-label="Dynamic" id="-992433042%2FConstructors%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-dynamic.html"><span><span>Dynamic</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-992433042%2FConstructors%2F209415640"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt; </span><a href="-dynamic.html"><span class="token function">Dynamic</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">trigger<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">selector<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../-delay-strategy/index.html">DelayStrategy</a></span></span><span class="token punctuation">)</span></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">trigger<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">selector<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="index.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="../-delay-strategy/index.html">DelayStrategy</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Functions</h2>
-      <div class="table" data-togglable="Functions"><a data-name="2114446100%2FFunctions%2F209415640" anchor-label="await" id="2114446100%2FFunctions%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
-        <div class="table-row" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="await.html"><span><span>await</span></span></a></div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="2114446100%2FFunctions%2F209415640" anchor-label="await" id="2114446100%2FFunctions%2F209415640" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":coroutines:dokkaHtmlPartial/commonMain" data-filterable-set=":coroutines:dokkaHtmlPartial/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="await.html"><span><span>await</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2114446100%2FFunctions%2F209415640"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="await.html"><span class="token function">await</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">iteration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">elapsedMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":coroutines:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">suspend override </span><span class="token keyword">fun </span><a href="await.html"><span class="token function">await</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">iteration<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">elapsedMillis<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -100,6 +104,6 @@
       </div>
     </div>
 </div>
-
-</body></html>
+</body>
+</html>
 
