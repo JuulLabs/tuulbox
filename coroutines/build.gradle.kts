@@ -101,6 +101,8 @@ android {
         minSdk = 16
     }
 
+    namespace = "com.juul.tuulbox.coroutines"
+
     lintOptions {
         isAbortOnError = true
         isWarningsAsErrors = true
