@@ -80,12 +80,10 @@ android {
         minSdk = 16
     }
 
+    namespace = "com.juul.tuulbox.temporal"
+
     lintOptions {
         isAbortOnError = true
         isWarningsAsErrors = true
-    }
-
-    sourceSets {
-        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }
