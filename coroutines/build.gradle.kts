@@ -96,16 +96,13 @@ kotlin {
 
 android {
     compileSdk = libs.versions.android.compile.get().toInt()
-
-    defaultConfig {
-        minSdk = 16
-    }
-
+    defaultConfig.minSdk = 16
+    
     namespace = "com.juul.tuulbox.coroutines"
 
-    lintOptions {
-        isAbortOnError = true
-        isWarningsAsErrors = true
+    lint {
+        abortOnError = true
+        warningsAsErrors = true
     }
 
     sourceSets {
