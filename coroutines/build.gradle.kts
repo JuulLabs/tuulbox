@@ -97,6 +97,8 @@ kotlin {
 android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = 16
+    
+    namespace = "com.juul.tuulbox.coroutines"
 
     lint {
         abortOnError = true

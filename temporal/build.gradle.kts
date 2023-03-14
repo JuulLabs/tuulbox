@@ -77,12 +77,10 @@ android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = 16
 
+    namespace = "com.juul.tuulbox.temporal"
+
     lint {
         abortOnError = true
         warningsAsErrors = true
-    }
-
-    sourceSets {
-        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }

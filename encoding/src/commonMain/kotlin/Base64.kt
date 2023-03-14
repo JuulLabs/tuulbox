@@ -29,6 +29,13 @@ private fun CharSequence.decodeQuartet(index: Int): Int =
         (getOrPad(index + 3).decode())
 
 /** Decodes a base64 character sequence to bytes. Decoding is done eagerly. */
+@Deprecated(
+    message = "Use Kotlin stdlib Base64 support.",
+    replaceWith = ReplaceWith(
+        expression = "Base64.decode(this)",
+        imports = ["kotlin.io.encoding.Base64"],
+    ),
+)
 public fun CharSequence.decodeBase64(): ByteArray {
     val numBytes = when {
         isEmpty() -> return byteArrayOf()
@@ -65,6 +72,13 @@ public fun CharSequence.decodeBase64(): ByteArray {
 }
 
 /** Decodes a base64 character sequence to bytes. Decoding is done lazily. */
+@Deprecated(
+    message = "Use Kotlin stdlib Base64 support.",
+    replaceWith = ReplaceWith(
+        expression = "Base64.decode(this).asSequence()",
+        imports = ["kotlin.io.encoding.Base64"],
+    ),
+)
 public fun CharSequence.decodeBase64Sequence(): Sequence<Byte> = sequence {
     var index = 0
     while (index < length) {
@@ -90,8 +104,31 @@ private fun Int.encode(): Char = when (this) {
     else -> error("Cannot encode more than 6 bits. Received `${this.toString(radix = 2)}`.")
 }
 
+@Deprecated(
+    message = "Use Kotlin stdlib Base64 support.",
+    replaceWith = ReplaceWith(
+        expression = "Base64.encode(this)",
+        imports = ["kotlin.io.encoding.Base64"],
+    ),
+)
 public fun ByteArray.encodeBase64(): String = iterator().encodeBase64()
+
+@Deprecated(
+    message = "Use Kotlin stdlib Base64 support.",
+    replaceWith = ReplaceWith(
+        expression = "Base64.encode(this.toList().toByteArray())",
+        imports = ["kotlin.io.encoding.Base64"],
+    ),
+)
 public fun Sequence<Byte>.encodeBase64(): String = iterator().encodeBase64()
+
+@Deprecated(
+    message = "Use Kotlin stdlib Base64 support.",
+    replaceWith = ReplaceWith(
+        expression = "Base64.encode(this.toByteArray())",
+        imports = ["kotlin.io.encoding.Base64"],
+    ),
+)
 public fun Iterable<Byte>.encodeBase64(): String = iterator().encodeBase64()
 
 private fun Iterator<Byte>.encodeBase64(): String {

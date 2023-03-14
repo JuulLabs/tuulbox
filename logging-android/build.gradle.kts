@@ -26,12 +26,10 @@ android {
     compileSdk = libs.versions.android.compile.get().toInt()
     defaultConfig.minSdk = 16
 
+    namespace = "com.juul.tuulbox.logging"
+
     lint {
         abortOnError = true
         warningsAsErrors = true
-    }
-
-    sourceSets {
-        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
 }
