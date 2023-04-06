@@ -34,6 +34,7 @@ jobs:
         with:
           name: test-failure
           path: '**/build/reports/tests/'
+          retention-days: 5
 
       - run: |
           set -o xtrace
