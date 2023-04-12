@@ -29,6 +29,13 @@ jobs:
       - run: ./gradlew assemble
       - run: ./gradlew --continue check
 
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: test-failure
+          path: '**/build/reports/tests/'
+          retention-days: 5
+
       - run: |
           set -o xtrace
           if [ ! -z "${{ secrets.SIGNING_KEY }}" ]; then
