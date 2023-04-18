@@ -10,6 +10,7 @@ apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
 
 kotlin {
     explicitApi()
+    jvmToolchain(11)
 
     jvm()
     js().browser()
