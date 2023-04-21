@@ -17,10 +17,9 @@ ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 
 [plugins]
 android-library = { id = "com.android.library", version = "8.0.0" }
-android-publish = { id = "com.vanniktech.maven.publish", version = "0.25.1" }
+android-publish = { id = "com.vanniktech.maven.publish", version = "0.25.2" }
 atomicfu = { id = "kotlinx-atomicfu", version = "0.20.2" }
 binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.8.0" }
 dokka = { id = "org.jetbrains.dokka", version = "1.8.10" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "3.14.0" }
-one-eight = { id = "net.mbonnin.one.eight", version = "0.2" }
