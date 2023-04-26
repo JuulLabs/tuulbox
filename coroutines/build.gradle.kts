@@ -9,6 +9,10 @@ plugins {
 
 apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
 
+mavenPublishing {
+    coordinates("com.juul.tuulbox", "coroutines", "6.4.1")
+}
+
 kotlin {
     explicitApi()
     jvmToolchain(11)

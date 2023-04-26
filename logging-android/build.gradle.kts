@@ -6,6 +6,10 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
+mavenPublishing {
+    coordinates("com.juul.tuulbox", "logging-android", "6.4.1")
+}
+
 kotlin {
     explicitApi()
     jvmToolchain(11)
