@@ -16,6 +16,8 @@ plugins {
 }
 
 allprojects {
+    group = "com.juul.tuulbox"
+
     repositories {
         google()
         mavenCentral()
