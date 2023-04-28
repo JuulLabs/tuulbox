@@ -9,7 +9,7 @@ private data class DispatcherState(
     val consumers: Set<Logger>,
 ) {
     val logLevel: LogLevel by lazy {
-        consumers.maxOfOrNull { it.minimumLogLevel }
+        consumers.minOfOrNull { it.minimumLogLevel }
             ?: LogLevel.Assert
     }
 }
