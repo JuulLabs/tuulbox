@@ -18,6 +18,7 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
+            ~/.gradle/jdks
             ~/.konan
             ~/.android/build-cache
             ~/.android/cache
