@@ -1,4 +1,5 @@
 public final class com/juul/tuulbox/temporal/BroadcastTemporalFlowKt {
+	public static final fun getTemporalEventFilter ()Landroid/content/IntentFilter;
 	public static final fun temporalFlow (Lkotlin/jvm/functions/Function0;)Lkotlinx/coroutines/flow/Flow;
 }
 
