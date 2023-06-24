@@ -23,11 +23,14 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
+        all {
+            languageSettings.optIn("com.juul.tuulbox.logging.TuulboxInternal")
+        }
+
         val commonMain by getting
 
         val commonTest by getting {
             dependencies {
-                implementation(projects.loggingTest)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }

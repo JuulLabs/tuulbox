@@ -10,12 +10,12 @@ internal object StackTraceTagGenerator : TagGenerator, HideFromStackTraceTag {
      *
      * FIXME: This could probably be much more robust, but at least it's not nothing.
      */
-    private val stackTraceLineMatcher = Regex("""^\s{4}at (\w+)\..*$""")
+    private val stackTraceLineMatcher = Regex("""^\s{4,}at .*?\$(\w+?)[_.].*$""")
 
     override fun getTag(): String {
         // FIXME: This should implement support for [HideFromStackTrace] instead of hard-coding a known depth
         val line = Throwable().stackTraceToString().lineSequence()
-            .drop(3)
+            .drop(4)
             .first()
 
         return when (val match = stackTraceLineMatcher.matchEntire(line)) {

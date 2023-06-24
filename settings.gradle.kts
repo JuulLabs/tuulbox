@@ -36,7 +36,6 @@ include(
     "logging",
     "logging-android",
     "logging-ktor-client",
-    "logging-test",
     "functional",
     "temporal",
     "test",
