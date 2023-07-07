@@ -1,6 +1,6 @@
 [versions]
 android-compile = "31"
-coroutines = "1.7.1"
+coroutines = "1.7.2"
 jacoco = "0.8.7"
 jvm-toolchain = "8"
 kotlin = "1.8.22"
@@ -18,7 +18,7 @@ ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 
 [plugins]
 android-library = { id = "com.android.library", version = "8.0.2" }
-android-publish = { id = "com.vanniktech.maven.publish", version = "0.25.2" }
+android-publish = { id = "com.vanniktech.maven.publish", version = "0.25.3" }
 atomicfu = { id = "kotlinx-atomicfu", version = "0.21.0" }
 binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.13.0" }
 dokka = { id = "org.jetbrains.dokka", version = "1.8.20" }
