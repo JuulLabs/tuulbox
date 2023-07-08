@@ -4,6 +4,16 @@ package com.juul.tuulbox.encoding
  * Provides basic [ByteArray] to hex [String] conversion. Modified version of kotlinx.serialization's `HexConverter`:
  * https://github.com/Kotlin/kotlinx.serialization/blob/43d5f7841fc744b072a636b712e194081456b5ba/formats/cbor/commonTest/src/kotlinx/serialization/HexConverter.kt
  */
+@Deprecated(
+    message = """Use Kotlin stdlib HexFormat support (available since 1.9.0), e.g. this.toHexString(HexFormat { bytes.byteSeparator = " "; bytes.bytePrefix = "0x"; upperCase = false } )""",
+    replaceWith = ReplaceWith(
+        expression = "this.toHexString(HexFormat.Default)",
+        imports = [
+            "kotlin.text.toHexString",
+            "kotlin.text.HexFormat",
+        ],
+    ),
+)
 public fun ByteArray.toHexString(
     separator: String? = null,
     prefix: String? = null,
@@ -26,6 +36,16 @@ public fun ByteArray.toHexString(
  * Provides basic hex [CharSequence] to [ByteArray] conversion. Modified version of kotlinx.serialization's `HexConverter`:
  * https://github.com/Kotlin/kotlinx.serialization/blob/43d5f7841fc744b072a636b712e194081456b5ba/formats/cbor/commonTest/src/kotlinx/serialization/HexConverter.kt
  */
+@Deprecated(
+    message = "Use Kotlin stdlib HexFormat support (available since 1.9.0).",
+    replaceWith = ReplaceWith(
+        expression = "this.hexToByteArray(HexFormat.Default)",
+        imports = [
+            "kotlin.text.hexToByteArray",
+            "kotlin.text.HexFormat",
+        ],
+    ),
+)
 public fun CharSequence.parseHex(): ByteArray {
     if (isEmpty()) return byteArrayOf()
     require(length % 2 == 0) { "Hex sequence must contain an even number of characters" }
