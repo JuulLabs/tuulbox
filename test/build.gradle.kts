@@ -19,6 +19,10 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
+        all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
+
         val commonMain by getting {
             dependencies {
                 api(kotlin("test-common"))
