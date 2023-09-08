@@ -42,6 +42,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api(libs.kotlinx.coroutines.android)
+                implementation(libs.androidx.core)
                 implementation(libs.androidx.startup)
             }
         }
