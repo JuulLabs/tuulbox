@@ -19,7 +19,6 @@ kotlin {
     macosX64()
     macosArm64()
     iosX64()
-    iosArm32()
     iosArm64()
     iosSimulatorArm64()
 
@@ -42,6 +41,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api(libs.kotlinx.coroutines.android)
+                implementation(libs.androidx.core)
                 implementation(libs.androidx.startup)
             }
         }
@@ -77,10 +77,6 @@ kotlin {
         }
 
         val iosX64Main by getting {
-            dependsOn(appleMain)
-        }
-
-        val iosArm32Main by getting {
             dependsOn(appleMain)
         }
 
