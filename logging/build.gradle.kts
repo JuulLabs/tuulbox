@@ -25,6 +25,7 @@ kotlin {
     sourceSets {
         all {
             languageSettings.optIn("com.juul.tuulbox.logging.TuulboxInternal")
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
         }
 
         val commonMain by getting
