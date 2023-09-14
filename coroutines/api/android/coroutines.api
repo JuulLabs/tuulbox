@@ -31,7 +31,8 @@ public final class com/juul/tuulbox/coroutines/delay/FixedDelay : com/juul/tuulb
 }
 
 public final class com/juul/tuulbox/coroutines/flow/BroadcastReceiverFlowKt {
-	public static final fun broadcastReceiverFlow (Landroid/content/IntentFilter;)Lkotlinx/coroutines/flow/Flow;
+	public static final fun broadcastReceiverFlow (Landroid/content/IntentFilter;I)Lkotlinx/coroutines/flow/Flow;
+	public static synthetic fun broadcastReceiverFlow$default (Landroid/content/IntentFilter;IILjava/lang/Object;)Lkotlinx/coroutines/flow/Flow;
 }
 
 public final class com/juul/tuulbox/coroutines/flow/CombineKt {

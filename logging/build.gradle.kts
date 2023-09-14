@@ -11,22 +11,26 @@ apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
 
 kotlin {
     explicitApi()
+    jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     jvm()
     js().browser()
     macosX64()
     macosArm64()
     iosX64()
-    iosArm32()
     iosArm64()
     iosSimulatorArm64()
 
     sourceSets {
+        all {
+            languageSettings.optIn("com.juul.tuulbox.logging.TuulboxInternal")
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+        }
+
         val commonMain by getting
 
         val commonTest by getting {
             dependencies {
-                implementation(project(":logging-test"))
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
@@ -57,10 +61,6 @@ kotlin {
         }
 
         val iosX64Main by getting {
-            dependsOn(appleMain)
-        }
-
-        val iosArm32Main by getting {
             dependsOn(appleMain)
         }
 

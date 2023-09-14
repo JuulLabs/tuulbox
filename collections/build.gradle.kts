@@ -11,12 +11,13 @@ apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
 
 kotlin {
     explicitApi()
+    jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
+
     jvm()
     js().browser()
     macosX64()
     macosArm64()
     iosX64()
-    iosArm32()
     iosArm64()
     iosSimulatorArm64()
 
@@ -55,10 +56,6 @@ kotlin {
         }
 
         val iosX64Main by getting {
-            dependsOn(appleMain)
-        }
-
-        val iosArm32Main by getting {
             dependsOn(appleMain)
         }
 

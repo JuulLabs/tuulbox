@@ -4,12 +4,9 @@ on:
     types:
       - published
 
-env:
-  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
-
 jobs:
   publish:
-    runs-on: macos-11
+    runs-on: macos-13
 
     steps:
       - uses: actions/checkout@v3
@@ -17,13 +14,14 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
 
       - uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
+            ~/.gradle/jdks
             ~/.konan
             ~/.android/build-cache
             ~/.android/cache
@@ -32,24 +30,16 @@ jobs:
             ${{ runner.os }}-publish-
             ${{ runner.os }}-
 
-      # Enabled new memory model for tests to workaround `MockEngine` freezing issue (after upgrading to Ktor 2.0.0).
-      # https://github.com/JuulLabs/tuulbox/pull/168
-      - run: ./gradlew -Pkotlin.native.binary.memoryModel=experimental check
+      - run: ./gradlew check
 
       - run: >-
           ./gradlew
-          --no-parallel
           -PVERSION_NAME="${GITHUB_REF/refs\/tags\//}"
           -PsigningInMemoryKey="${{ secrets.SIGNING_KEY }}"
           -PsigningInMemoryKeyPassword="${{ secrets.SIGNING_PASSWORD }}"
           -PmavenCentralUsername="${{ secrets.OSS_SONATYPE_NEXUS_USERNAME }}"
           -PmavenCentralPassword="${{ secrets.OSS_SONATYPE_NEXUS_PASSWORD }}"
           publish
-      - run: >-
-          ./gradlew
-          -PmavenCentralUsername="${{ secrets.OSS_SONATYPE_NEXUS_USERNAME }}"
-          -PmavenCentralPassword="${{ secrets.OSS_SONATYPE_NEXUS_PASSWORD }}"
-          closeAndReleaseRepository
 
       - run: |
           rm -f ~/.gradle/caches/modules-2/modules-2.lock

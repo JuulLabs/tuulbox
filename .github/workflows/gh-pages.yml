@@ -9,7 +9,7 @@ env:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v3
@@ -17,13 +17,14 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
 
       - uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
+            ~/.gradle/jdks
             ~/.konan
             ~/.android/build-cache
             ~/.android/cache
@@ -34,7 +35,7 @@ jobs:
 
       - run: ./gradlew dokkaHtmlMultiModule
 
-      - uses: JamesIves/github-pages-deploy-action@v4.3.4
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/gh-pages
 

@@ -1,28 +1,27 @@
 [versions]
 android-compile = "31"
-coroutines = "1.6.3"
-coroutines-native = "1.6.1-native-mt!!"
+coroutines = "1.7.3"
 jacoco = "0.8.7"
-kotlin = "1.7.10"
-ktor = "2.0.3"
+jvm-toolchain = "8"
+kotlin = "1.9.10"
+ktor = "2.3.4"
 
 [libraries]
+androidx-core = { module = "androidx.core:core", version = "1.12.0" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-kotlinx-coroutines-native = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-native" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.4.0" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version = "0.4.1" }
 ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 
 [plugins]
-android-library = { id = "com.android.library", version = "7.2.1" }
-android-publish = { id = "com.vanniktech.maven.publish", version = "0.20.0" }
-atomicfu = { id = "kotlinx-atomicfu", version = "0.18.0" }
-binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.8.0" }
-dokka = { id = "org.jetbrains.dokka", version = "1.7.0" }
+android-library = { id = "com.android.library", version = "8.1.1" }
+android-publish = { id = "com.vanniktech.maven.publish", version = "0.25.3" }
+atomicfu = { id = "kotlinx-atomicfu", version = "0.21.0" }
+binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.13.0" }
+dokka = { id = "org.jetbrains.dokka", version = "1.9.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlinter = { id = "org.jmailen.kotlinter", version = "3.11.1" }
-one-eight = { id = "net.mbonnin.one.eight", version = "0.2" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "3.16.0" }

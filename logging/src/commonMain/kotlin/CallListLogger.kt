@@ -3,6 +3,7 @@ package com.juul.tuulbox.logging
 import kotlinx.atomicfu.atomic
 import kotlinx.atomicfu.getAndUpdate
 
+@TuulboxInternal
 public open class CallListLogger : Logger {
 
     private val atomicAllCalls = atomic(emptyList<Call>())

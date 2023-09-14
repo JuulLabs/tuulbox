@@ -1,4 +1,4 @@
-enableFeaturePreview("VERSION_CATALOGS")
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
     repositories {
@@ -24,13 +24,18 @@ pluginManagement {
     }
 }
 
+plugins {
+    // Provides repositories for auto-downloading JVM toolchains.
+    // https://github.com/gradle/foojay-toolchains
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
+}
+
 include(
     "collections",
     "coroutines",
     "logging",
     "logging-android",
     "logging-ktor-client",
-    "logging-test",
     "functional",
     "temporal",
     "test",

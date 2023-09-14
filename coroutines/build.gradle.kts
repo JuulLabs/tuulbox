@@ -11,15 +11,14 @@ apply(from = rootProject.file("gradle/jacoco.gradle.kts"))
 
 kotlin {
     explicitApi()
+    jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
+
     jvm()
     js().browser()
-    android {
-        publishAllLibraryVariants()
-    }
+    android().publishAllLibraryVariants()
     macosX64()
     macosArm64()
     iosX64()
-    iosArm32()
     iosArm64()
     iosSimulatorArm64()
 
@@ -42,11 +41,12 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api(libs.kotlinx.coroutines.android)
+                implementation(libs.androidx.core)
                 implementation(libs.androidx.startup)
             }
         }
 
-        val androidTest by getting {
+        val androidUnitTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
             }
@@ -80,10 +80,6 @@ kotlin {
             dependsOn(appleMain)
         }
 
-        val iosArm32Main by getting {
-            dependsOn(appleMain)
-        }
-
         val iosArm64Main by getting {
             dependsOn(appleMain)
         }
@@ -95,18 +91,20 @@ kotlin {
 }
 
 android {
+    // Workaround (for `jvmToolchain` not being honored) needed until AGP 8.1.0-alpha09.
+    // https://kotlinlang.org/docs/gradle-configure-project.html#gradle-java-toolchains-support
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     compileSdk = libs.versions.android.compile.get().toInt()
+    defaultConfig.minSdk = 16
+    
+    namespace = "com.juul.tuulbox.coroutines"
 
-    defaultConfig {
-        minSdk = 16
-    }
-
-    lintOptions {
-        isAbortOnError = true
-        isWarningsAsErrors = true
-    }
-
-    sourceSets {
-        getByName("main").manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    lint {
+        abortOnError = true
+        warningsAsErrors = true
     }
 }
