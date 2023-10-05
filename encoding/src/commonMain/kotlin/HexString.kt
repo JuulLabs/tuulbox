@@ -13,6 +13,7 @@ package com.juul.tuulbox.encoding
             "kotlin.text.HexFormat",
         ],
     ),
+    level = DeprecationLevel.ERROR,
 )
 public fun ByteArray.toHexString(
     separator: String? = null,
@@ -45,6 +46,7 @@ public fun ByteArray.toHexString(
             "kotlin.text.HexFormat",
         ],
     ),
+    level = DeprecationLevel.ERROR,
 )
 public fun CharSequence.parseHex(): ByteArray {
     if (isEmpty()) return byteArrayOf()

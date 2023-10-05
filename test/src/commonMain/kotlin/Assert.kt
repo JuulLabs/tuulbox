@@ -47,6 +47,7 @@ public fun assertSimilar(target: Long, epsilon: Long, value: Long) {
 @Deprecated(
     message = "Use assertEquals with tolerance (introduced in Kotlin 1.5). See https://kotlinlang.org/docs/whatsnew15.html#assertion-function-updates",
     replaceWith = ReplaceWith("assertEquals(expected, value, epsilon)"),
+    level = DeprecationLevel.ERROR,
 )
 public fun assertSimilar(target: Float, epsilon: Float, value: Float) {
     assertContains(target - epsilon..target + epsilon, value)
@@ -55,6 +56,7 @@ public fun assertSimilar(target: Float, epsilon: Float, value: Float) {
 @Deprecated(
     message = "Use assertEquals with tolerance (introduced in Kotlin 1.5). See https://kotlinlang.org/docs/whatsnew15.html#assertion-function-updates",
     replaceWith = ReplaceWith("assertEquals(expected, value, epsilon)"),
+    level = DeprecationLevel.ERROR,
 )
 /** Asserts that [value] is equal to [target], plus or minus some [epsilon]. */
 public fun assertSimilar(target: Double, epsilon: Double, value: Double) {
