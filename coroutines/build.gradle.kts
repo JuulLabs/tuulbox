@@ -15,7 +15,7 @@ kotlin {
 
     jvm()
     js().browser()
-    android().publishAllLibraryVariants()
+    androidTarget().publishAllLibraryVariants()
     macosX64()
     macosArm64()
     iosX64()
@@ -23,6 +23,10 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
+        all {
+            languageSettings.optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
+        }
+
         val commonMain by getting {
             dependencies {
                 api(libs.kotlinx.coroutines.core)
