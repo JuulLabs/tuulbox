@@ -7,7 +7,10 @@ import kotlinx.coroutines.CoroutineScope
  *
  * Originally adapted from: https://github.com/Kotlin/kotlinx.coroutines/issues/885#issuecomment-446586161
  */
-@Deprecated("Use official Coroutines `runTest`")
+@Deprecated(
+    "Use official Coroutines `runTest`",
+    level = DeprecationLevel.ERROR,
+)
 public expect fun runTest(
     action: suspend CoroutineScope.() -> Unit,
 )

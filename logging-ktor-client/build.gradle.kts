@@ -40,6 +40,7 @@ kotlin {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
                 implementation(libs.ktor.mock)
+                implementation(libs.kotlinx.coroutines.test)
             }
         }
 

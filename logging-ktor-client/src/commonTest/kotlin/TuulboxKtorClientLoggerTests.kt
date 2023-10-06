@@ -1,6 +1,5 @@
 package com.juul.tuulbox.logging
 
-import com.juul.tuulbox.test.runTest
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.mock.MockEngine
@@ -8,6 +7,7 @@ import io.ktor.client.engine.mock.respond
 import io.ktor.client.plugins.logging.LogLevel.ALL
 import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.get
+import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertTrue

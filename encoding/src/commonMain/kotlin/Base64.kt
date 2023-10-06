@@ -35,6 +35,7 @@ private fun CharSequence.decodeQuartet(index: Int): Int =
         expression = "Base64.decode(this)",
         imports = ["kotlin.io.encoding.Base64"],
     ),
+    level = DeprecationLevel.ERROR,
 )
 public fun CharSequence.decodeBase64(): ByteArray {
     val numBytes = when {
@@ -78,6 +79,7 @@ public fun CharSequence.decodeBase64(): ByteArray {
         expression = "Base64.decode(this).asSequence()",
         imports = ["kotlin.io.encoding.Base64"],
     ),
+    level = DeprecationLevel.ERROR,
 )
 public fun CharSequence.decodeBase64Sequence(): Sequence<Byte> = sequence {
     var index = 0
@@ -110,6 +112,7 @@ private fun Int.encode(): Char = when (this) {
         expression = "Base64.encode(this)",
         imports = ["kotlin.io.encoding.Base64"],
     ),
+    level = DeprecationLevel.ERROR,
 )
 public fun ByteArray.encodeBase64(): String = iterator().encodeBase64()
 
@@ -119,6 +122,7 @@ public fun ByteArray.encodeBase64(): String = iterator().encodeBase64()
         expression = "Base64.encode(this.toList().toByteArray())",
         imports = ["kotlin.io.encoding.Base64"],
     ),
+    level = DeprecationLevel.ERROR,
 )
 public fun Sequence<Byte>.encodeBase64(): String = iterator().encodeBase64()
 
@@ -128,6 +132,7 @@ public fun Sequence<Byte>.encodeBase64(): String = iterator().encodeBase64()
         expression = "Base64.encode(this.toByteArray())",
         imports = ["kotlin.io.encoding.Base64"],
     ),
+    level = DeprecationLevel.ERROR,
 )
 public fun Iterable<Byte>.encodeBase64(): String = iterator().encodeBase64()
 

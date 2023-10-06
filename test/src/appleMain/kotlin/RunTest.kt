@@ -4,7 +4,10 @@ import kotlinx.cinterop.memScoped
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
 
-@Deprecated("Use official Coroutines `runTest`")
+@Deprecated(
+    "Use official Coroutines `runTest`",
+    level = DeprecationLevel.ERROR,
+)
 public actual fun runTest(
     action: suspend CoroutineScope.() -> Unit,
 ): Unit = runBlocking {
