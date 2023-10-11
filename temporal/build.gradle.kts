@@ -21,9 +21,7 @@ kotlin {
             }
         }
     }
-    androidTarget {
-        publishAllLibraryVariants()
-    }
+    androidTarget().publishAllLibraryVariants()
 
     targets.all {
         compilations.all {
