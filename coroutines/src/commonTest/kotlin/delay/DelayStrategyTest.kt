@@ -87,11 +87,19 @@ class DelayStrategyTest {
 @OptIn(ExperimentalTime::class)
 private class TimeMachine : TimeSource {
     private val elapsedMillis = MutableStateFlow(0L)
-    fun advanceBy(milliseconds: Long) { elapsedMillis.update { value -> value + milliseconds } }
-    suspend fun delayUntil(milliseconds: Long) { elapsedMillis.first { it >= milliseconds } }
+
+    fun advanceBy(milliseconds: Long) {
+        elapsedMillis.update { value -> value + milliseconds }
+    }
+
+    suspend fun delayUntil(milliseconds: Long) {
+        elapsedMillis.first { it >= milliseconds }
+    }
+
     private class TimeMachineMark(private val parent: TimeMachine) : TimeMark {
         override fun elapsedNow(): Duration = parent.elapsedMillis.value.toDuration(DurationUnit.MILLISECONDS)
     }
+
     override fun markNow(): TimeMark = TimeMachineMark(this)
 }
 
@@ -104,6 +112,7 @@ private class TimeMachineDelayStrategy(
     private val delayUntilMilliseconds: Long,
 ) : DelayStrategy {
     val invocation = Channel<Invocation>()
+
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
         invocation.send(Invocation.Await(iteration, elapsedMillis))
         timeMachine.delayUntil(milliseconds = delayUntilMilliseconds)

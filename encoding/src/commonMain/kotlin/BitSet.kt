@@ -2,7 +2,9 @@ package com.juul.tuulbox.encoding
 
 public interface BitSet<T> {
     public operator fun get(index: Int): Boolean
+
     public operator fun set(index: Int, value: Boolean): BitSet<T>
+
     public fun asPrimitive(): T
 
     /** Extracts [count] bits at [offset]. e.g. `0b00001100.extract(2, 2) = 0b11 = 0x03`. */
