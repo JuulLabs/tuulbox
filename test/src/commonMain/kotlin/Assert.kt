@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:max-line-length")
+
 package com.juul.tuulbox.test
 
 import kotlinx.datetime.Instant
