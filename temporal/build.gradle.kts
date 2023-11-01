@@ -21,21 +21,15 @@ kotlin {
             }
         }
     }
-    android {
-        publishAllLibraryVariants()
-    }
+    androidTarget().publishAllLibraryVariants()
 
     targets.all {
         compilations.all {
-            kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.time.ExperimentalTime"
+            kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.time.ExperimentalTime"
         }
     }
 
     sourceSets {
-        all {
-            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
-        }
-
         val commonMain by getting {
             dependencies {
                 api(libs.kotlinx.coroutines.core)

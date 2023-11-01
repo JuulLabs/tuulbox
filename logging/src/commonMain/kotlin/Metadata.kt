@@ -20,7 +20,9 @@ internal class Metadata : ReadMetadata, WriteMetadata {
     }
 
     override fun equals(other: Any?): Boolean = other is Metadata && storedData == other.storedData
+
     override fun hashCode(): Int = storedData.hashCode()
+
     override fun toString(): String = storedData.toString()
 }
 
@@ -31,6 +33,7 @@ internal class Metadata : ReadMetadata, WriteMetadata {
  */
 public interface ReadMetadata {
     public operator fun <T : Any> get(key: Key<T>): T?
+
     public fun copy(): ReadMetadata
 }
 
