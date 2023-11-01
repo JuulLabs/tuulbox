@@ -1,6 +1,11 @@
 name: CI
 on:
   pull_request:
+  # Trigger on merges to `main` to allow `gradle/gradle-build-action` runs to write their caches.
+  # https://github.com/gradle/gradle-build-action#using-the-caches-read-only
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,22 +18,15 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: actions/cache@v3
+      - name: assemble
+        uses: gradle/gradle-build-action@v2
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            ~/.gradle/jdks
-            ~/.konan
-            ~/.android/build-cache
-            ~/.android/cache
-          key: ${{ runner.os }}-build-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          arguments: assemble
 
-      - run: ./gradlew assemble
-      - run: ./gradlew --continue check
+      - name: check
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: check
 
       - uses: actions/upload-artifact@v3
         if: failure()
@@ -37,22 +35,18 @@ jobs:
           path: '**/build/reports/tests/'
           retention-days: 5
 
-      - run: |
-          set -o xtrace
-          if [ ! -z "${{ secrets.SIGNING_KEY }}" ]; then
-            ./gradlew \
-              -PVERSION_NAME="unspecified" \
-              -PsigningInMemoryKey="${{ secrets.SIGNING_KEY }}" \
-              -PsigningInMemoryKeyPassword="${{ secrets.SIGNING_PASSWORD }}" \
-              publishToMavenLocal
-          else
-            ./gradlew \
-              -PVERSION_NAME="unspecified" \
-              -PRELEASE_SIGNING_ENABLED=false \
-              publishToMavenLocal
-          fi
+      - name: publishToMavenLocal
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: |
+            -PVERSION_NAME=unspecified
+            -PRELEASE_SIGNING_ENABLED=false
+            publishToMavenLocal
 
-      - run: ./gradlew jacocoTestReport
+      - name: jacocoTestReport
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: jacocoTestReport
 
       - uses: EnricoMi/publish-unit-test-result-action/composite@v2
         with:
@@ -60,7 +54,3 @@ jobs:
           report_individual_runs: 'true'
 
       - uses: codecov/codecov-action@v3
-
-      - run: |
-          rm -f ~/.gradle/caches/modules-2/modules-2.lock
-          rm -f ~/.gradle/caches/modules-2/gc.properties
