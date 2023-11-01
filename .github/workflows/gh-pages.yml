@@ -5,7 +5,7 @@ on:
       - main
 
 env:
-  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  GRADLE_OPTS: -Dorg.gradle.daemon=false
 
 jobs:
   deploy:
@@ -19,26 +19,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - uses: actions/cache@v3
+      - name: dokkaHtmlMultiModule
+        uses: gradle/gradle-build-action@v2
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            ~/.gradle/jdks
-            ~/.konan
-            ~/.android/build-cache
-            ~/.android/cache
-          key: ${{ runner.os }}-gh-pages-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gh-pages-
-            ${{ runner.os }}-
-
-      - run: ./gradlew dokkaHtmlMultiModule
+          arguments: dokkaHtmlMultiModule
 
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/gh-pages
-
-      - run: |
-          rm -f ~/.gradle/caches/modules-2/modules-2.lock
-          rm -f ~/.gradle/caches/modules-2/gc.properties
