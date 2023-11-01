@@ -12,6 +12,7 @@ internal class Pool<T>(
     private val cache = ArrayDeque<T>()
 
     fun borrow(): T = lock.withLock { cache.removeLastOrNull() } ?: factory()
+
     fun recycle(value: T) {
         refurbish(value)
         lock.withLock { cache.addLast(value) }

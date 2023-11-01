@@ -99,6 +99,7 @@ public class SynchronizedMap<K, V> internal constructor(
  * While it might seem weird to return [MutableSet] and then crash on any mutation, this is actually the same behavior
  * you get from, for example `HashMap.entries`. This class exists to enable that same behavior for [SynchronizedMap].
  */
+@Suppress("ktlint:standard:blank-line-before-declaration")
 private fun <E> MutableSet<E>.readOnly(): MutableSet<E> {
     val parent = this
     return object : Set<E> by parent, MutableSet<E> {
@@ -120,6 +121,7 @@ private fun <E> MutableSet<E>.readOnly(): MutableSet<E> {
  * While it might seem weird to return [MutableCollection] and then crash on any mutation, this is actually the same behavior
  * you get from, for example `HashMap.values`. This class exists to enable that same behavior for [SynchronizedMap].
  */
+@Suppress("ktlint:standard:blank-line-before-declaration")
 private fun <E> MutableCollection<E>.readOnly(): MutableCollection<E> {
     val parent = this
     return object : Collection<E> by parent, MutableCollection<E> {
