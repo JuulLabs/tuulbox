@@ -24,11 +24,6 @@ jobs:
         with:
           arguments: check
 
-      - name: check
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: packJsPackage
-
       - name: publish
         uses: gradle/gradle-build-action@v2
         with:
