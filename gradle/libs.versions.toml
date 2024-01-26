@@ -18,7 +18,7 @@ ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 
 [plugins]
-android-library = { id = "com.android.library", version = "8.2.1" }
+android-library = { id = "com.android.library", version = "8.2.2" }
 android-publish = { id = "com.vanniktech.maven.publish", version = "0.27.0" }
 atomicfu = { id = "kotlinx-atomicfu", version = "0.23.1" }
 binary-compatibility-validator = { id = "binary-compatibility-validator", version = "0.13.0" }
