@@ -5,14 +5,26 @@ import kotlinx.atomicfu.locks.reentrantLock
 import kotlinx.atomicfu.locks.withLock
 
 /** Returns an empty new [SynchronizedMap]. */
+@Deprecated(
+    "Prefer using atomicMapOf instead. SynchronizedMap does not play nicely with coroutines.",
+    ReplaceWith("atomicMapOf", "com.juul.tuulbox.collections.atomicMapOf"),
+)
 public fun <K, V> synchronizedMapOf(): SynchronizedMap<K, V> =
     SynchronizedMap(linkedMapOf())
 
 /** Returns a new [SynchronizedMap] with the specified contents. */
+@Deprecated(
+    "Prefer using atomicMapOf instead. SynchronizedMap does not play nicely with coroutines.",
+    ReplaceWith("atomicMapOf", "com.juul.tuulbox.collections.atomicMapOf"),
+)
 public fun <K, V> synchronizedMapOf(vararg pairs: Pair<K, V>): SynchronizedMap<K, V> =
     SynchronizedMap(linkedMapOf(*pairs))
 
 /** A [MutableMap] where all reads and writes are protected by a [ReentrantLock]. */
+@Deprecated(
+    "Prefer using AtomicMap instead. SynchronizedMap does not play nicely with coroutines.",
+    ReplaceWith("AtomicMap", "com.juul.tuulbox.collections.AtomicMap"),
+)
 public class SynchronizedMap<K, V> internal constructor(
     private val inner: LinkedHashMap<K, V>,
 ) : MutableMap<K, V> {
