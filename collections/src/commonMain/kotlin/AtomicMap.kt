@@ -1,6 +1,8 @@
 package com.juul.tuulbox.collections
 
+import kotlinx.collections.immutable.ImmutableCollection
 import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.ImmutableSet
 import kotlinx.collections.immutable.PersistentMap
 import kotlinx.collections.immutable.mutate
 import kotlinx.collections.immutable.persistentHashMapOf
@@ -48,13 +50,13 @@ public class AtomicMap<K, V> private constructor(
     override val size: Int
         get() = snapshot.size
 
-    override val entries: Set<Map.Entry<K, V>>
+    override val entries: ImmutableSet<Map.Entry<K, V>>
         get() = snapshot.entries
 
-    override val keys: Set<K>
+    override val keys: ImmutableSet<K>
         get() = snapshot.keys
 
-    override val values: Collection<V>
+    override val values: ImmutableCollection<V>
         get() = snapshot.values
 
     override fun containsKey(key: K): Boolean = snapshot.containsKey(key)
@@ -106,11 +108,11 @@ public class AtomicMap<K, V> private constructor(
         state.update { it.mutate(mutator) }
     }
 
-    /** Mutates this map atomically and returns the previous map. [mutator] can be evaluated multiple times if a concurrent edit occurs. */
+    /** Mutates this map atomically and returns the previous [snapshot]. [mutator] can be evaluated multiple times if a concurrent edit occurs. */
     public fun getAndMutate(mutator: MutableMap<K, V>.() -> Unit): ImmutableMap<K, V> =
         state.getAndUpdate { it.mutate(mutator) }
 
-    /** Mutates this map atomically and returns the new map. [mutator] can be evaluated multiple times if a concurrent edit occurs. */
+    /** Mutates this map atomically and returns the new [snapshot]. [mutator] can be evaluated multiple times if a concurrent edit occurs. */
     public fun mutateAndGet(mutator: MutableMap<K, V>.() -> Unit): ImmutableMap<K, V> =
         state.updateAndGet { it.mutate(mutator) }
 }
