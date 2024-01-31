@@ -46,7 +46,8 @@ public class AtomicMap<K, V> private constructor(
      *
      * This operation is non-copying and efficient.
      */
-    public val snapshot: ImmutableMap<K, V> get() = state.value
+    public val snapshot: ImmutableMap<K, V>
+        get() = state.value
 
     override val size: Int
         get() = snapshot.size
