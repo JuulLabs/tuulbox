@@ -91,17 +91,19 @@ public class AtomicMap<K, V> private constructor(
     }
 
     /** Atomic version of [MutableMap.getOrPut]. [defaultValue] can be evaluated multiple times if a concurrent edit occurs. */
-    // `as V` is used instead of `!!` or [checkNotNull] because it upcasts away from `null` when V is not nullable, but does not
-    // throw an exception when used with nullable V.
-    @Suppress("UNCHECKED_CAST")
-    public fun getOrPut(key: K, defaultValue: () -> V): V =
-        state.updateAndGet { map ->
+    public fun getOrPut(key: K, defaultValue: () -> V): V {
+        val value = state.updateAndGet { map ->
             if (key in map) {
                 map
             } else {
                 map.put(key, defaultValue())
             }
-        }[key] as V
+        }[key]
+        // `as V` is used instead of `!!` or [checkNotNull] because it upcasts away from `null` when V is not nullable,
+        // but does not throw an exception when used with nullable V.
+        @Suppress("UNCHECKED_CAST")
+        return value as V
+    }
 
     /** Mutates this map atomically. [mutator] can be evaluated multiple times if a concurrent edit occurs. */
     public fun mutate(mutator: MutableMap<K, V>.() -> Unit) {
