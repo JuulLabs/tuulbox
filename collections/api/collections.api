@@ -1,5 +1,5 @@
 public final class com/juul/tuulbox/collections/AtomicMap : java/util/Map, kotlin/jvm/internal/markers/KMappedMarker {
-	public final fun clear ()V
+	public fun clear ()V
 	public fun compute (Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
 	public fun computeIfAbsent (Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
 	public fun computeIfPresent (Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
@@ -7,33 +7,41 @@ public final class com/juul/tuulbox/collections/AtomicMap : java/util/Map, kotli
 	public fun containsValue (Ljava/lang/Object;)Z
 	public synthetic fun entrySet ()Ljava/util/Set;
 	public final fun entrySet ()Lkotlinx/collections/immutable/ImmutableSet;
+	public fun equals (Ljava/lang/Object;)Z
 	public fun get (Ljava/lang/Object;)Ljava/lang/Object;
-	public final fun getAndMutate (Lkotlin/jvm/functions/Function1;)Lkotlinx/collections/immutable/ImmutableMap;
 	public fun getEntries ()Lkotlinx/collections/immutable/ImmutableSet;
 	public final fun getFlow ()Lkotlinx/coroutines/flow/StateFlow;
 	public fun getKeys ()Lkotlinx/collections/immutable/ImmutableSet;
-	public final fun getOrPut (Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
 	public fun getSize ()I
 	public final fun getSnapshot ()Lkotlinx/collections/immutable/ImmutableMap;
+	public final fun getState ()Lkotlinx/coroutines/flow/MutableStateFlow;
 	public fun getValues ()Lkotlinx/collections/immutable/ImmutableCollection;
+	public fun hashCode ()I
 	public fun isEmpty ()Z
 	public synthetic fun keySet ()Ljava/util/Set;
 	public final fun keySet ()Lkotlinx/collections/immutable/ImmutableSet;
 	public fun merge (Ljava/lang/Object;Ljava/lang/Object;Ljava/util/function/BiFunction;)Ljava/lang/Object;
 	public final fun mutate (Lkotlin/jvm/functions/Function1;)V
-	public final fun mutateAndGet (Lkotlin/jvm/functions/Function1;)Lkotlinx/collections/immutable/ImmutableMap;
-	public final fun put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-	public final fun putAll (Ljava/util/Map;)V
+	public final fun mutateAndSnapshot (Lkotlin/jvm/functions/Function1;)Lkotlinx/collections/immutable/ImmutableMap;
+	public fun put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+	public fun putAll (Ljava/util/Map;)V
 	public fun putIfAbsent (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-	public final fun remove (Ljava/lang/Object;)Ljava/lang/Object;
+	public fun remove (Ljava/lang/Object;)Ljava/lang/Object;
 	public fun remove (Ljava/lang/Object;Ljava/lang/Object;)Z
 	public fun replace (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 	public fun replace (Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
 	public fun replaceAll (Ljava/util/function/BiFunction;)V
-	public final fun set (Ljava/lang/Object;Ljava/lang/Object;)V
 	public final fun size ()I
+	public final fun snapshotAndMutate (Lkotlin/jvm/functions/Function1;)Lkotlinx/collections/immutable/ImmutableMap;
+	public fun toString ()Ljava/lang/String;
 	public synthetic fun values ()Ljava/util/Collection;
 	public final fun values ()Lkotlinx/collections/immutable/ImmutableCollection;
+}
+
+public final class com/juul/tuulbox/collections/AtomicMapKt {
+	public static final fun atomicHashMapOf ([Lkotlin/Pair;)Lcom/juul/tuulbox/collections/AtomicMap;
+	public static final fun atomicMapOf ([Lkotlin/Pair;)Lcom/juul/tuulbox/collections/AtomicMap;
+	public static final fun getOrPut (Lcom/juul/tuulbox/collections/AtomicMap;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
 }
 
 public final class com/juul/tuulbox/collections/SynchronizedMap : java/util/Map, kotlin/jvm/internal/markers/KMutableMap {
