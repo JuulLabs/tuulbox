@@ -38,7 +38,7 @@ public class AtomicMap<K, V> private constructor(
 
     internal constructor(initial: PersistentMap<K, V>) : this(MutableStateFlow(initial))
 
-    /** Returns this map as a [StateFlow]. Each call to [put], [mutate], etc will cause a new emit on this flow. */
+    /** Returns this map as a [StateFlow]. Each mutation will cause a new emit on this flow. */
     public val flow: StateFlow<ImmutableMap<K, V>> = state.asStateFlow()
 
     /**
