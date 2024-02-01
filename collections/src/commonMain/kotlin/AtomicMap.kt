@@ -36,10 +36,11 @@ public class AtomicMap<K, V> private constructor(
     internal val state: MutableStateFlow<PersistentMap<K, V>>,
 ) : Map<K, V> {
 
-    internal constructor(initial: PersistentMap<K, V>) : this(MutableStateFlow(initial))
+    /** Construct an [AtomicMap] with [initial] mappings. */
+    public constructor(initial: PersistentMap<K, V>) : this(MutableStateFlow(initial))
 
-    /** Returns this map as a [StateFlow]. Each mutation will cause a new emit on this flow. */
-    public val flow: StateFlow<ImmutableMap<K, V>> = state.asStateFlow()
+    /** Returns this map as a [StateFlow]. Each mutation will cause a new emission on this flow. */
+    public val snapshots: StateFlow<ImmutableMap<K, V>> = state.asStateFlow()
 
     /**
      * Returns the current value of this map as an [immutable][ImmutableMap] snapshot.
@@ -47,7 +48,7 @@ public class AtomicMap<K, V> private constructor(
      * This operation is non-copying and efficient.
      */
     public val snapshot: ImmutableMap<K, V>
-        get() = state.value
+        get() = snapshots.value
 
     override val size: Int
         get() = snapshot.size
