@@ -12,20 +12,14 @@ Toolbox of utilities/helpers for Kotlin development.
 ![badge-jvm]
 ![badge-mac]
 
-### [`SynchronizedMap`]
+### `AtomicList`, `AtomicSet`, and `AtomicMap`
 
-Provides a map where read and write operations are protected using a reentrant lock, allowing mutation from multiple
-threads without fear of data corruption.
+Implementations of `List`, `Set`, and `Map` with strong guarantees around mutability. Each of these collections can be `snapshot` to reference their current values without reflecting future changes. A `StateFlow` of `snapshots` is accessible for receiving hot notifications of mutations. Returned collections and iterators automatically reference the `snapshot` of when they were created.
 
-Use `SynchronizedMap.synchronize` when multiple read and write operations need to happen atomically, such as when
-performing a `getOrPut`. 
-
-```kotlin
-// Creating a synchronized map
-val map = SynchronizedMap(mutableMapOf("key" to "value"))
-// Synchronize across multiple operations
-val value = map.synchronized { getOrPut("key") { "defaultValue" } }
-```
+These collections do not implement the various mutable collection interfaces. To mutate these collections, you must use an explicit mutator function. These mutator functions use a lambda to modify the list, and if concurrent mutations occur these lambdas may be ran more than once. In this way each mutation is guaranteed _atomic_, but you must be careful with side effects.
+- `mutate` updates the collection without returning a value.
+- `snapshotAndMutate` updates the collection and returns the snapshot which was used in the successful mutation.
+- `mutateAndSnapshot` updates the collection and returns the snapshot which results from the mutation.
 
 ### [`Map.toJsObject`]
 
