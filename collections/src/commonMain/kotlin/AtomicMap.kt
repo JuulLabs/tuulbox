@@ -14,10 +14,16 @@ import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.updateAndGet
 
+/** Returns an empty [AtomicMap] that guarantees preservation of iteration order, but may be slower. */
+public fun <K, V> atomicMapOf(): AtomicMap<K, V> = AtomicMap(persistentMapOf())
+
 /** Returns an [AtomicMap] that guarantees preservation of iteration order, but may be slower. */
 public fun <K, V> atomicMapOf(
     vararg pairs: Pair<K, V>,
 ): AtomicMap<K, V> = AtomicMap(persistentMapOf(*pairs))
+
+/** Returns an empty [AtomicMap] that does not guarantee preservation of iteration order, but may be faster. */
+public fun <K, V> atomicHashMapOf(): AtomicMap<K, V> = AtomicMap(persistentHashMapOf())
 
 /** Returns an [AtomicMap] that does not guarantee preservation of iteration order, but may be faster. */
 public fun <K, V> atomicHashMapOf(
