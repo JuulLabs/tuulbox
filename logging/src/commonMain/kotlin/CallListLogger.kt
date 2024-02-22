@@ -4,6 +4,7 @@ import kotlinx.atomicfu.atomic
 import kotlinx.atomicfu.getAndUpdate
 
 @TuulboxInternal
+@Deprecated("Tuulbox Logging has been moved to a separate khronicle library.")
 public open class CallListLogger : Logger {
 
     private val atomicAllCalls = atomic(emptyList<Call>())

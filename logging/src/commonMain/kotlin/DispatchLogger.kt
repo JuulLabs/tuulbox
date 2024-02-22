@@ -15,6 +15,10 @@ private data class DispatcherState(
 }
 
 /** Implementation of [Logger] which dispatches calls to consumer [Logger]s. */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("DispatchLogger", "com.juul.khronicle.DispatchLogger"),
+)
 public class DispatchLogger : Logger {
 
     private val state = atomic(EMPTY_STATE)

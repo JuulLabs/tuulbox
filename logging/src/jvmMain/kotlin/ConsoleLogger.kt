@@ -8,6 +8,10 @@ import java.io.PrintStream
  * - Calls to [verbose], [debug], [info], and [warn] map to [System.out].
  * - Calls to [error] and [assert] map to [System.err]
  */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("ConsoleLogger", "com.juul.khronicle.ConsoleLogger"),
+)
 public actual object ConsoleLogger : Logger {
 
     private val simpleMessageFormat = "[%s/%s] %s\n"

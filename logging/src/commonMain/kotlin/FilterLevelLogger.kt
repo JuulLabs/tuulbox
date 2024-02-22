@@ -1,5 +1,9 @@
 package com.juul.tuulbox.logging
 
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("withMinimumLogLevel", "com.juul.khronicle.withMinimumLogLevel"),
+)
 public fun Logger.withMinimumLogLevel(
     minimum: LogLevel,
 ): Logger = FilterLevelLogger(minimum, this)

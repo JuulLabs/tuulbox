@@ -3,6 +3,10 @@ package com.juul.tuulbox.logging
 import android.util.Log
 
 /** [Logger] backed by Android's [Log], for output to Logcat. */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("AndroidLogger", "com.juul.khronicle.AndroidLogger"),
+)
 public object AndroidLogger : Logger {
 
     override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {

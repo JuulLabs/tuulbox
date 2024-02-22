@@ -19,6 +19,10 @@ import platform.posix.stdout
  * - Calls to [verbose], [debug], [info], and [warn] map to standard-out.
  * - Calls to [error] and [assert] map to standard-error.
  */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("ConsoleLogger", "com.juul.khronicle.ConsoleLogger"),
+)
 public actual object ConsoleLogger : Logger {
 
     private fun print(stream: CPointer<FILE>?, severity: String, tag: String, message: String, throwable: Throwable?) {

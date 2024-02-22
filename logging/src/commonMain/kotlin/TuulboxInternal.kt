@@ -10,4 +10,5 @@ import kotlin.annotation.AnnotationRetention.BINARY
 @MustBeDocumented
 @Retention(value = BINARY)
 @RequiresOptIn(level = ERROR)
+@Deprecated("Tuulbox Logging has been moved to a separate khronicle library.")
 public annotation class TuulboxInternal

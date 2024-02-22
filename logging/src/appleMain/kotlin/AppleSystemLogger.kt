@@ -2,6 +2,10 @@ package com.juul.tuulbox.logging
 
 import platform.Foundation.NSLog
 
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("AppleSystemLogger", "com.juul.khronicle.AppleSystemLogger"),
+)
 public object AppleSystemLogger : Logger {
 
     override fun verbose(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?) {

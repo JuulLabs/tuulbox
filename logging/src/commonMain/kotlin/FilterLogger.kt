@@ -1,9 +1,17 @@
 package com.juul.tuulbox.logging
 
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("LogFilter", "com.juul.khronicle.LogFilter"),
+)
 public fun interface LogFilter {
     public fun canLog(tag: String, message: String, metadata: ReadMetadata, throwable: Throwable?): Boolean
 }
 
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("withFilter", "com.juul.khronicle.withFilter"),
+)
 public fun Logger.withFilter(
     filter: LogFilter,
 ): Logger = FilterLogger(filter, this)
