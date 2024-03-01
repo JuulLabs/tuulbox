@@ -12,19 +12,19 @@ jobs:
     runs-on: macos-13
     steps:
       - uses: actions/checkout@v4
-      - uses: gradle/wrapper-validation-action@v1
+      - uses: gradle/wrapper-validation-action@v2
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
       - name: assemble
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: assemble
 
       - name: check
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: check
 
@@ -36,7 +36,7 @@ jobs:
           retention-days: 5
 
       - name: publishToMavenLocal
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: |
             -PVERSION_NAME=unspecified
@@ -44,7 +44,7 @@ jobs:
             publishToMavenLocal
 
       - name: jacocoTestReport
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: jacocoTestReport
 
@@ -53,4 +53,4 @@ jobs:
           junit_files: '**/build/test-results/**/*.xml'
           report_individual_runs: 'true'
 
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v4

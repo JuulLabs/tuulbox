@@ -22,10 +22,16 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-        val commonMain by getting { }
+        val commonMain by getting {
+            dependencies {
+                api(libs.kotlinx.collections.immutable)
+                api(libs.kotlinx.coroutines.core)
+            }
+        }
 
         val commonTest by getting {
             dependencies {
+                implementation(libs.kotlinx.coroutines.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
