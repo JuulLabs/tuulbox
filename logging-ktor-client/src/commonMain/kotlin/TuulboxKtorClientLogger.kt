@@ -15,6 +15,10 @@ import io.ktor.client.plugins.logging.Logger as KtorLogger
  * }
  * ```
  */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("TuulboxKtorClientLogger", "com.juul.khronicle.TuulboxKtorClientLogger"),
+)
 public class TuulboxKtorClientLogger(
     private val level: LogLevel = Verbose,
     private val writeMetadata: (WriteMetadata) -> Unit = {},

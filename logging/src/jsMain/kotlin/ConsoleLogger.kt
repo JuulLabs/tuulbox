@@ -9,6 +9,10 @@ package com.juul.tuulbox.logging
  * - Calls to [error] are mapped to `console.error(...)`.
  * - Calls to [assert] are mapped to `console.assert(false, ...)`
  */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("ConsoleLogger", "com.juul.khronicle.ConsoleLogger"),
+)
 public actual object ConsoleLogger : Logger {
 
     private val simpleMessageFormat = "[%s] %s"

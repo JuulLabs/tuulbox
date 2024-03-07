@@ -8,6 +8,10 @@ import kotlin.native.concurrent.ThreadLocal
 private val metadataPool = Pool(factory = ::Metadata, refurbish = Metadata::clear)
 
 /** Global logging object. To receive logs, call [dispatcher].[install][DispatchLogger.install]. */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("Log", "com.juul.khronicle.Log"),
+)
 public object Log : HideFromStackTraceTag {
 
     /** Global log dispatcher. */

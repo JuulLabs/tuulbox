@@ -1,6 +1,10 @@
 package com.juul.tuulbox.logging
 
 /** Classes which implement [Logger] can write logs. */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("Logger", "com.juul.khronicle.Logger"),
+)
 public interface Logger {
 
     /** Minimum level for this logger. Defaults to [LogLevel.Verbose] (all logs) if not overwritten. */

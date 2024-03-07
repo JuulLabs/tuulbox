@@ -31,6 +31,10 @@ internal class Metadata : ReadMetadata, WriteMetadata {
  * to [ReadMetadata] arguments after the function returns. If a [ReadMetadata] reference must be kept after
  * function return, create a [copy].
  */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("ReadMetadata", "com.juul.khronicle.ReadMetadata"),
+)
 public interface ReadMetadata {
     public operator fun <T : Any> get(key: Key<T>): T?
 
@@ -41,6 +45,10 @@ public interface ReadMetadata {
  * Additional data associated with a log. It's important that [Log] calls do NOT hold onto references
  * to [WriteMetadata] arguments after the lambda returns.
  */
+@Deprecated(
+    message = "Tuulbox Logging has been moved to a separate khronicle library.",
+    ReplaceWith("WriteMetadata", "com.juul.khronicle.WriteMetadata"),
+)
 public interface WriteMetadata {
     public operator fun <T : Any> set(key: Key<T>, value: T)
 }
