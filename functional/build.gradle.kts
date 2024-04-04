@@ -19,28 +19,14 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
+    wasmJs().browser()
 
     sourceSets {
         val commonMain by getting
 
-        val commonTest by getting {
-            dependencies {
-                implementation(libs.kotlinx.coroutines.test)
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
-        }
-
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
+        commonTest.dependencies {
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(kotlin("test"))
         }
 
         val appleMain by creating {
