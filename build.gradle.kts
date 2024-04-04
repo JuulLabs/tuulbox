@@ -3,16 +3,18 @@ buildscript {
         google()
         mavenCentral()
     }
+    dependencies {
+        classpath(libs.atomicfu)
+    }
 }
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.atomicfu) apply false
     alias(libs.plugins.kotlinter) apply false
     alias(libs.plugins.dokka)
     alias(libs.plugins.android.publish) apply false
-    alias(libs.plugins.binary.compatibility.validator)
+    alias(libs.plugins.api)
 }
 
 allprojects {
@@ -41,7 +43,7 @@ allprojects {
 }
 
 tasks.dokkaHtmlMultiModule.configure {
-    outputDirectory.set(buildDir.resolve("gh-pages"))
+    outputDirectory.fileProvider(layout.buildDirectory.file("gh-pages").map { it.asFile })
 }
 
 fun Project.withPluginWhenEvaluated(plugin: String, action: Project.() -> Unit) {

@@ -12,16 +12,13 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
-@Suppress("EXPERIMENTAL_API_USAGE")
 public fun broadcastReceiverFlow(
     intentFilter: IntentFilter,
     @RegisterReceiverFlags flags: Int = RECEIVER_NOT_EXPORTED,
 ): Flow<Intent> = callbackFlow {
     val broadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            if (intent != null) {
-                trySend(intent)
-            }
+        override fun onReceive(context: Context, intent: Intent) {
+            trySend(intent)
         }
     }
     ContextCompat.registerReceiver(applicationContext, broadcastReceiver, intentFilter, flags)
