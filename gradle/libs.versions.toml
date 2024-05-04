@@ -7,7 +7,7 @@ kotlin = "1.9.23"
 ktor = "2.3.10"
 
 [libraries]
-androidx-core = { module = "androidx.core:core", version = "1.13.0" }
+androidx-core = { module = "androidx.core:core", version = "1.13.1" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
 atomicfu = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version = "0.24.0" }
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
