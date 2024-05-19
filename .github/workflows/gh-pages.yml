@@ -4,13 +4,9 @@ on:
     branches:
       - main
 
-env:
-  GRADLE_OPTS: -Dorg.gradle.daemon=false
-
 jobs:
   deploy:
     runs-on: ubuntu-22.04
-
     steps:
       - uses: actions/checkout@v4
       - uses: gradle/wrapper-validation-action@v2
@@ -18,12 +14,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - name: dokkaHtmlMultiModule
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: dokkaHtmlMultiModule
-
+      - uses: gradle/actions/setup-gradle@v3
+      - run: ./gradlew dokkaHtmlMultiModule
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/gh-pages

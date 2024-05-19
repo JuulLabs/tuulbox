@@ -17,16 +17,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - uses: gradle/actions/setup-gradle@v3
 
-      - name: assemble
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: assemble
-
-      - name: check
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: check
+      - run: ./gradlew assemble
+      - run: ./gradlew check
 
       - uses: actions/upload-artifact@v4
         if: failure()
@@ -35,18 +29,13 @@ jobs:
           path: '**/build/reports/tests/'
           retention-days: 5
 
-      - name: publishToMavenLocal
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: |
-            -PVERSION_NAME=unspecified
-            -PRELEASE_SIGNING_ENABLED=false
-            publishToMavenLocal
+        run: >
+          ./gradlew
+          -PVERSION_NAME=unspecified
+          -PRELEASE_SIGNING_ENABLED=false
+          publishToMavenLocal
 
-      - name: jacocoTestReport
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: jacocoTestReport
+      - run: ./gradlew jacocoTestReport
 
       - uses: EnricoMi/publish-unit-test-result-action/composite@v2
         with:
