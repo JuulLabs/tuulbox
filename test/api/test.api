@@ -4,8 +4,6 @@ public final class com/juul/tuulbox/test/AssertKt {
 	public static final fun assertContains (Lkotlin/ranges/ClosedRange;Ljava/lang/Comparable;)V
 	public static final fun assertContains (Lkotlin/sequences/Sequence;Ljava/lang/Object;)V
 	public static final fun assertContains ([Ljava/lang/Object;Ljava/lang/Object;)V
-	public static final fun assertSimilar (DDD)V
-	public static final fun assertSimilar (FFF)V
 	public static final fun assertSimilar (III)V
 	public static final fun assertSimilar (JJJ)V
 	public static final fun assertSimilar-8Mi8wO0 (Lkotlinx/datetime/Instant;JLkotlinx/datetime/Instant;)V
@@ -19,9 +17,5 @@ public final class com/juul/tuulbox/test/ManualClock : kotlinx/datetime/Clock {
 	public fun now ()Lkotlinx/datetime/Instant;
 	public final fun set (Lkotlinx/datetime/Instant;)V
 	public final fun set (Lkotlinx/datetime/LocalDateTime;Lkotlinx/datetime/TimeZone;)V
-}
-
-public final class com/juul/tuulbox/test/RunTestKt {
-	public static final fun runTest (Lkotlin/jvm/functions/Function2;)V
 }
 

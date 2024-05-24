@@ -8,7 +8,6 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlin.test.assertTrue
 import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
 
 /** Asserts that [value] is an element in [array]. */
 public fun <T> assertContains(array: Array<T>, value: T) {
@@ -46,25 +45,6 @@ public fun assertSimilar(target: Long, epsilon: Long, value: Long) {
 }
 
 /** Asserts that [value] is equal to [target], plus or minus some [epsilon]. */
-@Deprecated(
-    message = "Use assertEquals with tolerance (introduced in Kotlin 1.5). See https://kotlinlang.org/docs/whatsnew15.html#assertion-function-updates",
-    replaceWith = ReplaceWith("assertEquals(expected, value, epsilon)"),
-)
-public fun assertSimilar(target: Float, epsilon: Float, value: Float) {
-    assertContains(target - epsilon..target + epsilon, value)
-}
-
-@Deprecated(
-    message = "Use assertEquals with tolerance (introduced in Kotlin 1.5). See https://kotlinlang.org/docs/whatsnew15.html#assertion-function-updates",
-    replaceWith = ReplaceWith("assertEquals(expected, value, epsilon)"),
-)
-/** Asserts that [value] is equal to [target], plus or minus some [epsilon]. */
-public fun assertSimilar(target: Double, epsilon: Double, value: Double) {
-    assertContains(target - epsilon..target + epsilon, value)
-}
-
-/** Asserts that [value] is equal to [target], plus or minus some [epsilon]. */
-@ExperimentalTime
 public fun assertSimilar(target: Instant, epsilon: Duration, value: Instant) {
     assertContains(target - epsilon..target + epsilon, value)
 }
@@ -73,7 +53,6 @@ public fun assertSimilar(target: Instant, epsilon: Duration, value: Instant) {
  * Asserts that [value] is equal to [target], plus or minus some [epsilon]. If an explicit
  * [timeZone] is not specified, the [system default][TimeZone.currentSystemDefault] is used.
  */
-@ExperimentalTime
 public fun assertSimilar(
     target: LocalDateTime,
     epsilon: Duration,

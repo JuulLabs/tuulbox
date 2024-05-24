@@ -126,33 +126,3 @@ public final class com/juul/tuulbox/collections/AtomicSetKt {
 	public static final fun atomicSetOf ([Ljava/lang/Object;)Lcom/juul/tuulbox/collections/AtomicSet;
 }
 
-public final class com/juul/tuulbox/collections/SynchronizedMap : java/util/Map, kotlin/jvm/internal/markers/KMutableMap {
-	public fun <init> ()V
-	public fun <init> (I)V
-	public fun <init> (IF)V
-	public fun <init> (Ljava/util/Map;)V
-	public fun clear ()V
-	public fun containsKey (Ljava/lang/Object;)Z
-	public fun containsValue (Ljava/lang/Object;)Z
-	public final fun entrySet ()Ljava/util/Set;
-	public fun get (Ljava/lang/Object;)Ljava/lang/Object;
-	public fun getEntries ()Ljava/util/Set;
-	public fun getKeys ()Ljava/util/Set;
-	public final fun getLock ()Ljava/util/concurrent/locks/ReentrantLock;
-	public fun getSize ()I
-	public fun getValues ()Ljava/util/Collection;
-	public fun isEmpty ()Z
-	public final fun keySet ()Ljava/util/Set;
-	public fun put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-	public fun putAll (Ljava/util/Map;)V
-	public fun remove (Ljava/lang/Object;)Ljava/lang/Object;
-	public final fun size ()I
-	public final fun synchronized (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
-	public final fun values ()Ljava/util/Collection;
-}
-
-public final class com/juul/tuulbox/collections/SynchronizedMapKt {
-	public static final fun synchronizedMapOf ()Lcom/juul/tuulbox/collections/SynchronizedMap;
-	public static final fun synchronizedMapOf ([Lkotlin/Pair;)Lcom/juul/tuulbox/collections/SynchronizedMap;
-}
-
