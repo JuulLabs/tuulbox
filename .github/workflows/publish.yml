@@ -23,7 +23,6 @@ jobs:
       - name: publish
         run: >
           ./gradlew
-          --max-workers 1
           --no-parallel
           -PVERSION_NAME='${{ github.ref_name }}'
           -PsigningInMemoryKey='${{ secrets.SIGNING_KEY }}'
