@@ -158,16 +158,6 @@ assertContains(
 )
 ```
 
-### [`assertSimilar`]
-
-```kotlin
-assertSimilar(
-    target = 5,
-    epsilon = 1,
-    value = 6,
-)
-```
-
 ## [Encoding](https://juullabs.github.io/tuulbox/encoding/index.html)
 
 ![badge-ios]
@@ -249,10 +239,9 @@ kotlin {
             dependencies {
                 implementation("com.juul.tuulbox:collections:$version")
                 implementation("com.juul.tuulbox:coroutines:$version")
-                implementation("com.juul.tuulbox:logging:$version")
+                implementation("com.juul.tuulbox:encoding:$version")
                 implementation("com.juul.tuulbox:functional:$version")
                 implementation("com.juul.tuulbox:temporal:$version")
-                implementation("com.juul.tuulbox:encoding:$version")
             }
         }
 
@@ -275,10 +264,9 @@ repositories {
 dependencies {
     implementation("com.juul.tuulbox:collections:$version")
     implementation("com.juul.tuulbox:coroutines:$version")
-    implementation("com.juul.tuulbox:logging:$version")
+    implementation("com.juul.tuulbox:encoding:$version")
     implementation("com.juul.tuulbox:functional:$version")
     implementation("com.juul.tuulbox:temporal:$version")
-    implementation("com.juul.tuulbox:encoding:$version")
     testImplementation("com.juul.tuulbox:test:$version")
 }
 ```
@@ -303,7 +291,6 @@ limitations under the License.
 
 
 [Collections]: https://kotlinlang.org/docs/reference/collections-overview.html
-[`SynchronizedMap`]: https://juullabs.github.io/tuulbox/collections/collections/com.juul.tuulbox.collections/-synchronized-map/index.html
 [`Map.toJsObject`]: https://juullabs.github.io/tuulbox/collections/collections/com.juul.tuulbox.collections/to-js-object.html
 [Coroutines]: https://kotlinlang.org/docs/reference/coroutines-overview.html
 [KotlinX DateTime]: https://github.com/Kotlin/kotlinx-datetime
@@ -330,7 +317,6 @@ limitations under the License.
 [`Logger.withFilter`]: https://juullabs.github.io/tuulbox/logging/logging/com.juul.tuulbox.logging/with-filter.html
 [`runTest`]: https://juullabs.github.io/tuulbox/test/test/com.juul.tuulbox.test/run-test.html
 [`assertContains`]: https://juullabs.github.io/tuulbox/test/test/com.juul.tuulbox.test/assert-contains.html
-[`assertSimilar`]: https://juullabs.github.io/tuulbox/test/test/com.juul.tuulbox.test/assert-similar.html
 [`IntBitSet`]: https://juullabs.github.io/tuulbox/encoding/encoding/com.juul.tuulbox.encoding/-int-bit-set/index.html
 [`LongBitSet`]: https://juullabs.github.io/tuulbox/encoding/encoding/com.juul.tuulbox.encoding/-long-bit-set/index.html
 [`instantFlow`]: https://juullabs.github.io/tuulbox/temporal/temporal/com.juul.tuulbox.temporal/instant-flow.html

@@ -101,12 +101,12 @@ internal fun getExponentialBackoffMillis(
  * calculation (for the purposes of adjusting one DelayStrategy's delay based on the amount of time that passed in another
  * DelayStrategy's delay).
  */
-@OptIn(ExperimentalTime::class)
 public class Dynamic<T> internal constructor(
     private val trigger: Flow<T>,
     private val timeSource: TimeSource,
     private val selector: (T) -> DelayStrategy,
 ) : DelayStrategy {
+    @OptIn(ExperimentalTime::class)
     public constructor(
         trigger: Flow<T>,
         selector: (T) -> DelayStrategy,

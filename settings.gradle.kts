@@ -16,9 +16,6 @@ plugins {
 include(
     "collections",
     "coroutines",
-    "logging",
-    "logging-android",
-    "logging-ktor-client",
     "functional",
     "temporal",
     "test",
