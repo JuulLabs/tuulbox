@@ -13,13 +13,14 @@ public class AtomicMapTests {
     @Test
     public fun atomicMap_concurrentMutateBlocks_doesNotLoseWrites() = runTest {
         val actual = AtomicMap<String, Int>(persistentMapOf())
-        (1..10).map {
-            launch(Dispatchers.Default) {
-                for (i in 0 until 500) {
-                    actual.mutate { this["count"] = (this["count"] ?: 0) + 1 }
+        (1..10)
+            .map {
+                launch(Dispatchers.Default) {
+                    for (i in 0 until 500) {
+                        actual.mutate { this["count"] = (this["count"] ?: 0) + 1 }
+                    }
                 }
-            }
-        }.joinAll()
+            }.joinAll()
 
         assertEquals(mapOf("count" to 5_000), actual)
     }

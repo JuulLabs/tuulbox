@@ -33,7 +33,10 @@ class TemporalFlowTests {
 
     @Test
     fun localDateFlowInitialValueIsCorrect() = runTest {
-        val expected = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault()).date
+        val expected = Clock.System
+            .now()
+            .toLocalDateTime(TimeZone.currentSystemDefault())
+            .date
         val actual = localDateFlow().first()
         assertEquals(expected, actual)
     }

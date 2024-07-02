@@ -20,7 +20,9 @@ public fun <T> BitSet<T>.extract(range: IntRange): T =
 public val Int.bits: BitSet<Int> get() = IntBitSet(this)
 public val Long.bits: BitSet<Long> get() = LongBitSet(this)
 
-public data class IntBitSet(private var buffer: Int) : BitSet<Int> {
+public data class IntBitSet(
+    private var buffer: Int,
+) : BitSet<Int> {
     override operator fun get(index: Int): Boolean {
         require(index in 0 until 32)
         val mask = 1 shl index
@@ -44,7 +46,9 @@ public data class IntBitSet(private var buffer: Int) : BitSet<Int> {
     }
 }
 
-public data class LongBitSet(private var buffer: Long) : BitSet<Long> {
+public data class LongBitSet(
+    private var buffer: Long,
+) : BitSet<Long> {
     override operator fun get(index: Int): Boolean {
         require(index in 0 until 64)
         val mask = 1L shl index

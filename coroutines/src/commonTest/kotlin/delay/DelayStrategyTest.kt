@@ -96,7 +96,9 @@ private class TimeMachine : TimeSource {
         elapsedMillis.first { it >= milliseconds }
     }
 
-    private class TimeMachineMark(private val parent: TimeMachine) : TimeMark {
+    private class TimeMachineMark(
+        private val parent: TimeMachine,
+    ) : TimeMark {
         override fun elapsedNow(): Duration = parent.elapsedMillis.value.toDuration(DurationUnit.MILLISECONDS)
     }
 
@@ -104,7 +106,10 @@ private class TimeMachine : TimeSource {
 }
 
 private sealed class Invocation {
-    data class Await(val iteration: Int, val elapsedMilliseconds: Long) : Invocation()
+    data class Await(
+        val iteration: Int,
+        val elapsedMilliseconds: Long,
+    ) : Invocation()
 }
 
 private class TimeMachineDelayStrategy(
