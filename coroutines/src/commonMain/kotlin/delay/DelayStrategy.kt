@@ -20,7 +20,9 @@ public interface DelayStrategy {
 /**
  * [DelayStrategy] that, when [await] is called, will delay for a fixed amount of time, specified by [delayMillis].
  */
-public class FixedDelay(private val delayMillis: Long) : DelayStrategy {
+public class FixedDelay(
+    private val delayMillis: Long,
+) : DelayStrategy {
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
         delay(delayMillis - elapsedMillis)
     }
@@ -114,9 +116,10 @@ public class Dynamic<T> internal constructor(
 
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
         val mark = timeSource.markNow()
-        trigger.transformLatest {
-            selector(it).await(iteration, mark.elapsedNow().inWholeMilliseconds)
-            emit(Unit)
-        }.first()
+        trigger
+            .transformLatest {
+                selector(it).await(iteration, mark.elapsedNow().inWholeMilliseconds)
+                emit(Unit)
+            }.first()
     }
 }
