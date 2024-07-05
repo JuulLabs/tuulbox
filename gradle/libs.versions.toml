@@ -9,7 +9,7 @@ ktor = "2.3.12"
 [libraries]
 androidx-core = { module = "androidx.core:core", version = "1.13.1" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version = "0.24.0" }
+atomicfu = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version = "0.25.0" }
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
