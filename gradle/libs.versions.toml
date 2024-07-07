@@ -9,7 +9,6 @@ ktor = "2.3.12"
 [libraries]
 androidx-core = { module = "androidx.core:core", version = "1.13.1" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version = "0.25.0" }
 kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version = "0.3.7" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -23,6 +22,7 @@ ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 android-library = { id = "com.android.library", version = "8.5.0" }
 android-publish = { id = "com.vanniktech.maven.publish", version = "0.29.0" }
 api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.14.0" }
+atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version = "0.25.0" }
 dokka = { id = "org.jetbrains.dokka", version = "1.9.20" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "4.4.0" }
