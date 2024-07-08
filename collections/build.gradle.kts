@@ -1,6 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    id("kotlinx-atomicfu")
+    alias(libs.plugins.atomicfu)
     id("org.jmailen.kotlinter")
     jacoco
     id("org.jetbrains.dokka")

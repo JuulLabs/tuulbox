@@ -3,9 +3,6 @@ buildscript {
         google()
         mavenCentral()
     }
-    dependencies {
-        classpath(libs.atomicfu)
-    }
 }
 
 plugins {
