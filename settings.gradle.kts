@@ -1,5 +1,7 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
+rootProject.name = "tuulbox"
+
 pluginManagement {
     repositories {
         google()
