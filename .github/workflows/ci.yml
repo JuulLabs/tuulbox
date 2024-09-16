@@ -19,6 +19,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v3
         with:
           validate-wrappers: true
+      - uses: browser-actions/setup-chrome@v1
 
       - run: ./gradlew assemble
       - run: ./gradlew check
