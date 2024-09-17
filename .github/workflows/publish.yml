@@ -18,6 +18,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
+      - uses: browser-actions/setup-chrome@v1
 
       - run: ./gradlew check
       - name: publish
