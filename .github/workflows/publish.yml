@@ -19,8 +19,12 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
       - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
 
       - run: ./gradlew check
+        env:
+          CHROME_BIN: ${{ steps.setup-chrome.outputs.chrome-path }}
+
       - name: publish
         run: >
           ./gradlew
