@@ -1,6 +1,6 @@
 [versions]
 android-compile = "34"
-coroutines = "1.8.1"
+coroutines = "1.9.0"
 jacoco = "0.8.7"
 jvm-toolchain = "8"
 kotlin = "2.0.20"
