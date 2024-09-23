@@ -13,16 +13,22 @@ import kotlin.time.TimeSource
 /**
  * Interface, using the strategy pattern, for an implementer to delay for periods of time.
  */
+@Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
 public interface DelayStrategy {
+
+    @Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
     public suspend fun await(iteration: Int, elapsedMillis: Long)
 }
 
 /**
  * [DelayStrategy] that, when [await] is called, will delay for a fixed amount of time, specified by [delayMillis].
  */
+@Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
 public class FixedDelay(
     private val delayMillis: Long,
 ) : DelayStrategy {
+
+    @Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
         delay(delayMillis - elapsedMillis)
     }
@@ -59,6 +65,7 @@ private const val DEFAULT_MAXIMUM_DELAY = Long.MAX_VALUE
  * Inspired by:
  * [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
  */
+@Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
 public class ExponentialBackoff(
     private val baseTimeMillis: Long = DEFAULT_BASE_TIME_MILLIS,
     private val multiplier: Float = DEFAULT_MULTIPLIER,
@@ -103,17 +110,20 @@ internal fun getExponentialBackoffMillis(
  * calculation (for the purposes of adjusting one DelayStrategy's delay based on the amount of time that passed in another
  * DelayStrategy's delay).
  */
+@Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
 public class Dynamic<T> internal constructor(
     private val trigger: Flow<T>,
     private val timeSource: TimeSource,
     private val selector: (T) -> DelayStrategy,
 ) : DelayStrategy {
     @OptIn(ExperimentalTime::class)
+    @Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
     public constructor(
         trigger: Flow<T>,
         selector: (T) -> DelayStrategy,
     ) : this(trigger, Clock.System.asTimeSource(), selector)
 
+    @Deprecated("Use https://github.com/michaelbull/kotlin-retry instead.")
     override suspend fun await(iteration: Int, elapsedMillis: Long) {
         val mark = timeSource.markNow()
         trigger
