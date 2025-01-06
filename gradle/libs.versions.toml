@@ -3,7 +3,7 @@ android-compile = "34"
 coroutines = "1.10.1"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
-kotlin = "2.0.21"
+kotlin = "2.1.0"
 ktor = "3.0.3"
 
 [libraries]
@@ -23,6 +23,6 @@ android-library = { id = "com.android.library", version = "8.7.3" }
 android-publish = { id = "com.vanniktech.maven.publish", version = "0.30.0" }
 api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.17.0" }
 atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version = "0.26.1" }
-dokka = { id = "org.jetbrains.dokka", version = "1.9.20" }
+dokka = { id = "org.jetbrains.dokka", version = "2.0.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "5.0.1" }
