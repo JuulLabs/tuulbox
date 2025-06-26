@@ -23,13 +23,11 @@ kotlin {
     }
     androidTarget().publishLibraryVariants("debug", "release")
 
-    targets.all {
-        compilations.all {
-            kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.time.ExperimentalTime"
-        }
-    }
-
     sourceSets {
+        all {
+            languageSettings.optIn("kotlin.time.ExperimentalTime")
+        }
+
         val commonMain by getting {
             dependencies {
                 api(libs.kotlinx.coroutines.core)
