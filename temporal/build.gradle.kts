@@ -21,7 +21,7 @@ kotlin {
             }
         }
     }
-    androidTarget().publishAllLibraryVariants()
+    androidTarget().publishLibraryVariants("debug", "release")
 
     targets.all {
         compilations.all {
