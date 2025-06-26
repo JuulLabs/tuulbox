@@ -2,12 +2,12 @@
 
 package com.juul.tuulbox.test
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toInstant
 import kotlin.test.assertTrue
 import kotlin.time.Duration
+import kotlin.time.Instant
 
 /** Asserts that [value] is an element in [array]. */
 public fun <T> assertContains(array: Array<T>, value: T) {
