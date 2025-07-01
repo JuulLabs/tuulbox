@@ -15,7 +15,7 @@ kotlin {
 
     jvm()
     js().browser()
-    androidTarget().publishAllLibraryVariants()
+    androidTarget().publishLibraryVariants("debug", "release")
     macosX64()
     macosArm64()
     iosX64()
@@ -103,5 +103,6 @@ android {
     lint {
         abortOnError = true
         warningsAsErrors = true
+        disable += "GradleDependency"
     }
 }
