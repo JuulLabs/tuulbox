@@ -14,7 +14,15 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     jvm()
-    js().browser()
+    js {
+        browser {
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                }
+            }
+        }
+    }
     androidTarget().publishLibraryVariants("debug", "release")
     macosX64()
     macosArm64()
