@@ -13,7 +13,15 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     jvm()
-    js().browser()
+    js {
+        browser {
+            testTask {
+                useKarma {
+                    useChromeHeadless()
+                }
+            }
+        }
+    }
     macosX64()
     macosArm64()
     iosX64()
