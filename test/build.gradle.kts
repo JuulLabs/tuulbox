@@ -16,6 +16,9 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
+    wasmJs().browser()
+
+    applyDefaultHierarchyTemplate()
 
     sourceSets {
         all {
@@ -25,46 +28,10 @@ kotlin {
 
         val commonMain by getting {
             dependencies {
-                api(kotlin("test-common"))
+                api(kotlin("test"))
                 api(libs.kotlinx.coroutines.core)
                 api(libs.kotlinx.datetime)
             }
-        }
-
-        val jvmMain by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        val jsMain by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
-            }
-        }
-
-        val appleMain by creating {
-            dependsOn(commonMain)
-        }
-
-        val macosX64Main by getting {
-            dependsOn(appleMain)
-        }
-
-        val macosArm64Main by getting {
-            dependsOn(appleMain)
-        }
-
-        val iosX64Main by getting {
-            dependsOn(appleMain)
-        }
-
-        val iosArm64Main by getting {
-            dependsOn(appleMain)
-        }
-
-        val iosSimulatorArm64Main by getting {
-            dependsOn(appleMain)
         }
     }
 }

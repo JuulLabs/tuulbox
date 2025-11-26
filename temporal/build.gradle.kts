@@ -22,6 +22,9 @@ kotlin {
         }
     }
     androidTarget().publishLibraryVariants("debug", "release")
+    wasmJs().browser()
+
+    applyDefaultHierarchyTemplate()
 
     sourceSets {
         all {
@@ -38,8 +41,7 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 implementation(projects.test)
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
+                implementation(kotlin("test"))
                 implementation(libs.kotlinx.coroutines.test)
             }
         }
@@ -47,24 +49,6 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(projects.coroutines)
-            }
-        }
-
-        val androidUnitTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        val jvmTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        val jsTest by getting {
-            dependencies {
-                implementation(kotlin("test-js"))
             }
         }
     }
