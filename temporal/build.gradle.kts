@@ -1,3 +1,6 @@
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.toJavaDuration
+
 plugins {
     id("com.android.library")
     kotlin("multiplatform")
@@ -14,10 +17,13 @@ kotlin {
     jvmToolchain(libs.versions.jvm.toolchain.get().toInt())
 
     jvm()
-    js().browser {
-        testTask {
-            useMocha {
-                timeout = "6000ms"
+    js {
+        browser {
+            testTask {
+                useKarma {
+                    timeout = 6.seconds.toJavaDuration()
+                    useChromeHeadless()
+                }
             }
         }
     }
