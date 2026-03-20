@@ -3,7 +3,7 @@ android-compile = "36"
 coroutines = "1.10.2"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
-kotlin = "2.3.10"
+kotlin = "2.3.20"
 ktor = "3.4.1"
 
 [libraries]
