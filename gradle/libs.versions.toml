@@ -3,8 +3,8 @@ android-compile = "36"
 coroutines = "1.10.2"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
-kotlin = "2.3.10"
-ktor = "3.4.0"
+kotlin = "2.3.20"
+ktor = "3.4.1"
 
 [libraries]
 androidx-core = { module = "androidx.core:core", version = "1.18.0" }
@@ -22,7 +22,7 @@ ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 android-library = { id = "com.android.library", version = "8.13.2" }
 android-publish = { id = "com.vanniktech.maven.publish", version = "0.36.0" }
 api = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.18.1" }
-atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version = "0.31.0" }
+atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version = "0.32.1" }
 dokka = { id = "org.jetbrains.dokka", version = "2.1.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "5.2.0" }
