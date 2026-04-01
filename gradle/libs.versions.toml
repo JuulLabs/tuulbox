@@ -4,7 +4,7 @@ coroutines = "1.10.2"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
 kotlin = "2.3.20"
-ktor = "3.4.1"
+ktor = "3.4.2"
 
 [libraries]
 androidx-core = { module = "androidx.core:core", version = "1.18.0" }
