@@ -16,7 +16,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v5
+      - uses: gradle/actions/setup-gradle@v6
       - uses: browser-actions/setup-chrome@v1
         id: setup-chrome
 
@@ -25,7 +25,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.setup-chrome.outputs.chrome-path }}
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: failure()
         with:
           name: test-failure
@@ -46,4 +46,4 @@ jobs:
           junit_files: '**/build/test-results/**/*.xml'
           report_individual_runs: true
 
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@v6
