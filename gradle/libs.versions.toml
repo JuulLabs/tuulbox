@@ -1,5 +1,5 @@
 [versions]
-android-compile = "36"
+android-compile = "37"
 coroutines = "1.11.0"
 jacoco = "0.8.7"
 jvm-toolchain = "11"
