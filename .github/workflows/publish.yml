@@ -9,17 +9,25 @@ env:
 
 jobs:
   publish:
-    runs-on: macos-15
+    runs-on: macos-26
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v6
-      - uses: browser-actions/setup-chrome@v1
+      - uses: browser-actions/setup-chrome@v2
         id: setup-chrome
+        with:
+          # Use the Chromium snapshot installer (v1's default behavior) instead
+          # of v2's `stable` default. The `stable` channel installs Chrome for
+          # Testing on macOS but strips the `.app` bundle wrapper from the
+          # cached install, which breaks headless launches under Karma even
+          # though `--version` succeeds. The `latest` snapshot installer
+          # preserves `Chromium.app/Contents/MacOS/Chromium`.
+          chrome-version: latest
 
       - run: ./gradlew check
         env:
