@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     kotlin("multiplatform")
     id("org.jmailen.kotlinter")
     jacoco
@@ -15,7 +15,21 @@ kotlin {
 
     jvm()
     js().browser()
-    androidTarget().publishLibraryVariants("debug", "release")
+    android {
+        namespace = "com.juul.tuulbox.coroutines"
+        compileSdk = libs.versions.android.compile.get().toInt()
+        minSdk = 16
+
+        androidResources { enable = true }
+
+        withHostTest {}
+
+        lint {
+            abortOnError = true
+            warningsAsErrors = true
+            disable += "GradleDependency"
+        }
+    }
     macosX64()
     macosArm64()
     iosX64()
@@ -51,18 +65,5 @@ kotlin {
                 implementation(libs.androidx.startup)
             }
         }
-    }
-}
-
-android {
-    compileSdk = libs.versions.android.compile.get().toInt()
-    defaultConfig.minSdk = 16
-    
-    namespace = "com.juul.tuulbox.coroutines"
-
-    lint {
-        abortOnError = true
-        warningsAsErrors = true
-        disable += "GradleDependency"
     }
 }
