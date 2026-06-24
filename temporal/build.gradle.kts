@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.library")
+    id("com.android.kotlin.multiplatform.library")
     kotlin("multiplatform")
     id("org.jmailen.kotlinter")
     jacoco
@@ -21,7 +21,19 @@ kotlin {
             }
         }
     }
-    androidTarget().publishLibraryVariants("debug", "release")
+    android {
+        namespace = "com.juul.tuulbox.temporal"
+        compileSdk = libs.versions.android.compile.get().toInt()
+        minSdk = 16
+
+        withHostTest {}
+
+        lint {
+            abortOnError = true
+            warningsAsErrors = true
+            disable += "GradleDependency"
+        }
+    }
     wasmJs().browser()
 
     applyDefaultHierarchyTemplate()
@@ -51,18 +63,5 @@ kotlin {
                 implementation(projects.coroutines)
             }
         }
-    }
-}
-
-android {
-    compileSdk = libs.versions.android.compile.get().toInt()
-    defaultConfig.minSdk = 16
-
-    namespace = "com.juul.tuulbox.temporal"
-
-    lint {
-        abortOnError = true
-        warningsAsErrors = true
-        disable += "GradleDependency"
     }
 }
