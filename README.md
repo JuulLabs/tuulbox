@@ -213,7 +213,7 @@ bitSet.asPrimitive() // 1099511627776L
 
 ### Gradle
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.juul.tuulbox/coroutines/badge.svg)](https://search.maven.org/search?q=g:com.juul.tuulbox)
+[![Maven Central](https://img.shields.io/maven-central/v/com.juul.tuulbox/coroutines)](https://central.sonatype.com/search?namespace=com.juul.tuulbox)
 
 Tuulbox can be configured via Gradle Kotlin DSL as follows:
 
