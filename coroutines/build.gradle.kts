@@ -19,6 +19,9 @@ kotlin {
         namespace = "com.juul.tuulbox.coroutines"
         compileSdk = libs.versions.android.compile.get().toInt()
         minSdk = 16
+        aarMetadata {
+            minCompileSdk = 16
+        }
 
         androidResources { enable = true }
 
