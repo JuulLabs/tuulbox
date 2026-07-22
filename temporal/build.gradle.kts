@@ -25,6 +25,9 @@ kotlin {
         namespace = "com.juul.tuulbox.temporal"
         compileSdk = libs.versions.android.compile.get().toInt()
         minSdk = 16
+        aarMetadata {
+            minCompileSdk = 16
+        }
 
         withHostTest {}
 
