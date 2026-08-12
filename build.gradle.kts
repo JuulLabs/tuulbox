@@ -14,6 +14,15 @@ plugins {
     alias(libs.plugins.api)
 }
 
+dependencies {
+    dokka(projects.collections)
+    dokka(projects.coroutines)
+    dokka(projects.functional)
+    dokka(projects.temporal)
+    dokka(projects.test)
+    dokka(projects.encoding)
+}
+
 allprojects {
     group = "com.juul.tuulbox"
 
@@ -37,10 +46,6 @@ allprojects {
             toolVersion = libs.versions.jacoco.get()
         }
     }
-}
-
-tasks.dokkaHtmlMultiModule.configure {
-    outputDirectory.fileProvider(layout.buildDirectory.file("gh-pages").map { it.asFile })
 }
 
 fun Project.withPluginWhenEvaluated(plugin: String, action: Project.() -> Unit) {
