@@ -1,42 +1,39 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>AtomicSet</title>
-<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+<link href="../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async></script>
-<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script></head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-<a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+<a class="library-name--link" href="../../../index.html" tabindex="1">
                     tuulbox
             </a>        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle" type="button">Toggle table of contents
         </button>
@@ -44,19 +41,19 @@
         <div class="library-version" id="library-version">
         </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":collections:dokkaHtmlPartial/commonMain">common</button>
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector common-like" data-active="" aria-pressed="true" data-filter=":collections/commonMain">common</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox" data-role="dropdown-toggle" aria-controls="platform-tags-listbox" aria-haspopup="listbox" aria-expanded="false" aria-label="Toggle source sets"></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":collections:dokkaHtmlPartial/commonMain" data-filter=":collections:dokkaHtmlPartial/commonMain">
+                                <input type="checkbox" class="checkbox--input" id=":collections/commonMain" data-filter=":collections/commonMain">
                                 <span class="checkbox--icon"></span>
                                 common
                             </label>
@@ -64,54 +61,56 @@
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button" type="button">Switch theme
             </button>
             <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config="{&quot;defaultSize&quot;: 280, &quot;minSize&quot;: 200, &quot;maxSize&quot;: 400}">
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     tuulbox
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageids="collections::com.juul.tuulbox.collections/AtomicSet///PointingToDeclaration//358756464">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="collections::com.juul.tuulbox.collections/AtomicSet///PointingToDeclaration//529902734">
   <div class="breadcrumbs"><a href="../../index.html">collections</a><span class="delimiter">/</span><a href="../index.html">com.juul.tuulbox.collections</a><span class="delimiter">/</span><span class="current">AtomicSet</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Atomic</span><wbr><span><span>Set</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">AtomicSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt; </span></div><p class="paragraph">A <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a> that allows for thread safe, atomic mutation. Returned <a href="iterator.html">iterator</a> references a <a href="snapshot.html">snapshot</a> of when this was accessed, and is not mutated when the set is.</p><p class="paragraph">Although mutable, this class intentionally does not implement <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a>. Mutation must use designated mutator functions (<a href="mutate.html">mutate</a>, <a href="snapshot-and-mutate.html">snapshotAndMutate</a>, <a href="mutate-and-snapshot.html">mutateAndSnapshot</a>).</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">AtomicSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt; </span></div><p class="paragraph">A <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a> that allows for thread safe, atomic mutation. Returned <a href="iterator.html">iterator</a> references a <a href="snapshot.html">snapshot</a> of when this was accessed, and is not mutated when the set is.</p><p class="paragraph">Although mutable, this class intentionally does not implement <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a>. Mutation must use designated mutator functions (<a href="mutate.html">mutate</a>, <a href="snapshot-and-mutate.html">snapshotAndMutate</a>, <a href="mutate-and-snapshot.html">mutateAndSnapshot</a>).</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="747145997%2FConstructors%2F358756464" anchor-label="AtomicSet" id="747145997%2FConstructors%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="747145997%2FConstructors%2F529902734" anchor-label="AtomicSet" id="747145997%2FConstructors%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-atomic-set.html"><span>Atomic</span><wbr><span><span>Set</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="747145997%2FConstructors%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="747145997%2FConstructors%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initial<span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/PersistentSet///PointingToDeclaration/">PersistentSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Construct an <a href="index.html">AtomicSet</a> with <a href="../../../collections/com.juul.tuulbox.collections/-atomic-set/[60]init[62].html">initial</a> set.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initial<span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/PersistentSet///PointingToDeclaration/">PersistentSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Construct an <a href="-atomic-set.html">AtomicSet</a> with <a href="../../../collections/com.juul.tuulbox.collections/-atomic-set/--root--.html">initial</a> set.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -119,48 +118,48 @@
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="563860976%2FProperties%2F358756464" anchor-label="size" id="563860976%2FProperties%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="563860976%2FProperties%2F529902734" anchor-label="size" id="563860976%2FProperties%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="size.html"><span><span>size</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="563860976%2FProperties%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="563860976%2FProperties%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="size.html">size</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="size.html">size</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="487663501%2FProperties%2F358756464" anchor-label="snapshot" id="487663501%2FProperties%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="487663501%2FProperties%2F529902734" anchor-label="snapshot" id="487663501%2FProperties%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="snapshot.html"><span><span>snapshot</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="487663501%2FProperties%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="487663501%2FProperties%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="snapshot.html">snapshot</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the current value of this set as an <span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">immutable</span> snapshot.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="snapshot.html">snapshot</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the current value of this set as an <span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">immutable</span> snapshot.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-496045862%2FProperties%2F358756464" anchor-label="snapshots" id="-496045862%2FProperties%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="-496045862%2FProperties%2F529902734" anchor-label="snapshots" id="-496045862%2FProperties%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="snapshots.html"><span><span>snapshots</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-496045862%2FProperties%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-496045862%2FProperties%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="snapshots.html">snapshots</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns this set as a <span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span>. Each mutation will cause a new emission on this flow.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="snapshots.html">snapshots</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns this set as a <span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span>. Each mutation will cause a new emission on this flow.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -168,153 +167,153 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="1428166700%2FFunctions%2F358756464" anchor-label="contains" id="1428166700%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1428166700%2FFunctions%2F529902734" anchor-label="contains" id="1428166700%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains.html"><span><span>contains</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1428166700%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1428166700%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="index.html">E</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="index.html">E</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="397649719%2FFunctions%2F358756464" anchor-label="containsAll" id="397649719%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="397649719%2FFunctions%2F529902734" anchor-label="containsAll" id="397649719%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-all.html"><span>contains</span><wbr><span><span>All</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="397649719%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="397649719%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="contains-all.html"><span class="token function">containsAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="contains-all.html"><span class="token function">containsAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">elements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="842010064%2FFunctions%2F358756464" anchor-label="equals" id="842010064%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="842010064%2FFunctions%2F529902734" anchor-label="equals" id="842010064%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="equals.html"><span><span>equals</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="842010064%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="842010064%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2116660970%2FFunctions%2F358756464" anchor-label="hashCode" id="-2116660970%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="-2116660970%2FFunctions%2F529902734" anchor-label="hashCode" id="-2116660970%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2116660970%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2116660970%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1279355718%2FFunctions%2F358756464" anchor-label="isEmpty" id="1279355718%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="1279355718%2FFunctions%2F529902734" anchor-label="isEmpty" id="1279355718%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-empty.html"><span>is</span><wbr><span><span>Empty</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1279355718%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1279355718%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="is-empty.html"><span class="token function">isEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="is-empty.html"><span class="token function">isEmpty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="389900323%2FFunctions%2F358756464" anchor-label="iterator" id="389900323%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="389900323%2FFunctions%2F529902734" anchor-label="iterator" id="389900323%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="iterator.html"><span><span>iterator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="389900323%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="389900323%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="iterator.html"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="iterator.html"><span class="token function">iterator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterator/index.html">Iterator</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="606694484%2FFunctions%2F358756464" anchor-label="mutate" id="606694484%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="606694484%2FFunctions%2F529902734" anchor-label="mutate" id="606694484%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mutate.html"><span><span>mutate</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="606694484%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="606694484%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="mutate.html"><span class="token function">mutate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mutator<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Mutates this set atomically. <a href="mutate.html">mutator</a> can be evaluated multiple times if a concurrent edit occurs.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="mutate.html"><span class="token function">mutate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mutator<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Mutates this set atomically. <a href="mutate.html">mutator</a> can be evaluated multiple times if a concurrent edit occurs.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1150454973%2FFunctions%2F358756464" anchor-label="mutateAndSnapshot" id="1150454973%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="1150454973%2FFunctions%2F529902734" anchor-label="mutateAndSnapshot" id="1150454973%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mutate-and-snapshot.html"><span>mutate</span><wbr><span>And</span><wbr><span><span>Snapshot</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1150454973%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1150454973%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="mutate-and-snapshot.html"><span class="token function">mutateAndSnapshot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mutator<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Mutates this set atomically and returns the new <a href="snapshot.html">snapshot</a>. <a href="mutate-and-snapshot.html">mutator</a> can be evaluated multiple times if a concurrent edit occurs.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="mutate-and-snapshot.html"><span class="token function">mutateAndSnapshot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mutator<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Mutates this set atomically and returns the new <a href="snapshot.html">snapshot</a>. <a href="mutate-and-snapshot.html">mutator</a> can be evaluated multiple times if a concurrent edit occurs.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="224290361%2FFunctions%2F358756464" anchor-label="snapshotAndMutate" id="224290361%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="224290361%2FFunctions%2F529902734" anchor-label="snapshotAndMutate" id="224290361%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="snapshot-and-mutate.html"><span>snapshot</span><wbr><span>And</span><wbr><span><span>Mutate</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="224290361%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="224290361%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="snapshot-and-mutate.html"><span class="token function">snapshotAndMutate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mutator<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Mutates this set atomically and returns the previous <a href="snapshot.html">snapshot</a>. <a href="snapshot-and-mutate.html">mutator</a> can be evaluated multiple times if a concurrent edit occurs.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="snapshot-and-mutate.html"><span class="token function">snapshotAndMutate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mutator<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.collections.immutable/ImmutableSet///PointingToDeclaration/">ImmutableSet</span><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Mutates this set atomically and returns the previous <a href="snapshot.html">snapshot</a>. <a href="snapshot-and-mutate.html">mutator</a> can be evaluated multiple times if a concurrent edit occurs.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2000140261%2FFunctions%2F358756464" anchor-label="toString" id="2000140261%2FFunctions%2F358756464" data-filterable-set=":collections:dokkaHtmlPartial/commonMain"></a>
-          <div class="table-row" data-filterable-current=":collections:dokkaHtmlPartial/commonMain" data-filterable-set=":collections:dokkaHtmlPartial/commonMain">
+<a data-name="2000140261%2FFunctions%2F529902734" anchor-label="toString" id="2000140261%2FFunctions%2F529902734" data-filterable-set=":collections/commonMain"></a>
+          <div class="table-row table-row_content" data-filterable-current=":collections/commonMain" data-filterable-set=":collections/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2000140261%2FFunctions%2F358756464"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2000140261%2FFunctions%2F529902734"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":collections/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -325,17 +324,21 @@
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
